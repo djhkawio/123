@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acces Prioritar | Market Insight Hub</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-2: #0b1b30;
+      --panel: rgba(255,255,255,0.06);
+      --panel-2: rgba(255,255,255,0.08);
+      --line: rgba(255,255,255,0.12);
+      --text: #eef4ff;
+      --muted: #a5b4cf;
+      --gold: #d8b36a;
+      --gold-2: #f1d39b;
+      --green: #1fa971;
+      --green-2: #30c78b;
+      --shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+      --radius: 20px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(216,179,106,0.10), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(49,115,255,0.14), transparent 22%),
+        linear-gradient(180deg, #06101d 0%, #091728 45%, #07111f 100%);
+      line-height: 1.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(5, 13, 24, 0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #0f2846, #183764 48%, #d8b36a 140%);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 10px 24px rgba(0,0,0,0.28);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brand-mark::before,
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+    }
+
+    .brand-mark::before {
+      width: 28px;
+      height: 28px;
+      right: -6px;
+      top: -6px;
+      background: radial-gradient(circle, rgba(241,211,155,0.95), rgba(216,179,106,0.15) 70%);
+    }
+
+    .brand-mark::after {
+      width: 18px;
+      height: 18px;
+      left: 8px;
+      bottom: 7px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .brand-text small {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 500;
+      margin-top: 1px;
+    }
+
+    .lang-switcher {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .lang-btn {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+
+    .lang-btn:hover,
+    .lang-btn.active {
+      color: #06101d;
+      background: linear-gradient(180deg, var(--gold-2), var(--gold));
+      border-color: rgba(216,179,106,0.5);
+    }
+
+    .top-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      color: #06101d;
+      background: linear-gradient(180deg, var(--gold-2), var(--gold));
+      font-weight: 700;
+      box-shadow: 0 10px 24px rgba(216,179,106,0.25);
+      white-space: nowrap;
+    }
+
+    .hero {
+      padding: 64px 0 28px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(216,179,106,0.28);
+      background: rgba(216,179,106,0.08);
+      color: var(--gold-2);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--green-2);
+      box-shadow: 0 0 0 5px rgba(48,199,139,0.12);
+    }
+
+    h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      line-height: 1.03;
+      margin: 0 0 18px;
+      letter-spacing: -0.03em;
+    }
+
+    .lead {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0 0 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 14px;
+      font-weight: 700;
+      transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      color: #07111f;
+      background: linear-gradient(180deg, var(--gold-2), var(--gold));
+      box-shadow: 0 12px 28px rgba(216,179,106,0.18);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 740px;
+    }
+
+    .metric {
+      padding: 16px 16px 14px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .visual-wrap { position: relative; }
+
+    .visual-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background:
+        radial-gradient(circle at 78% 18%, rgba(216,179,106,0.14), transparent 20%),
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+      box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+      min-height: 540px;
+      padding: 22px;
+    }
+
+    .screen {
+      height: 100%;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background:
+        linear-gradient(180deg, rgba(7,17,31,0.52), rgba(8,17,31,0.92)),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+        radial-gradient(circle at 80% 15%, rgba(65,116,255,0.20), transparent 18%);
+      background-size: auto, 36px 36px, 36px 36px, auto;
+      position: relative;
+      overflow: hidden;
+      padding: 26px;
+    }
+
+    .screen::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, transparent 68%, rgba(8,17,31,0.84)),
+        linear-gradient(90deg, transparent 0%, rgba(8,17,31,0.12) 100%);
+      pointer-events: none;
+    }
+
+    .screen-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .screen-badge {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .chart {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      top: 92px;
+      z-index: 0;
+    }
+
+    .float-card {
+      position: absolute;
+      z-index: 2;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.09);
+      background: rgba(10, 19, 34, 0.86);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.32);
+    }
+
+    .float-card.one { right: 24px; top: 108px; width: 210px; padding: 16px; }
+    .float-card.two { left: 24px; bottom: 28px; width: 250px; padding: 18px; }
+
+    .fc-label {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .fc-value {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .fc-note {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .section { padding: 36px 0; }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 42px);
+      letter-spacing: -0.03em;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 640px;
+    }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+
+    .card {
+      padding: 24px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.03));
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      letter-spacing: -0.02em;
+    }
+
+    .card p { margin: 0; color: var(--muted); }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 14px;
+      margin-bottom: 16px;
+      background: rgba(216,179,106,0.10);
+      border: 1px solid rgba(216,179,106,0.18);
+      color: var(--gold-2);
+      font-weight: 700;
+      font-size: 22px;
+    }
+
+    .feature-list { display: grid; gap: 14px; margin-top: 16px; }
+    .feature-item { display: grid; grid-template-columns: 20px 1fr; gap: 12px; align-items: start; color: var(--muted); }
+
+    .check {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: #051019;
+      background: linear-gradient(180deg, #4cd29a, #24b87e);
+      font-size: 12px;
+      font-weight: 800;
+      margin-top: 2px;
+    }
+
+    .showcase {
+      display: grid;
+      grid-template-columns: 1fr 0.95fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .media-card {
+      overflow: hidden;
+      position: relative;
+      min-height: 420px;
+    }
+
+    .media-art {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 75% 25%, rgba(216,179,106,0.18), transparent 16%),
+        radial-gradient(circle at 22% 18%, rgba(64,115,255,0.22), transparent 18%),
+        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)),
+        linear-gradient(135deg, #071120 0%, #0c1c31 55%, #0a1628 100%);
+    }
+
+    .media-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, transparent 40%, rgba(5,10,18,0.82) 100%),
+        linear-gradient(90deg, rgba(5,10,18,0.50) 0%, transparent 60%);
+    }
+
+    .bars {
+      position: absolute;
+      left: 8%;
+      right: 8%;
+      bottom: 10%;
+      height: 56%;
+      display: flex;
+      align-items: end;
+      gap: 14px;
+    }
+
+    .bar {
+      flex: 1;
+      border-radius: 14px 14px 0 0;
+      background: linear-gradient(180deg, rgba(216,179,106,0.95), rgba(216,179,106,0.18));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.18);
+    }
+
+    .bar:nth-child(1){ height: 24%; }
+    .bar:nth-child(2){ height: 38%; }
+    .bar:nth-child(3){ height: 33%; }
+    .bar:nth-child(4){ height: 54%; }
+    .bar:nth-child(5){ height: 48%; }
+    .bar:nth-child(6){ height: 70%; }
+    .bar:nth-child(7){ height: 82%; }
+    .bar:nth-child(8){ height: 92%; }
+
+    .media-copy {
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 26px;
+      z-index: 1;
+    }
+
+    .media-copy h3 {
+      margin: 0 0 8px;
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1.06;
+      letter-spacing: -0.03em;
+    }
+
+    .media-copy p { margin: 0; color: #d7e1f7; max-width: 560px; }
+
+    .stat-rows { display: grid; gap: 16px; }
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .stat-row strong { font-size: 22px; white-space: nowrap; }
+
+    .pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+
+    .pill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      counter-reset: step;
+    }
+
+    .process-card {
+      position: relative;
+      padding-top: 64px;
+    }
+
+    .process-card::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--gold-2), var(--gold));
+      color: #07111f;
+      font-weight: 800;
+      box-shadow: 0 8px 20px rgba(216,179,106,0.16);
+    }
+
+    .compliance {
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .compliance h3 { margin: 0 0 12px; font-size: 20px; }
+    .disclaimer { color: var(--muted); font-size: 14px; margin-top: 16px; }
+
+    .cta-panel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      padding: 32px;
+      border: 1px solid rgba(216,179,106,0.16);
+      background:
+        radial-gradient(circle at 85% 15%, rgba(216,179,106,0.20), transparent 20%),
+        linear-gradient(135deg, rgba(11,27,48,0.96), rgba(7,17,31,0.96));
+      box-shadow: 0 24px 60px rgba(0,0,0,0.32);
+    }
+
+    .cta-panel h2 {
+      margin: 0 0 12px;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+    }
+
+    .cta-panel p { margin: 0 0 22px; color: var(--muted); max-width: 760px; }
+
+    .footer { padding: 26px 0 56px; color: var(--muted); font-size: 14px; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-links { display: flex; flex-wrap: wrap; gap: 16px; justify-content: flex-end; }
+
+    .floating-wa {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 9999;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 58px;
+      padding: 0 18px 0 16px;
+      border-radius: 999px;
+      color: #07111f;
+      background: linear-gradient(180deg, #42d392, #1fbf75);
+      box-shadow: 0 18px 38px rgba(20, 108, 70, 0.35);
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      border: 1px solid rgba(255,255,255,0.22);
+      transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(16px);
+      pointer-events: none;
+      animation: wa-breathe 2.8s ease-in-out infinite;
+      animation-play-state: paused;
+    }
+
+    body.show-wa .floating-wa {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+      animation-play-state: paused;
+    }
+
+    body.show-wa.wa-glow .floating-wa {
+      animation-play-state: running;
+    }
+
+    .floating-wa:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 46px rgba(20, 108, 70, 0.42);
+    }
+
+    .floating-wa .wa-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,0.22);
+      color: #07111f;
+      font-size: 16px;
+      font-weight: 900;
+      flex: 0 0 auto;
+    }
+
+    .floating-wa .wa-copy {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+    }
+
+    .floating-wa .wa-copy small {
+      font-size: 11px;
+      font-weight: 700;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 3px;
+    }
+
+    .floating-wa .wa-copy span {
+      font-size: 15px;
+      white-space: nowrap;
+    }
+
+    @keyframes wa-breathe {
+      0%, 100% { box-shadow: 0 18px 38px rgba(20, 108, 70, 0.35); }
+      50% { box-shadow: 0 22px 46px rgba(20, 108, 70, 0.55); }
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid, .showcase, .grid-3, .process, .grid-2 { grid-template-columns: 1fr; }
+      .hero-metrics { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 780px) {
+      .topbar-inner { align-items: flex-start; flex-direction: column; }
+      .lang-switcher { justify-content: flex-start; }
+    }
+
+    @media (max-width: 680px) {
+      .floating-wa {
+        right: 12px;
+        left: 12px;
+        bottom: 12px;
+        justify-content: center;
+        min-height: 56px;
+      }
+      .floating-wa .wa-copy span { font-size: 14px; }
+      .visual-card { min-height: 430px; }
+      .float-card.one { width: 185px; right: 18px; }
+      .float-card.two { width: 210px; }
+      .section { padding: 28px 0; }
+      .card, .cta-panel, .compliance { padding: 20px; }
+      .hero { padding-top: 40px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-links { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar" id="top">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-mark"></div>
+        <div class="brand-text">
+          Market Insight Hub
+          <small data-i18n="brandSub">Educație financiară • Analiză de piață • Comunitate privată</small>
+        </div>
+      </div>
+      <div class="lang-switcher">
+        <button class="lang-btn" data-lang-btn="ro">RO</button>
+        <button class="lang-btn" data-lang-btn="en">EN</button>
+        <button class="lang-btn" data-lang-btn="es">ES</button>
+        <button class="lang-btn" data-lang-btn="id">ID</button>
+        <button class="lang-btn" data-lang-btn="hi">HI</button>
+        <a class="top-cta" href="https://t.ly/ubiYs" data-i18n="topCta">Intră pe WhatsApp</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span><span data-i18n="eyebrow">Acces prioritar • Comunitate privată • Asistență zilnică</span></div>
+          <h1 data-i18n="heroTitle">Accesul tău la un cadru clar de învățare este aproape activat.</h1>
+          <p class="lead" data-i18n="heroLead">Un spațiu dedicat celor care vor să înțeleagă piețele financiare mai bine, să evite greșelile frecvente și să studieze modele practice într-un mediu structurat, clar și profesionist.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://t.ly/ubiYs" data-i18n="heroBtnPrimary">Activează accesul pe WhatsApp</a>
+            <a class="btn btn-secondary" href="#despre" data-i18n="heroBtnSecondary">Vezi cum funcționează</a>
+          </div>
+          <div class="hero-metrics">
+            <div class="metric">
+              <strong>1.200+</strong>
+              <span data-i18n="metric1">Membri activi în comunitate</span>
+            </div>
+            <div class="metric">
+              <strong data-i18n="metric2Value">Zilnic</strong>
+              <span data-i18n="metric2">Perspective educaționale și explicații clare</span>
+            </div>
+            <div class="metric">
+              <strong data-i18n="metric3Value">100% Gratuit</strong>
+              <span data-i18n="metric3">Acces inițial fără cost de intrare</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="visual-wrap">
+          <div class="visual-card">
+            <div class="screen">
+              <div class="screen-top">
+                <div class="screen-badge" data-i18n="screenBadge1">Market Overview</div>
+                <div class="screen-badge" data-i18n="screenBadge2">Actualizat periodic</div>
+              </div>
+
+              <svg class="chart" viewBox="0 0 800 520" preserveAspectRatio="none" aria-hidden="true">
+                <defs>
+                  <linearGradient id="areaA" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="rgba(216,179,106,0.55)" />
+                    <stop offset="100%" stop-color="rgba(216,179,106,0.02)" />
+                  </linearGradient>
+                  <linearGradient id="lineA" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#96b5ff" />
+                    <stop offset="100%" stop-color="#d8b36a" />
+                  </linearGradient>
+                  <filter id="glow">
+                    <feGaussianBlur stdDeviation="4" result="b"/>
+                    <feMerge>
+                      <feMergeNode in="b"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
+                </defs>
+                <path d="M0,430 C60,420 95,340 145,325 C190,312 225,350 280,300 C340,245 385,270 430,220 C490,150 530,185 575,150 C630,108 690,98 760,62 L800,54 L800,520 L0,520 Z" fill="url(#areaA)" opacity="0.9"></path>
+                <path d="M0,430 C60,420 95,340 145,325 C190,312 225,350 280,300 C340,245 385,270 430,220 C490,150 530,185 575,150 C630,108 690,98 760,62 L800,54" fill="none" stroke="url(#lineA)" stroke-width="5" filter="url(#glow)"></path>
+                <path d="M0,390 C65,390 110,370 155,360 C205,348 248,330 310,308 C360,290 410,290 455,268 C500,248 548,230 590,190 C640,140 700,128 800,118" fill="none" stroke="#3b7cff" stroke-opacity="0.65" stroke-width="3"></path>
+                <g fill="#d8b36a">
+                  <circle cx="145" cy="325" r="6"/>
+                  <circle cx="430" cy="220" r="6"/>
+                  <circle cx="760" cy="62" r="6"/>
+                </g>
+              </svg>
+
+              <div class="float-card one">
+                <div class="fc-label" data-i18n="float1Label">Actualizare sesiune</div>
+                <div class="fc-value" data-i18n="float1Value">Perspective clare</div>
+                <div class="fc-note" data-i18n="float1Note">Explicații concise despre context, structură și pași de urmărit.</div>
+              </div>
+
+              <div class="float-card two">
+                <div class="fc-label" data-i18n="float2Label">Acces privat</div>
+                <div class="fc-value">WhatsApp</div>
+                <div class="fc-note" data-i18n="float2Note">Confirmă accesul și primește detaliile direct în canalul dedicat.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="despre">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 data-i18n="section1Title">Un cadru elegant, clar și ușor de urmărit.</h2>
+          </div>
+          <p data-i18n="section1Lead">Pagina este concepută pentru a oferi o experiență premium, coerentă și profesionistă, fără a aglomera informația sau a crea fricțiuni inutile în conversie.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="icon">01</div>
+            <h3 data-i18n="card1Title">Analiză structurată</h3>
+            <p data-i18n="card1Text">Conținut prezentat într-o formă clară, cu accent pe logică, context și interpretare practică.</p>
+          </div>
+          <div class="card">
+            <div class="icon">02</div>
+            <h3 data-i18n="card2Title">Acces rapid</h3>
+            <p data-i18n="card2Text">Un singur pas final pentru a intra în canalul privat și a continua experiența fără întreruperi.</p>
+          </div>
+          <div class="card">
+            <div class="icon">03</div>
+            <h3 data-i18n="card3Title">Prezență profesională</h3>
+            <p data-i18n="card3Text">Estetică originală, corporate și credibilă, construită pentru claritate și coerență vizuală.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container showcase">
+        <div class="card media-card">
+          <div class="media-art"></div>
+          <div class="bars">
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+          </div>
+          <div class="media-overlay"></div>
+          <div class="media-copy">
+            <div class="eyebrow" style="margin-bottom:12px;"><span data-i18n="mediaEyebrow">Experiență premium</span></div>
+            <h3 data-i18n="mediaTitle">Vizual clar, modern și orientat spre încredere.</h3>
+            <p data-i18n="mediaText">Designul pune accent pe simplitate, consistență și prezentare sobră, cu o compoziție inspirată de standardele vizuale corporate moderne.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-bottom:12px;" data-i18n="benefitsTitle">Ce primește utilizatorul după activare</h3>
+          <p style="margin-bottom:6px;" data-i18n="benefitsLead">Un parcurs simplu, clar și fără pași inutili. Toată experiența este gândită pentru a susține continuitatea între formular, pagină și canalul de conversație.</p>
+
+          <div class="stat-rows">
+            <div class="stat-row"><span data-i18n="row1Label">Acces la comunitatea privată</span><strong data-i18n="row1Value">Imediat</strong></div>
+            <div class="stat-row"><span data-i18n="row2Label">Suport și clarificări periodice</span><strong data-i18n="row2Value">Zilnic</strong></div>
+            <div class="stat-row"><span data-i18n="row3Label">Explicații concise pentru începători</span><strong data-i18n="row3Value">Disponibil</strong></div>
+            <div class="stat-row"><span data-i18n="row4Label">Experiență prietenoasă pe mobil</span><strong data-i18n="row4Value">Optimizată</strong></div>
+          </div>
+
+          <div class="pill-row">
+            <div class="pill" data-i18n="pill1">Interfață curată</div>
+            <div class="pill" data-i18n="pill2">Mesaj coerent</div>
+            <div class="pill" data-i18n="pill3">Acces rapid</div>
+            <div class="pill" data-i18n="pill4">UX premium</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div><h2 data-i18n="section2Title">De ce funcționează această pagină</h2></div>
+          <p data-i18n="section2Lead">Fiecare element este construit pentru a reduce ezitarea, a întări percepția de seriozitate și a conduce utilizatorul către un singur pas clar: confirmarea accesului.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3 data-i18n="featuresTitle">Elemente cheie de conversie</h3>
+            <div class="feature-list">
+              <div class="feature-item"><div class="check">✓</div><div data-i18n="feature1">Mesaj principal clar, fără promisiuni nerealiste sau aglomerare inutilă.</div></div>
+              <div class="feature-item"><div class="check">✓</div><div data-i18n="feature2">Design premium cu spațiere bună, contrast puternic și ierarhie vizuală elegantă.</div></div>
+              <div class="feature-item"><div class="check">✓</div><div data-i18n="feature3">Buton principal repetat strategic pentru a susține acțiunea dorită.</div></div>
+              <div class="feature-item"><div class="check">✓</div><div data-i18n="feature4">Ton calm, profesional și coerent cu un brand educațional modern.</div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 data-i18n="mobileTitle">Construcție gândită pentru mobil</h3>
+            <div class="feature-list">
+              <div class="feature-item"><div class="check">✓</div><div data-i18n="mobile1">Headline puternic și lizibil încă din primul ecran.</div></div>
+              <div class="feature-item"><div class="check">✓</div><div data-i18n="mobile2">Blocuri vizuale mari, ușor de parcurs pe telefon.</div></div>
+              <div class="feature-item"><div class="check">✓</div><div data-i18n="mobile3">CTA vizibil și consistent în punctele-cheie ale paginii.</div></div>
+              <div class="feature-item"><div class="check">✓</div><div data-i18n="mobile4">Structură compatibilă cu embed în Notion sau găzduire simplă externă.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div><h2 data-i18n="processTitle">Procesul de activare în 3 pași</h2></div>
+          <p data-i18n="processLead">Traseu simplu și logic, fără a distrage utilizatorul cu obiective secundare sau pagini inutile.</p>
+        </div>
+
+        <div class="process">
+          <div class="card process-card"><h3 data-i18n="step1Title">Confirmi interesul</h3><p data-i18n="step1Text">Ajungi în pagina de activare după completarea formularului și vezi imediat pașii următori, într-un cadru vizual profesionist.</p></div>
+          <div class="card process-card"><h3 data-i18n="step2Title">Activezi accesul</h3><p data-i18n="step2Text">Apeși pe butonul principal și continui direct în canalul WhatsApp, fără etape tehnice complicate sau fricțiuni inutile.</p></div>
+          <div class="card process-card"><h3 data-i18n="step3Title">Primești detaliile</h3><p data-i18n="step3Text">După intrare, utilizatorul poate primi informații introductive, structură de parcurs și mesajele necesare pentru onboarding.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="compliance">
+          <h3 data-i18n="noteTitle">Notă importantă</h3>
+          <p data-i18n="noteText">Această pagină folosește un stil vizual corporate original și elegant. Nu este construită pentru a imita identitatea, marca, structura sau prezentarea unei instituții financiare reale și nu trebuie folosită pentru a crea impresia falsă că aparține unei entități reglementate.</p>
+          <p class="disclaimer" data-i18n="noteSub">Conținutul are scop informativ și educațional. Orice descriere despre piață, analiză sau structură de învățare trebuie prezentată clar și responsabil.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-panel">
+          <div class="eyebrow"><span data-i18n="finalEyebrow">Ultimul pas</span></div>
+          <h2 data-i18n="finalTitle">Activează acum accesul și continuă experiența în WhatsApp.</h2>
+          <p data-i18n="finalText">Dacă dorești să continui, apasă pe butonul de mai jos și intră în canalul dedicat. Accesul inițial este gratuit, iar informațiile introductive sunt oferite direct în conversație.</p>
+          <div class="hero-actions" style="margin-bottom:0;">
+            <a class="btn btn-primary" href="https://t.ly/ubiYs" data-i18n="finalBtn">Intră pe WhatsApp acum</a>
+            <a class="btn btn-secondary" href="#top" data-i18n="backTop">Revino sus</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        © 2026 Market Insight Hub. <span data-i18n="footerRights">Toate drepturile rezervate.</span>
+        <div class="disclaimer" style="margin-top:8px; max-width:760px;" data-i18n="footerNote">Această pagină reprezintă o prezentare originală, cu stil vizual premium, pentru un produs sau serviciu educațional. Înlocuiește informațiile, textele și datele de contact cu propriile tale detalii înainte de publicare.</div>
+      </div>
+      <div class="footer-links">
+        <a href="#" data-i18n="privacy">Confidențialitate</a>
+        <a href="#" data-i18n="terms">Termeni</a>
+        <a href="#" data-i18n="contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <a class="floating-wa" href="https://t.ly/ubiYs" aria-label="Open access now">
+    <span class="wa-icon">✆</span>
+    <span class="wa-copy">
+      <small>WhatsApp</small>
+      <span data-i18n="floatingWa">Intră acum în grup</span>
+    </span>
+  </a>
+
+  <script>
+    const translations = {
+      ro: {
+        brandSub: 'Educație financiară • Analiză de piață • Comunitate privată', topCta: 'Intră pe WhatsApp', eyebrow: 'Acces prioritar • Comunitate privată • Asistență zilnică', heroTitle: 'Accesul tău la un cadru clar de învățare este aproape activat.', heroLead: 'Un spațiu dedicat celor care vor să înțeleagă piețele financiare mai bine, să evite greșelile frecvente și să studieze modele practice într-un mediu structurat, clar și profesionist.', heroBtnPrimary: 'Activează accesul pe WhatsApp', heroBtnSecondary: 'Vezi cum funcționează', metric1: 'Membri activi în comunitate', metric2Value: 'Zilnic', metric2: 'Perspective educaționale și explicații clare', metric3Value: '100% Gratuit', metric3: 'Acces inițial fără cost de intrare', screenBadge1: 'Market Overview', screenBadge2: 'Actualizat periodic', float1Label: 'Actualizare sesiune', float1Value: 'Perspective clare', float1Note: 'Explicații concise despre context, structură și pași de urmărit.', float2Label: 'Acces privat', float2Note: 'Confirmă accesul și primește detaliile direct în canalul dedicat.', section1Title: 'Un cadru elegant, clar și ușor de urmărit.', section1Lead: 'Pagina este concepută pentru a oferi o experiență premium, coerentă și profesionistă, fără a aglomera informația sau a crea fricțiuni inutile în conversie.', card1Title: 'Analiză structurată', card1Text: 'Conținut prezentat într-o formă clară, cu accent pe logică, context și interpretare practică.', card2Title: 'Acces rapid', card2Text: 'Un singur pas final pentru a intra în canalul privat și a continua experiența fără întreruperi.', card3Title: 'Prezență profesională', card3Text: 'Estetică originală, corporate și credibilă, construită pentru claritate și coerență vizuală.', mediaEyebrow: 'Experiență premium', mediaTitle: 'Vizual clar, modern și orientat spre încredere.', mediaText: 'Designul pune accent pe simplitate, consistență și prezentare sobră, cu o compoziție inspirată de standardele vizuale corporate moderne.', benefitsTitle: 'Ce primește utilizatorul după activare', benefitsLead: 'Un parcurs simplu, clar și fără pași inutili. Toată experiența este gândită pentru a susține continuitatea între formular, pagină și canalul de conversație.', row1Label: 'Acces la comunitatea privată', row1Value: 'Imediat', row2Label: 'Suport și clarificări periodice', row2Value: 'Zilnic', row3Label: 'Explicații concise pentru începători', row3Value: 'Disponibil', row4Label: 'Experiență prietenoasă pe mobil', row4Value: 'Optimizată', pill1: 'Interfață curată', pill2: 'Mesaj coerent', pill3: 'Acces rapid', pill4: 'UX premium', section2Title: 'De ce funcționează această pagină', section2Lead: 'Fiecare element este construit pentru a reduce ezitarea, a întări percepția de seriozitate și a conduce utilizatorul către un singur pas clar: confirmarea accesului.', featuresTitle: 'Elemente cheie de conversie', feature1: 'Mesaj principal clar, fără promisiuni nerealiste sau aglomerare inutilă.', feature2: 'Design premium cu spațiere bună, contrast puternic și ierarhie vizuală elegantă.', feature3: 'Buton principal repetat strategic pentru a susține acțiunea dorită.', feature4: 'Ton calm, profesional și coerent cu un brand educațional modern.', mobileTitle: 'Construcție gândită pentru mobil', mobile1: 'Headline puternic și lizibil încă din primul ecran.', mobile2: 'Blocuri vizuale mari, ușor de parcurs pe telefon.', mobile3: 'CTA vizibil și consistent în punctele-cheie ale paginii.', mobile4: 'Structură compatibilă cu embed în Notion sau găzduire simplă externă.', processTitle: 'Procesul de activare în 3 pași', processLead: 'Traseu simplu și logic, fără a distrage utilizatorul cu obiective secundare sau pagini inutile.', step1Title: 'Confirmi interesul', step1Text: 'Ajungi în pagina de activare după completarea formularului și vezi imediat pașii următori, într-un cadru vizual profesionist.', step2Title: 'Activezi accesul', step2Text: 'Apeși pe butonul principal și continui direct în canalul WhatsApp, fără etape tehnice complicate sau fricțiuni inutile.', step3Title: 'Primești detaliile', step3Text: 'După intrare, utilizatorul poate primi informații introductive, structură de parcurs și mesajele necesare pentru onboarding.', noteTitle: 'Notă importantă', noteText: 'Această pagină folosește un stil vizual corporate original și elegant. Nu este construită pentru a imita identitatea, marca, structura sau prezentarea unei instituții financiare reale și nu trebuie folosită pentru a crea impresia falsă că aparține unei entități reglementate.', noteSub: 'Conținutul are scop informativ și educațional. Orice descriere despre piață, analiză sau structură de învățare trebuie prezentată clar și responsabil.', finalEyebrow: 'Ultimul pas', finalTitle: 'Activează acum accesul și continuă experiența în WhatsApp.', finalText: 'Dacă dorești să continui, apasă pe butonul de mai jos și intră în canalul dedicat. Accesul inițial este gratuit, iar informațiile introductive sunt oferite direct în conversație.', finalBtn: 'Intră pe WhatsApp acum', backTop: 'Revino sus', footerRights: 'Toate drepturile rezervate.', footerNote: 'Această pagină reprezintă o prezentare originală, cu stil vizual premium, pentru un produs sau serviciu educațional. Înlocuiește informațiile, textele și datele de contact cu propriile tale detalii înainte de publicare.', privacy: 'Confidențialitate', terms: 'Termeni', contact: 'Contact', floatingWa: 'Intră acum în grup'
+      },
+      en: {
+        brandSub: 'Financial education • Market analysis • Private community', topCta: 'Join WhatsApp', eyebrow: 'Priority access • Private community • Daily support', heroTitle: 'Your access to a clear learning framework is almost activated.', heroLead: 'A space for people who want to understand financial markets better, avoid common mistakes, and explore practical models in a structured, professional environment.', heroBtnPrimary: 'Activate access on WhatsApp', heroBtnSecondary: 'See how it works', metric1: 'Active community members', metric2Value: 'Daily', metric2: 'Educational insights and clear explanations', metric3Value: '100% Free', metric3: 'Initial access at no cost', screenBadge1: 'Market Overview', screenBadge2: 'Updated regularly', float1Label: 'Session update', float1Value: 'Clear insights', float1Note: 'Concise explanations about context, structure, and next steps.', float2Label: 'Private access', float2Note: 'Confirm access and receive details directly in the dedicated channel.', section1Title: 'An elegant, clear, and easy-to-follow framework.', section1Lead: 'This page is designed to deliver a premium, coherent, and professional experience without clutter or unnecessary friction.', card1Title: 'Structured analysis', card1Text: 'Content presented clearly, with emphasis on logic, context, and practical interpretation.', card2Title: 'Fast access', card2Text: 'One final step to enter the private channel and continue the experience without interruption.', card3Title: 'Professional presence', card3Text: 'Original corporate aesthetics built for clarity and visual consistency.', mediaEyebrow: 'Premium experience', mediaTitle: 'Clear, modern visuals built for trust.', mediaText: 'The design emphasizes simplicity, consistency, and a sober presentation inspired by modern corporate visual standards.', benefitsTitle: 'What the user receives after activation', benefitsLead: 'A simple, clear path without unnecessary steps. The entire experience is designed to maintain continuity between the form, page, and conversation channel.', row1Label: 'Access to the private community', row1Value: 'Immediate', row2Label: 'Support and periodic clarification', row2Value: 'Daily', row3Label: 'Concise beginner-friendly explanations', row3Value: 'Available', row4Label: 'Mobile-friendly experience', row4Value: 'Optimized', pill1: 'Clean interface', pill2: 'Coherent messaging', pill3: 'Fast access', pill4: 'Premium UX', section2Title: 'Why this page works', section2Lead: 'Every element is built to reduce hesitation, strengthen trust, and guide the user toward one clear action: confirming access.', featuresTitle: 'Key conversion elements', feature1: 'Clear core message without unrealistic claims or unnecessary clutter.', feature2: 'Premium design with spacing, strong contrast, and elegant hierarchy.', feature3: 'Primary button repeated strategically to support the desired action.', feature4: 'Calm, professional tone aligned with a modern educational brand.', mobileTitle: 'Built for mobile first', mobile1: 'Strong headline readable from the first screen.', mobile2: 'Large visual blocks that are easy to scan on a phone.', mobile3: 'Visible and consistent CTA at key points on the page.', mobile4: 'Structure compatible with Notion embedding or external hosting.', processTitle: 'Activation process in 3 steps', processLead: 'A simple and logical path without distracting the user with unnecessary secondary goals.', step1Title: 'Confirm interest', step1Text: 'You arrive on the activation page after the form and immediately see the next steps in a professional visual framework.', step2Title: 'Activate access', step2Text: 'Click the primary button and continue directly to the WhatsApp channel without technical complexity or unnecessary friction.', step3Title: 'Receive the details', step3Text: 'After entering, the user can receive onboarding information, structure, and key introductory messages.', noteTitle: 'Important note', noteText: 'This page uses an original and elegant corporate visual style. It is not built to imitate the identity, branding, structure, or presentation of any real financial institution and should not be used to create the false impression that it belongs to a regulated entity.', noteSub: 'The content is informational and educational. Any market, analysis, or learning descriptions should be presented clearly and responsibly.', finalEyebrow: 'Final step', finalTitle: 'Activate access now and continue the experience on WhatsApp.', finalText: 'If you want to continue, click the button below and join the dedicated channel. Initial access is free, and the introductory information is delivered directly in the conversation.', finalBtn: 'Join WhatsApp now', backTop: 'Back to top', footerRights: 'All rights reserved.', footerNote: 'This page is an original premium-style presentation for an educational product or service. Replace the text and contact details with your own before publishing.', privacy: 'Privacy', terms: 'Terms', contact: 'Contact', floatingWa: 'Join the group now'
+      },
+      es: {
+        brandSub: 'Educación financiera • Análisis de mercado • Comunidad privada', topCta: 'Entrar a WhatsApp', eyebrow: 'Acceso prioritario • Comunidad privada • Soporte diario', heroTitle: 'Tu acceso a un marco claro de aprendizaje está casi activado.', heroLead: 'Un espacio para quienes quieren entender mejor los mercados financieros, evitar errores frecuentes y estudiar modelos prácticos en un entorno estructurado y profesional.', heroBtnPrimary: 'Activar acceso en WhatsApp', heroBtnSecondary: 'Ver cómo funciona', metric1: 'Miembros activos en la comunidad', metric2Value: 'Diario', metric2: 'Ideas educativas y explicaciones claras', metric3Value: '100% Gratis', metric3: 'Acceso inicial sin costo', screenBadge1: 'Resumen del mercado', screenBadge2: 'Actualizado regularmente', float1Label: 'Actualización de sesión', float1Value: 'Perspectivas claras', float1Note: 'Explicaciones breves sobre contexto, estructura y próximos pasos.', float2Label: 'Acceso privado', float2Note: 'Confirma el acceso y recibe los detalles directamente en el canal dedicado.', section1Title: 'Un marco elegante, claro y fácil de seguir.', section1Lead: 'Esta página está diseñada para ofrecer una experiencia premium, coherente y profesional, sin saturación ni fricción innecesaria.', card1Title: 'Análisis estructurado', card1Text: 'Contenido presentado con claridad, con énfasis en lógica, contexto e interpretación práctica.', card2Title: 'Acceso rápido', card2Text: 'Un último paso para entrar al canal privado y continuar la experiencia sin interrupciones.', card3Title: 'Presencia profesional', card3Text: 'Estética corporativa original y creíble, construida para la claridad y la coherencia visual.', mediaEyebrow: 'Experiencia premium', mediaTitle: 'Visual claro, moderno y orientado a la confianza.', mediaText: 'El diseño pone énfasis en la simplicidad, la consistencia y una presentación sobria inspirada en estándares visuales corporativos modernos.', benefitsTitle: 'Qué recibe el usuario después de la activación', benefitsLead: 'Un recorrido simple y claro, sin pasos innecesarios. Toda la experiencia está pensada para mantener la continuidad entre el formulario, la página y el canal de conversación.', row1Label: 'Acceso a la comunidad privada', row1Value: 'Inmediato', row2Label: 'Soporte y aclaraciones periódicas', row2Value: 'Diario', row3Label: 'Explicaciones concisas para principiantes', row3Value: 'Disponible', row4Label: 'Experiencia amigable en móvil', row4Value: 'Optimizada', pill1: 'Interfaz limpia', pill2: 'Mensaje coherente', pill3: 'Acceso rápido', pill4: 'UX premium', section2Title: 'Por qué funciona esta página', section2Lead: 'Cada elemento está construido para reducir la duda, reforzar la confianza y guiar al usuario hacia una sola acción clara: confirmar el acceso.', featuresTitle: 'Elementos clave de conversión', feature1: 'Mensaje principal claro, sin promesas irreales ni saturación innecesaria.', feature2: 'Diseño premium con buen espaciado, alto contraste y jerarquía elegante.', feature3: 'Botón principal repetido estratégicamente para apoyar la acción deseada.', feature4: 'Tono calmado y profesional, coherente con una marca educativa moderna.', mobileTitle: 'Diseñada pensando en móvil', mobile1: 'Título potente y legible desde la primera pantalla.', mobile2: 'Bloques visuales grandes y fáciles de recorrer en el teléfono.', mobile3: 'CTA visible y consistente en los puntos clave de la página.', mobile4: 'Estructura compatible con incrustación en Notion o alojamiento externo.', processTitle: 'Proceso de activación en 3 pasos', processLead: 'Un recorrido simple y lógico, sin distraer al usuario con objetivos secundarios innecesarios.', step1Title: 'Confirmas tu interés', step1Text: 'Llegas a la página de activación después del formulario y ves enseguida los pasos siguientes en un entorno visual profesional.', step2Title: 'Activas el acceso', step2Text: 'Pulsas el botón principal y continúas directamente al canal de WhatsApp, sin complejidad técnica ni fricción innecesaria.', step3Title: 'Recibes los detalles', step3Text: 'Después de entrar, el usuario puede recibir información de introducción, estructura y mensajes clave de onboarding.', noteTitle: 'Nota importante', noteText: 'Esta página utiliza un estilo visual corporativo original y elegante. No está diseñada para imitar la identidad, marca, estructura o presentación de ninguna institución financiera real ni debe usarse para crear la impresión falsa de pertenecer a una entidad regulada.', noteSub: 'El contenido es informativo y educativo. Toda descripción sobre mercado, análisis o aprendizaje debe presentarse con claridad y responsabilidad.', finalEyebrow: 'Último paso', finalTitle: 'Activa ahora el acceso y continúa la experiencia en WhatsApp.', finalText: 'Si deseas continuar, pulsa el botón de abajo y entra en el canal dedicado. El acceso inicial es gratuito y la información introductoria se entrega directamente en la conversación.', finalBtn: 'Entrar a WhatsApp ahora', backTop: 'Volver arriba', footerRights: 'Todos los derechos reservados.', footerNote: 'Esta página es una presentación original de estilo premium para un producto o servicio educativo. Sustituye el texto y los datos de contacto por los tuyos antes de publicar.', privacy: 'Privacidad', terms: 'Términos', contact: 'Contacto', floatingWa: 'Entrar al grupo ahora'
+      },
+      id: {
+        brandSub: 'Edukasi finansial • Analisis pasar • Komunitas privat', topCta: 'Masuk WhatsApp', eyebrow: 'Akses prioritas • Komunitas privat • Dukungan harian', heroTitle: 'Akses Anda ke kerangka belajar yang jelas hampir aktif.', heroLead: 'Ruang untuk orang-orang yang ingin memahami pasar keuangan dengan lebih baik, menghindari kesalahan umum, dan mempelajari model praktis dalam lingkungan yang terstruktur dan profesional.', heroBtnPrimary: 'Aktifkan akses di WhatsApp', heroBtnSecondary: 'Lihat cara kerjanya', metric1: 'Anggota komunitas aktif', metric2Value: 'Harian', metric2: 'Insight edukatif dan penjelasan yang jelas', metric3Value: '100% Gratis', metric3: 'Akses awal tanpa biaya', screenBadge1: 'Ringkasan Pasar', screenBadge2: 'Diperbarui secara berkala', float1Label: 'Pembaruan sesi', float1Value: 'Insight yang jelas', float1Note: 'Penjelasan singkat tentang konteks, struktur, dan langkah berikutnya.', float2Label: 'Akses privat', float2Note: 'Konfirmasi akses dan terima detail langsung di kanal khusus.', section1Title: 'Kerangka yang elegan, jelas, dan mudah diikuti.', section1Lead: 'Halaman ini dirancang untuk memberikan pengalaman premium, konsisten, dan profesional tanpa membuat pengguna kewalahan atau menambah friksi yang tidak perlu.', card1Title: 'Analisis terstruktur', card1Text: 'Konten disajikan dengan jelas, menekankan logika, konteks, dan interpretasi praktis.', card2Title: 'Akses cepat', card2Text: 'Satu langkah terakhir untuk masuk ke kanal privat dan melanjutkan pengalaman tanpa gangguan.', card3Title: 'Tampilan profesional', card3Text: 'Estetika korporat yang orisinal dan kredibel, dibangun untuk kejelasan dan konsistensi visual.', mediaEyebrow: 'Pengalaman premium', mediaTitle: 'Visual yang jelas, modern, dan membangun kepercayaan.', mediaText: 'Desain menekankan kesederhanaan, konsistensi, dan presentasi yang rapi, terinspirasi oleh standar visual korporat modern.', benefitsTitle: 'Apa yang diterima pengguna setelah aktivasi', benefitsLead: 'Alur yang sederhana dan jelas tanpa langkah yang tidak perlu. Seluruh pengalaman dirancang untuk menjaga kesinambungan antara formulir, halaman, dan kanal percakapan.', row1Label: 'Akses ke komunitas privat', row1Value: 'Langsung', row2Label: 'Dukungan dan penjelasan berkala', row2Value: 'Harian', row3Label: 'Penjelasan ringkas untuk pemula', row3Value: 'Tersedia', row4Label: 'Pengalaman ramah mobile', row4Value: 'Dioptimalkan', pill1: 'Antarmuka bersih', pill2: 'Pesan konsisten', pill3: 'Akses cepat', pill4: 'UX premium', section2Title: 'Mengapa halaman ini efektif', section2Lead: 'Setiap elemen dibuat untuk mengurangi keraguan, memperkuat kepercayaan, dan mengarahkan pengguna ke satu tindakan yang jelas: mengonfirmasi akses.', featuresTitle: 'Elemen konversi utama', feature1: 'Pesan inti yang jelas tanpa klaim berlebihan atau kepadatan yang tidak perlu.', feature2: 'Desain premium dengan spasi yang baik, kontras kuat, dan hierarki elegan.', feature3: 'Tombol utama diulang secara strategis untuk mendukung tindakan yang diinginkan.', feature4: 'Nada yang tenang dan profesional, selaras dengan brand edukasi modern.', mobileTitle: 'Dirancang untuk mobile', mobile1: 'Headline kuat dan mudah dibaca sejak layar pertama.', mobile2: 'Blok visual besar yang mudah dipindai di ponsel.', mobile3: 'CTA yang terlihat dan konsisten di titik-titik penting halaman.', mobile4: 'Struktur kompatibel untuk embed Notion atau hosting eksternal.', processTitle: 'Proses aktivasi dalam 3 langkah', processLead: 'Alur yang sederhana dan logis tanpa mengalihkan pengguna ke tujuan sekunder yang tidak perlu.', step1Title: 'Konfirmasi minat', step1Text: 'Anda tiba di halaman aktivasi setelah mengisi formulir dan langsung melihat langkah berikutnya dalam tampilan profesional.', step2Title: 'Aktifkan akses', step2Text: 'Klik tombol utama dan lanjut langsung ke kanal WhatsApp tanpa kerumitan teknis atau friksi tambahan.', step3Title: 'Terima detail', step3Text: 'Setelah masuk, pengguna dapat menerima informasi onboarding, struktur, dan pesan pengantar penting.', noteTitle: 'Catatan penting', noteText: 'Halaman ini menggunakan gaya visual korporat yang orisinal dan elegan. Halaman ini tidak dibuat untuk meniru identitas, merek, struktur, atau presentasi institusi keuangan nyata dan tidak boleh digunakan untuk menciptakan kesan palsu bahwa halaman ini milik entitas yang diatur.', noteSub: 'Konten bersifat informatif dan edukatif. Setiap penjelasan tentang pasar, analisis, atau pembelajaran harus disampaikan dengan jelas dan bertanggung jawab.', finalEyebrow: 'Langkah terakhir', finalTitle: 'Aktifkan akses sekarang dan lanjutkan pengalaman di WhatsApp.', finalText: 'Jika Anda ingin melanjutkan, klik tombol di bawah dan masuk ke kanal khusus. Akses awal gratis, dan informasi pengantar diberikan langsung di percakapan.', finalBtn: 'Masuk WhatsApp sekarang', backTop: 'Kembali ke atas', footerRights: 'Hak cipta dilindungi.', footerNote: 'Halaman ini adalah presentasi orisinal bergaya premium untuk produk atau layanan edukasi. Ganti teks dan detail kontak dengan milik Anda sebelum dipublikasikan.', privacy: 'Privasi', terms: 'Ketentuan', contact: 'Kontak', floatingWa: 'Masuk grup sekarang'
+      },
+      hi: {
+        brandSub: 'वित्तीय शिक्षा • मार्केट विश्लेषण • निजी समुदाय', topCta: 'WhatsApp पर जाएँ', eyebrow: 'प्राथमिक पहुँच • निजी समुदाय • दैनिक सहायता', heroTitle: 'आपकी स्पष्ट लर्निंग फ्रेमवर्क तक पहुँच लगभग सक्रिय हो चुकी है।', heroLead: 'उन लोगों के लिए एक जगह जो वित्तीय बाज़ारों को बेहतर समझना चाहते हैं, आम गलतियों से बचना चाहते हैं, और एक संरचित व पेशेवर वातावरण में व्यावहारिक मॉडल सीखना चाहते हैं।', heroBtnPrimary: 'WhatsApp पर पहुँच सक्रिय करें', heroBtnSecondary: 'यह कैसे काम करता है देखें', metric1: 'सक्रिय समुदाय सदस्य', metric2Value: 'दैनिक', metric2: 'शैक्षिक इनसाइट्स और स्पष्ट व्याख्याएँ', metric3Value: '100% निःशुल्क', metric3: 'प्रारंभिक पहुँच बिना किसी लागत के', screenBadge1: 'मार्केट ओवरव्यू', screenBadge2: 'नियमित रूप से अपडेट', float1Label: 'सेशन अपडेट', float1Value: 'स्पष्ट इनसाइट्स', float1Note: 'संदर्भ, संरचना और अगले कदमों पर संक्षिप्त व्याख्या।', float2Label: 'निजी पहुँच', float2Note: 'पहुँच की पुष्टि करें और विवरण सीधे समर्पित चैनल में प्राप्त करें।', section1Title: 'एक सुरुचिपूर्ण, स्पष्ट और आसानी से समझ आने वाला ढाँचा।', section1Lead: 'यह पेज एक प्रीमियम, सुसंगत और पेशेवर अनुभव देने के लिए बनाया गया है, बिना अनावश्यक भीड़ या घर्षण के।', card1Title: 'संरचित विश्लेषण', card1Text: 'सामग्री को स्पष्ट रूप में प्रस्तुत किया गया है, जिसमें तर्क, संदर्भ और व्यावहारिक समझ पर ज़ोर है।', card2Title: 'तेज़ पहुँच', card2Text: 'निजी चैनल में प्रवेश करने और बिना रुकावट अनुभव जारी रखने के लिए केवल एक अंतिम चरण।', card3Title: 'पेशेवर उपस्थिति', card3Text: 'मौलिक कॉर्पोरेट सौंदर्यशास्त्र जो स्पष्टता और दृश्य निरंतरता के लिए बनाया गया है।', mediaEyebrow: 'प्रीमियम अनुभव', mediaTitle: 'स्पष्ट, आधुनिक और भरोसा जगाने वाला दृश्य अनुभव।', mediaText: 'डिज़ाइन सादगी, स्थिरता और संतुलित प्रस्तुति पर आधारित है, जो आधुनिक कॉर्पोरेट विज़ुअल मानकों से प्रेरित है।', benefitsTitle: 'सक्रिय होने के बाद उपयोगकर्ता को क्या मिलता है', benefitsLead: 'एक सरल और स्पष्ट यात्रा, बिना अनावश्यक चरणों के। पूरा अनुभव फ़ॉर्म, पेज और बातचीत चैनल के बीच निरंतरता बनाए रखने के लिए डिज़ाइन किया गया है।', row1Label: 'निजी समुदाय तक पहुँच', row1Value: 'तुरंत', row2Label: 'सहायता और समय-समय पर स्पष्टीकरण', row2Value: 'दैनिक', row3Label: 'शुरुआती लोगों के लिए संक्षिप्त व्याख्याएँ', row3Value: 'उपलब्ध', row4Label: 'मोबाइल-अनुकूल अनुभव', row4Value: 'ऑप्टिमाइज़्ड', pill1: 'साफ इंटरफ़ेस', pill2: 'सुसंगत संदेश', pill3: 'तेज़ पहुँच', pill4: 'प्रीमियम UX', section2Title: 'यह पेज प्रभावी क्यों है', section2Lead: 'हर तत्व उपयोगकर्ता की झिझक कम करने, भरोसा मजबूत करने और एक स्पष्ट कदम की ओर ले जाने के लिए बनाया गया है: पहुँच की पुष्टि करना।', featuresTitle: 'मुख्य कन्वर्ज़न तत्व', feature1: 'स्पष्ट मुख्य संदेश, बिना अवास्तविक दावों या अनावश्यक भीड़ के।', feature2: 'बेहतर स्पेसिंग, मजबूत कॉन्ट्रास्ट और सुरुचिपूर्ण हायरार्की वाला प्रीमियम डिज़ाइन।', feature3: 'इच्छित कार्रवाई को समर्थन देने के लिए मुख्य बटन को रणनीतिक रूप से दोहराया गया है।', feature4: 'शांत, पेशेवर टोन जो आधुनिक शैक्षिक ब्रांड के अनुरूप है।', mobileTitle: 'मोबाइल के लिए अनुकूलित', mobile1: 'पहली स्क्रीन से ही पढ़ने योग्य मजबूत हेडलाइन।', mobile2: 'बड़े विज़ुअल ब्लॉक्स जो फोन पर आसानी से स्कैन किए जा सकें।', mobile3: 'पेज के महत्वपूर्ण बिंदुओं पर दिखाई देने वाला और सुसंगत CTA।', mobile4: 'Notion embed या external hosting के लिए उपयुक्त संरचना।', processTitle: '3 चरणों में सक्रियण प्रक्रिया', processLead: 'एक सरल और तार्किक मार्ग, जो उपयोगकर्ता को अनावश्यक द्वितीयक लक्ष्यों से विचलित नहीं करता।', step1Title: 'रुचि की पुष्टि करें', step1Text: 'फ़ॉर्म भरने के बाद आप सक्रियण पेज पर पहुँचते हैं और एक पेशेवर दृश्य ढाँचे में तुरंत अगले कदम देखते हैं।', step2Title: 'पहुँच सक्रिय करें', step2Text: 'मुख्य बटन पर क्लिक करें और बिना तकनीकी जटिलता या अनावश्यक घर्षण के सीधे WhatsApp चैनल पर जाएँ।', step3Title: 'विवरण प्राप्त करें', step3Text: 'अंदर आने के बाद उपयोगकर्ता को onboarding जानकारी, संरचना और शुरुआती संदेश मिल सकते हैं।', noteTitle: 'महत्वपूर्ण नोट', noteText: 'यह पेज एक मौलिक और सुरुचिपूर्ण कॉर्पोरेट विज़ुअल शैली का उपयोग करता है। यह किसी वास्तविक वित्तीय संस्था की पहचान, ब्रांड, संरचना या प्रस्तुति की नकल करने के लिए नहीं बनाया गया है और इसे इस तरह उपयोग नहीं किया जाना चाहिए कि यह किसी विनियमित संस्था से संबंधित लगे।', noteSub: 'सामग्री केवल जानकारी और शिक्षा के उद्देश्य से है। बाज़ार, विश्लेषण या सीखने से जुड़ी हर बात स्पष्ट और जिम्मेदारी से प्रस्तुत की जानी चाहिए।', finalEyebrow: 'अंतिम चरण', finalTitle: 'अब पहुँच सक्रिय करें और WhatsApp पर अनुभव जारी रखें।', finalText: 'यदि आप आगे बढ़ना चाहते हैं, तो नीचे दिए गए बटन पर क्लिक करें और समर्पित चैनल में शामिल हों। प्रारंभिक पहुँच निःशुल्क है, और शुरुआती जानकारी सीधे बातचीत में दी जाती है।', finalBtn: 'अभी WhatsApp पर जाएँ', backTop: 'ऊपर वापस जाएँ', footerRights: 'सर्वाधिकार सुरक्षित।', footerNote: 'यह पेज एक शैक्षिक उत्पाद या सेवा के लिए मौलिक प्रीमियम-स्टाइल प्रस्तुति है। प्रकाशित करने से पहले टेक्स्ट और संपर्क विवरण अपने अनुसार बदलें।', privacy: 'गोपनीयता', terms: 'शर्तें', contact: 'संपर्क', floatingWa: 'अभी समूह में जुड़ें'
+      }
+    };
+
+    const countryToLang = {
+      RO: 'ro', MD: 'ro',
+      ES: 'es', MX: 'es', AR: 'es', CO: 'es', CL: 'es', PE: 'es', VE: 'es', EC: 'es', UY: 'es', PY: 'es', BO: 'es', GT: 'es', SV: 'es', HN: 'es', NI: 'es', CR: 'es', PA: 'es', DO: 'es', CU: 'es',
+      ID: 'id',
+      IN: 'hi'
+    };
+
+    function normalizeLang(value) {
+      if (!value) return null;
+      const base = value.toLowerCase().split('-')[0];
+      return ['ro','en','es','id','hi'].includes(base) ? base : null;
+    }
+
+    function applyTranslations(lang) {
+      const dict = translations[lang] || translations.en;
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) el.textContent = dict[key];
+      });
+      document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang-btn') === lang);
+      });
+      localStorage.setItem('site_lang', lang);
+    }
+
+    function getLanguageFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      return normalizeLang(params.get('lang'));
+    }
+
+    function detectLanguage() {
+      const urlLang = getLanguageFromUrl();
+      if (urlLang) return urlLang;
+
+      const saved = normalizeLang(localStorage.getItem('site_lang'));
+      if (saved) return saved;
+
+      const htmlLang = normalizeLang(document.documentElement.getAttribute('lang'));
+      if (htmlLang && htmlLang !== 'ro') return htmlLang;
+
+      const metaCountry = document.querySelector('meta[name="x-country"]')?.content?.toUpperCase();
+      if (metaCountry && countryToLang[metaCountry]) return countryToLang[metaCountry];
+
+      const browserLang = normalizeLang(navigator.language || (navigator.languages && navigator.languages[0]));
+      if (browserLang) return browserLang;
+
+      return 'en';
+    }
+
+    function initLanguage() {
+      const current = detectLanguage();
+      applyTranslations(current);
+      document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const lang = btn.getAttribute('data-lang-btn');
+          applyTranslations(lang);
+        });
+      });
+    }
+
+    (function initFloatingButton() {
+      let glowTimer = null;
+      const threshold = 260;
+      const toggleButton = () => {
+        if (window.scrollY > threshold) {
+          document.body.classList.add('show-wa');
+          if (!document.body.classList.contains('wa-glow')) {
+            if (glowTimer) clearTimeout(glowTimer);
+            glowTimer = setTimeout(() => {
+              document.body.classList.add('wa-glow');
+            }, 3000);
+          }
+        } else {
+          document.body.classList.remove('show-wa');
+          document.body.classList.remove('wa-glow');
+          if (glowTimer) {
+            clearTimeout(glowTimer);
+            glowTimer = null;
+          }
+        }
+      };
+      toggleButton();
+      window.addEventListener('scroll', toggleButton, { passive: true });
+      window.addEventListener('resize', toggleButton);
+    })();
+
+    initLanguage();
+  </script>
+</body>
+</html>
