@@ -1,954 +1,776 @@
 <!DOCTYPE html>
-<html lang="es-AR">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Centro de Investigación y Educación Financiera | Acceso de Orientación</title>
-  <meta name="description" content="Centro de orientación educativa sobre mercados globales, acciones estadounidenses, fondos y metodología de aprendizaje guiado para usuarios de Argentina." />
+  <title>Centro de Investigación Financiera | Acceso Privado</title>
+
+  <!-- Facebook Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];
+    t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}
+    (window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '769607062918048');
+    fbq('track', 'PageView');
+  </script>
+
   <style>
     :root {
-      --bg: #f5f7fb;
-      --surface: #ffffff;
-      --surface-2: #f0f4fa;
+      --bg: #f4f7fb;
+      --card: #ffffff;
       --text: #132033;
-      --muted: #5d6b82;
-      --line: #d9e2ef;
-      --primary: #123b76;
-      --primary-2: #0f2f5c;
-      --accent: #c89b3c;
-      --success: #17795f;
-      --shadow: 0 18px 50px rgba(12, 32, 66, 0.08);
-      --radius-xl: 24px;
-      --radius-lg: 18px;
-      --radius-md: 14px;
-      --max: 1180px;
+      --muted: #637086;
+      --line: #dde5f0;
+      --brand: #0b3a82;
+      --brand-2: #1559c1;
+      --accent: #0f8a4b;
+      --danger: #d84343;
+      --shadow: 0 10px 30px rgba(8, 29, 63, 0.08);
+      --radius: 18px;
+      --max: 1120px;
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Inter, Arial, Helvetica, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(18, 59, 118, 0.06), transparent 28%),
-        radial-gradient(circle at top right, rgba(200, 155, 60, 0.08), transparent 24%),
-        var(--bg);
+      background: var(--bg);
       line-height: 1.6;
     }
 
-    a { text-decoration: none; color: inherit; }
     img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
 
-    .container {
-      width: min(var(--max), calc(100% - 32px));
+    .topbar {
+      background: #091a34;
+      color: #fff;
+      font-size: 13px;
+      padding: 10px 16px;
+      text-align: center;
+      letter-spacing: 0.2px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0a1d3e 0%, #0c326d 55%, #12499d 100%);
+      color: #fff;
+      padding: 28px 18px 42px;
+    }
+
+    .wrap {
+      max-width: var(--max);
       margin: 0 auto;
     }
 
-    .topbar {
-      background: #0f2039;
-      color: rgba(255,255,255,0.9);
-      font-size: 13px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .topbar-inner {
+    .nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
-      padding: 10px 0;
-      flex-wrap: wrap;
-    }
-
-    .topbar .left,
-    .topbar .right {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(14px);
-      background: rgba(245, 247, 251, 0.84);
-      border-bottom: 1px solid rgba(19,32,51,0.08);
-    }
-
-    .nav-inner {
-      min-height: 78px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
+      gap: 12px;
+      margin-bottom: 26px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
     }
 
-    .brand-mark {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--primary), #1d5ab1);
+    .brand-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.12);
       display: grid;
       place-items: center;
-      color: #fff;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      box-shadow: var(--shadow);
+      font-size: 18px;
+      border: 1px solid rgba(255,255,255,0.15);
     }
 
-    .brand-text strong {
-      display: block;
-      font-size: 16px;
-      line-height: 1.2;
-    }
-
-    .brand-text span {
-      font-size: 12px;
-      color: var(--muted);
-      display: block;
-      margin-top: 3px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 22px;
-      align-items: center;
-      color: #314156;
-      font-size: 14px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 14px 22px;
-      border-radius: 999px;
-      font-weight: 700;
-      transition: 0.25s ease;
-      cursor: pointer;
-      border: 1px solid transparent;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary), #1b59b2);
-      color: #fff;
-      box-shadow: 0 14px 34px rgba(18, 59, 118, 0.25);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.02);
-    }
-
-    .btn-secondary {
-      background: rgba(255,255,255,0.84);
-      border-color: var(--line);
-      color: var(--primary);
-    }
-
-    .hero {
-      padding: 58px 0 38px;
+    .nav-note {
+      font-size: 13px;
+      color: rgba(255,255,255,0.8);
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 36px;
-      align-items: stretch;
-    }
-
-    .hero-copy {
-      padding: 18px 0;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 26px;
+      align-items: center;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 14px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: #fff;
       border-radius: 999px;
-      background: rgba(18, 59, 118, 0.08);
-      color: var(--primary);
+      padding: 8px 12px;
       font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     h1 {
-      font-size: clamp(34px, 5vw, 58px);
-      line-height: 1.08;
-      margin: 0 0 18px;
-      letter-spacing: -0.03em;
+      font-size: 42px;
+      line-height: 1.14;
+      margin: 0 0 14px;
+      letter-spacing: -0.5px;
     }
 
-    .hero-copy p {
-      font-size: 18px;
-      color: var(--muted);
-      margin: 0 0 22px;
-      max-width: 720px;
+    .hero p {
+      color: rgba(255,255,255,0.88);
+      font-size: 17px;
+      margin: 0 0 18px;
+      max-width: 700px;
     }
 
     .hero-points {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0,1fr));
       gap: 12px;
-      margin: 24px 0 30px;
+      margin: 20px 0 24px;
     }
 
-    .point {
-      background: rgba(255,255,255,0.75);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      padding: 14px 16px;
+    .hero-point {
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 14px;
+      padding: 14px;
       font-size: 14px;
-      color: #334256;
     }
 
-    .point strong {
-      color: var(--text);
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .hero-actions {
+    .btn-row {
       display: flex;
-      gap: 14px;
       flex-wrap: wrap;
+      gap: 12px;
       align-items: center;
     }
 
-    .hero-note {
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 54px;
+      padding: 0 22px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.18s ease, opacity 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: #fff;
+      color: #0b2f69;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.28);
+    }
+
+    .mini-proof {
       margin-top: 14px;
       font-size: 13px;
-      color: var(--muted);
+      color: rgba(255,255,255,0.78);
     }
 
-    .hero-panel {
-      background: linear-gradient(180deg, #0f223d, #122c52);
-      border-radius: 28px;
-      padding: 26px;
-      color: #fff;
-      box-shadow: var(--shadow);
-      position: relative;
+    .hero-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 22px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.18);
       overflow: hidden;
-      min-height: 100%;
+      backdrop-filter: blur(10px);
     }
 
-    .hero-panel::before {
-      content: "";
-      position: absolute;
-      right: -40px;
-      top: -30px;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      background: rgba(200,155,60,0.16);
+    .hero-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
     }
 
-    .panel-title {
-      font-size: 15px;
-      font-weight: 700;
-      opacity: 0.92;
-      margin-bottom: 18px;
-    }
-
-    .metric-card {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 18px;
+    .hero-card-body {
       padding: 18px;
-      margin-bottom: 14px;
     }
 
-    .metric-card small {
-      display: block;
-      opacity: 0.78;
-      margin-bottom: 8px;
-      font-size: 12px;
-      letter-spacing: 0.02em;
-    }
-
-    .metric-card strong {
-      font-size: 28px;
-      line-height: 1;
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    .metric-card span {
-      font-size: 13px;
-      opacity: 0.9;
-    }
-
-    .market-strip {
+    .hero-stat-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 12px;
-      margin-top: 18px;
+      margin-top: 14px;
     }
 
-    .market-box {
-      border-radius: 16px;
+    .hero-stat {
       background: rgba(255,255,255,0.08);
       border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 14px;
       padding: 14px;
     }
 
-    .market-box b {
+    .hero-stat strong {
       display: block;
-      font-size: 14px;
-      margin-bottom: 6px;
+      font-size: 22px;
+      margin-bottom: 4px;
+      color: #fff;
     }
 
-    .market-box span {
-      font-size: 12px;
-      opacity: 0.84;
-    }
-
-    section {
-      padding: 34px 0;
-    }
-
-    .section-head {
-      margin-bottom: 22px;
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: end;
-      flex-wrap: wrap;
-    }
-
-    .section-head h2 {
-      margin: 0;
-      font-size: clamp(26px, 3.4vw, 38px);
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-    }
-
-    .section-head p {
-      margin: 8px 0 0;
-      color: var(--muted);
-      max-width: 760px;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+    .section {
+      padding: 28px 18px;
     }
 
     .card {
-      background: var(--surface);
+      background: var(--card);
       border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      padding: 24px;
+      border-radius: var(--radius);
       box-shadow: var(--shadow);
+      overflow: hidden;
     }
 
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 20px;
+    .stats-strip {
+      margin-top: -24px;
+      position: relative;
+      z-index: 5;
     }
 
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .icon-dot {
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      background: rgba(18,59,118,0.09);
-      color: var(--primary);
+    .stats-grid {
       display: grid;
-      place-items: center;
-      font-weight: 800;
-      margin-bottom: 16px;
-    }
-
-    .framework {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 22px;
-    }
-
-    .framework-box {
-      background: linear-gradient(180deg, #ffffff, #f8fbff);
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      padding: 26px;
-      box-shadow: var(--shadow);
-    }
-
-    .steps {
-      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 14px;
-      margin-top: 18px;
-    }
-
-    .step {
-      display: grid;
-      grid-template-columns: 56px 1fr;
-      gap: 14px;
-      align-items: start;
-      padding: 16px;
-      border-radius: 18px;
-      background: var(--surface-2);
-      border: 1px solid #dde7f4;
-    }
-
-    .step-num {
-      width: 56px;
-      height: 56px;
-      border-radius: 16px;
-      display: grid;
-      place-items: center;
-      background: var(--primary);
-      color: white;
-      font-weight: 800;
-      font-size: 18px;
-    }
-
-    .step h4 {
-      margin: 0 0 5px;
-      font-size: 17px;
-    }
-
-    .step p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .audit-list {
-      display: grid;
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .audit-item {
-      background: #0f223d;
-      color: rgba(255,255,255,0.92);
-      border-radius: 18px;
       padding: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .audit-item strong {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 16px;
-    }
-
-    .program-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .program-card ul {
-      padding-left: 18px;
-      color: var(--muted);
-      margin: 14px 0 0;
-    }
-
-    .program-card li + li { margin-top: 8px; }
-
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
     }
 
     .stat-box {
-      background: var(--surface);
-      border-radius: 22px;
-      padding: 22px;
+      padding: 18px;
+      border-radius: 16px;
+      background: #fff;
       border: 1px solid var(--line);
       text-align: center;
-      box-shadow: var(--shadow);
     }
 
     .stat-box strong {
       display: block;
-      font-size: 34px;
-      color: var(--primary);
-      line-height: 1;
-      margin-bottom: 8px;
+      font-size: 28px;
+      color: var(--brand);
+      margin-bottom: 6px;
     }
 
-    .stat-box span {
-      font-size: 14px;
+    .headline {
+      font-size: 32px;
+      line-height: 1.2;
+      margin: 0 0 10px;
+    }
+
+    .sub {
       color: var(--muted);
-    }
-
-    .cta {
-      padding: 16px 0 50px;
-    }
-
-    .cta-box {
-      background: linear-gradient(135deg, #0f223d, #163866);
-      color: #fff;
-      border-radius: 30px;
-      padding: 34px;
-      box-shadow: var(--shadow);
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 26px;
-      align-items: center;
-    }
-
-    .cta-box h2 {
-      margin: 0 0 12px;
-      font-size: clamp(28px, 4vw, 42px);
-      line-height: 1.12;
-    }
-
-    .cta-box p {
       margin: 0;
-      color: rgba(255,255,255,0.82);
       font-size: 16px;
-      max-width: 760px;
     }
 
-    .cta-panel {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 24px;
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .info-card {
       padding: 22px;
     }
 
-    .cta-panel ul {
-      margin: 0 0 20px;
-      padding-left: 18px;
-      color: rgba(255,255,255,0.86);
+    .info-card img {
+      height: 210px;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 14px;
+      margin-bottom: 16px;
     }
 
-    .cta-panel li + li { margin-top: 8px; }
-
-    .footer {
-      padding: 30px 0 34px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .footer-wrap {
-      border-top: 1px solid var(--line);
-      padding-top: 20px;
-      display: grid;
-      gap: 12px;
-    }
-
-    .badge-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 16px;
-    }
-
-    .badge {
-      padding: 8px 12px;
+    .tag {
+      display: inline-block;
+      padding: 6px 10px;
       border-radius: 999px;
-      background: rgba(18,59,118,0.08);
-      color: var(--primary);
+      background: #edf3ff;
+      color: var(--brand);
       font-size: 12px;
       font-weight: 700;
-      border: 1px solid rgba(18,59,118,0.1);
+      margin-bottom: 10px;
     }
 
-    @media (max-width: 1024px) {
+    .list {
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .list li {
+      position: relative;
+      padding-left: 26px;
+      margin: 10px 0;
+      color: #304154;
+    }
+
+    .list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .warning-box {
+      background: #fff7f7;
+      border: 1px solid #f0d4d4;
+      color: #6d2e2e;
+      padding: 18px;
+      border-radius: 16px;
+      margin-top: 18px;
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .testimonial {
+      padding: 18px;
+    }
+
+    .stars {
+      letter-spacing: 2px;
+      color: #f4a51c;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #dbe7fb;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      color: var(--brand);
+    }
+
+    .quote {
+      color: #334455;
+      font-size: 15px;
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .step {
+      padding: 22px;
+    }
+
+    .step-num {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: #eaf1ff;
+      color: var(--brand);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .cta-panel {
+      background: linear-gradient(135deg, #0d2145 0%, #133d7c 100%);
+      color: #fff;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .cta-list {
+      list-style: none;
+      padding: 0;
+      margin: 18px 0 0;
+    }
+
+    .cta-list li {
+      margin: 10px 0;
+      padding-left: 24px;
+      position: relative;
+      color: rgba(255,255,255,0.88);
+    }
+
+    .cta-list li::before {
+      content: '•';
+      position: absolute;
+      left: 8px;
+      color: #8fd0ff;
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .cta-side {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 18px;
+      padding: 20px;
+    }
+
+    .urgency {
+      background: rgba(255,255,255,0.08);
+      border: 1px dashed rgba(255,255,255,0.25);
+      color: #fff;
+      border-radius: 14px;
+      padding: 14px;
+      margin: 14px 0 18px;
+      font-size: 14px;
+    }
+
+    .footer {
+      padding: 20px 18px 34px;
+      color: #5e6d82;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .sticky-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1000;
+      background: rgba(9, 21, 42, 0.96);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 10px 14px;
+    }
+
+    .sticky-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .sticky-text {
+      color: #fff;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .sticky-btn {
+      white-space: nowrap;
+      background: #fff;
+      color: #0b2f69;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 12px;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    @media (max-width: 980px) {
       .hero-grid,
-      .framework,
-      .cta-box,
-      .grid-3,
-      .program-grid,
-      .stats-row {
+      .cta-panel,
+      .grid-2,
+      .testimonials,
+      .process,
+      .stats-grid {
         grid-template-columns: 1fr;
       }
 
-      .market-strip,
-      .hero-points {
+      .hero-points,
+      .hero-stat-grid {
         grid-template-columns: 1fr;
       }
 
-      .nav-links {
-        display: none;
-      }
+      h1 { font-size: 34px; }
+      .headline { font-size: 28px; }
     }
 
     @media (max-width: 640px) {
-      .topbar-inner,
-      .nav-inner,
-      .hero-actions,
-      .section-head {
-        align-items: flex-start;
-      }
-
-      .step {
-        grid-template-columns: 1fr;
-      }
-
-      h1 {
-        font-size: 34px;
-      }
-
-      .hero-copy p {
-        font-size: 16px;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .cta-box,
-      .card,
-      .framework-box,
-      .hero-panel {
-        padding: 22px;
-      }
+      .nav { align-items: flex-start; flex-direction: column; }
+      .btn-row { flex-direction: column; align-items: stretch; }
+      .btn, .sticky-btn { width: 100%; }
+      .sticky-inner { flex-direction: column; align-items: stretch; }
+      .sticky-text { text-align: center; }
+      body { padding-bottom: 88px; }
     }
   </style>
 </head>
 <body>
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <div class="left">
-        <span>Orientación educativa para usuarios de Argentina</span>
-        <span>Enfoque: acciones, fondos y lectura de mercado</span>
-      </div>
-      <div class="right">
-        <span>Acceso informativo</span>
-        <span>Ingreso sujeto a revisión</span>
-      </div>
-    </div>
-  </div>
+  <div class="topbar">Acceso educativo privado · Enfoque en análisis, estructura y aprendizaje guiado</div>
 
-  <header class="navbar">
-    <div class="container nav-inner">
-      <div class="brand">
-        <div class="brand-mark">CI</div>
-        <div class="brand-text">
-          <strong>Centro de Investigación Financiera Aplicada</strong>
-          <span>Unidad de orientación, análisis y educación de mercados</span>
+  <section class="hero">
+    <div class="wrap">
+      <div class="nav">
+        <div class="brand">
+          <div class="brand-badge">CF</div>
+          <div>
+            <div>Centro de Investigación Financiera</div>
+            <div class="nav-note">Mercados globales · Lectura de tendencias · Comunidad privada</div>
+          </div>
         </div>
+        <div class="nav-note">Actualización diaria de escenarios y oportunidades</div>
       </div>
 
-      <nav class="nav-links">
-        <a href="#enfoque">Enfoque</a>
-        <a href="#metodo">Metodología</a>
-        <a href="#programas">Programas</a>
-        <a href="#acceso">Solicitud de acceso</a>
-      </nav>
-
-      <a class="btn btn-primary" href="https://t.ly/ubiYs">Solicitar orientación</a>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow">Acceso institucional de orientación educativa</div>
-          <h1>Un entorno más serio para aprender a leer los mercados con método, estructura y criterio.</h1>
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">Acceso especial para quienes quieren invertir con más criterio</div>
+          <h1>Dejar de improvisar es el primer paso para invertir con más claridad</h1>
           <p>
-            Esta página funciona como un acceso intermedio para usuarios que buscan una experiencia de aprendizaje más formal.
-            En lugar de promesas rápidas, presentamos un marco guiado de observación, análisis y educación práctica sobre acciones de EE. UU., fondos y hábitos de lectura de mercado.
+            Muchos inversores entran tarde, operan por impulso y toman decisiones sin marco de análisis. Nuestro grupo privado reúne lecturas de mercado, sesiones educativas y guías prácticas para ayudar a interpretar acciones de EE.UU., activos locales y gestión del riesgo con una estructura mucho más seria.
           </p>
 
           <div class="hero-points">
-            <div class="point">
-              <strong>Marco educativo</strong>
-              Metodología enfocada en comprensión, disciplina y lectura gradual del mercado.
-            </div>
-            <div class="point">
-              <strong>Contexto global</strong>
-              Seguimiento de sectores, índices, flujos institucionales y narrativa macro.
-            </div>
-            <div class="point">
-              <strong>Proceso guiado</strong>
-              Ingreso a una comunidad de estudio con acompañamiento y materiales estructurados.
-            </div>
-            <div class="point">
-              <strong>Perfil Argentina</strong>
-              Contenido explicado para usuarios hispanohablantes con foco local de comprensión.
-            </div>
+            <div class="hero-point">Análisis simple pero riguroso para entender qué mirar y qué evitar.</div>
+            <div class="hero-point">Contexto diario para no depender solo de rumores o emociones.</div>
+            <div class="hero-point">Comunidad guiada para avanzar paso a paso, incluso si estás empezando.</div>
           </div>
 
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="https://t.ly/ubiYs">Entrar al canal de orientación</a>
-            <a class="btn btn-secondary" href="#metodo">Ver metodología</a>
+          <div class="btn-row">
+            <button class="btn btn-primary" onclick="trackLead()">Entrar al grupo educativo</button>
+            <a class="btn btn-secondary" href="#metodologia">Ver cómo trabajamos</a>
           </div>
 
-          <div class="hero-note">
-            El acceso está pensado para personas que valoran estructura, contexto y aprendizaje continuo antes de participar en conversaciones de mercado.
-          </div>
+          <div class="mini-proof">Acceso orientado a personas que buscan formación práctica, lectura de mercado y acompañamiento continuo.</div>
         </div>
 
-        <aside class="hero-panel">
-          <div class="panel-title">Panel de enfoque del centro</div>
-
-          <div class="metric-card">
-            <small>ÁREA DE OBSERVACIÓN</small>
-            <strong>Mercados globales</strong>
-            <span>Acciones estadounidenses, fondos diversificados, sectores y tendencias de rotación.</span>
-          </div>
-
-          <div class="metric-card">
-            <small>OBJETIVO FORMATIVO</small>
-            <strong>Aprender a interpretar</strong>
-            <span>No solo ver movimientos; entender contexto, narrativa, riesgo y estructura.</span>
-          </div>
-
-          <div class="market-strip">
-            <div class="market-box">
-              <b>Acciones de EE. UU.</b>
-              <span>Lectura sectorial y seguimiento temático.</span>
-            </div>
-            <div class="market-box">
-              <b>Fondos</b>
-              <span>Comprensión de diversificación y exposición.</span>
-            </div>
-            <div class="market-box">
-              <b>Contexto macro</b>
-              <span>Eventos, narrativa y cambios de sentimiento.</span>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section id="enfoque">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Qué hace diferente a este acceso intermedio</h2>
-            <p>
-              La intención de esta versión no es parecer una página promocional corta. Está diseñada para transmitir una sensación de institución, filtrado y proceso.
-            </p>
-          </div>
-        </div>
-
-        <div class="grid-3">
-          <div class="card">
-            <div class="icon-dot">01</div>
-            <h3>Más legitimidad visual</h3>
-            <p>Se reemplaza el tono agresivo de captación por una estructura editorial: cabecera formal, bloques de investigación, metodología y criterios de acceso.</p>
-          </div>
-
-          <div class="card">
-            <div class="icon-dot">02</div>
-            <h3>Más motivación real</h3>
-            <p>La propuesta se apoya en una necesidad concreta: muchas personas ven el mercado todos los días, pero no tienen un proceso para entenderlo con claridad.</p>
-          </div>
-
-          <div class="card">
-            <div class="icon-dot">03</div>
-            <h3>Más sensación de filtro</h3>
-            <p>En vez de "entra ya", el mensaje es "solicita acceso a un espacio guiado", lo que mejora la percepción de valor y seriedad.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="metodo">
-      <div class="container framework">
-        <div class="framework-box">
-          <div class="section-head" style="margin-bottom:0;">
-            <div>
-              <h2>Metodología de orientación</h2>
-              <p>La experiencia de ingreso está organizada para reducir ruido, evitar impulsividad y ayudar al usuario a formar criterio.</p>
-            </div>
-          </div>
-
-          <div class="steps">
-            <div class="step">
-              <div class="step-num">1</div>
-              <div>
-                <h4>Observación del contexto</h4>
-                <p>Se parte de eventos, narrativa macro, sectores relevantes y comportamiento general del mercado antes de analizar instrumentos concretos.</p>
+        <div class="hero-card">
+          <img src="https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=1200&q=80" alt="Panel de análisis financiero" />
+          <div class="hero-card-body">
+            <div style="font-size:18px;font-weight:700;margin-bottom:6px;">Resumen de actividad del grupo</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.82);">Contenido compartido de forma continua para mejorar lectura del mercado y disciplina operativa.</div>
+            <div class="hero-stat-grid">
+              <div class="hero-stat">
+                <strong>Diario</strong>
+                <span>Ideas, contexto y observación de mercado</span>
               </div>
-            </div>
-
-            <div class="step">
-              <div class="step-num">2</div>
-              <div>
-                <h4>Lectura estructurada</h4>
-                <p>El usuario aprende a mirar tendencias, flujos, comportamiento relativo y lógica de exposición, no solo variaciones aisladas.</p>
+              <div class="hero-stat">
+                <strong>Semanal</strong>
+                <span>Material guiado y enfoque por escenarios</span>
               </div>
-            </div>
-
-            <div class="step">
-              <div class="step-num">3</div>
-              <div>
-                <h4>Discusión guiada</h4>
-                <p>El canal de orientación funciona como punto de acompañamiento para ordenar ideas, revisar marcos de estudio y profundizar seguimiento.</p>
+              <div class="hero-stat">
+                <strong>EE.UU.</strong>
+                <span>Seguimiento de acciones y factores globales</span>
               </div>
-            </div>
-
-            <div class="step">
-              <div class="step-num">4</div>
-              <div>
-                <h4>Construcción de criterio</h4>
-                <p>La meta final no es reaccionar más rápido, sino entender mejor qué mirar, por qué importa y cómo evaluar escenarios.</p>
+              <div class="hero-stat">
+                <strong>Local</strong>
+                <span>Atención a oportunidades y comportamiento regional</span>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="framework-box" style="background:linear-gradient(180deg, #102540, #17355d); color:#fff;">
-          <div class="section-head" style="margin-bottom:0;">
-            <div>
-              <h2 style="color:#fff;">Criterios del entorno</h2>
-              <p style="color:rgba(255,255,255,0.78);">Este espacio está pensado para personas que priorizan aprendizaje guiado y conversación seria sobre mercado.</p>
-            </div>
-          </div>
-
-          <div class="audit-list">
-            <div class="audit-item">
-              <strong>Enfoque de estudio</strong>
-              Se valora la disposición a seguir una metodología antes que la búsqueda de resultados instantáneos.
-            </div>
-            <div class="audit-item">
-              <strong>Participación con contexto</strong>
-              El contenido está orientado a personas que desean interpretar acciones, fondos y dinámicas de mercado con mayor claridad.
-            </div>
-            <div class="audit-item">
-              <strong>Acceso por canal guiado</strong>
-              El primer paso es ingresar al canal de orientación para recibir contexto inicial y conocer la estructura de trabajo.
-            </div>
-          </div>
-
-          <div class="badge-row">
-            <div class="badge" style="background:rgba(255,255,255,0.12); color:#fff; border-color:rgba(255,255,255,0.12);">Acceso informativo</div>
-            <div class="badge" style="background:rgba(255,255,255,0.12); color:#fff; border-color:rgba(255,255,255,0.12);">Comunidad guiada</div>
-            <div class="badge" style="background:rgba(255,255,255,0.12); color:#fff; border-color:rgba(255,255,255,0.12);">Enfoque estructurado</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="programas">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Líneas de aprendizaje dentro del entorno</h2>
-            <p>La landing ya no gira en torno a dos activos concretos. En esta versión, el mensaje se amplía para parecer más institucional y más estable.</p>
-          </div>
-        </div>
-
-        <div class="program-grid">
-          <div class="card program-card">
-            <h3>Acciones y sectores</h3>
-            <p>Seguimiento de compañías, sectores líderes, rotaciones temáticas y lectura del contexto que influye en cada grupo.</p>
-            <ul>
-              <li>Comparación entre sectores defensivos y de crecimiento</li>
-              <li>Lectura de narrativa y sentimiento</li>
-              <li>Relación entre noticias y comportamiento del mercado</li>
-            </ul>
-          </div>
-
-          <div class="card program-card">
-            <h3>Fondos y diversificación</h3>
-            <p>Espacio de comprensión para quienes desean mirar exposición más amplia y aprender a interpretar estructuras diversificadas.</p>
-            <ul>
-              <li>Diferencias entre fondos amplios y enfoques temáticos</li>
-              <li>Comprensión de exposición por regiones y sectores</li>
-              <li>Lectura gradual de composición y propósito</li>
-            </ul>
-          </div>
-
-          <div class="card program-card">
-            <h3>Lectura macro y proceso</h3>
-            <p>Marco para entender por qué el mercado cambia de tono, qué señales se observan y cómo ordenarlas sin caer en exceso de ruido.</p>
-            <ul>
-              <li>Contexto de tasas, liquidez y expectativas</li>
-              <li>Eventos que alteran la percepción del riesgo</li>
-              <li>Construcción de una rutina de observación útil</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Por qué esta estructura convierte mejor que una página demasiado corta</h2>
-            <p>Porque un usuario serio necesita sentir que está entrando a un entorno con criterio, no a una promesa improvisada.</p>
-          </div>
-        </div>
-
-        <div class="stats-row">
-          <div class="stat-box">
-            <strong>Más</strong>
-            <span>autoridad visual y sensación institucional</span>
-          </div>
-          <div class="stat-box">
-            <strong>Menos</strong>
-            <span>fricción por parecer una oferta demasiado agresiva</span>
-          </div>
-          <div class="stat-box">
-            <strong>Mejor</strong>
-            <span>alineación con usuarios que buscan aprender con guía</span>
-          </div>
-          <div class="stat-box">
-            <strong>Mayor</strong>
-            <span>motivación para entrar al grupo por valor percibido</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="acceso" class="cta">
-      <div class="container">
-        <div class="cta-box">
-          <div>
-            <h2>Solicita acceso al canal de orientación y conoce el entorno de estudio.</h2>
-            <p>
-              Si buscas una experiencia más formal, con estructura, lenguaje claro y acompañamiento inicial,
-              este acceso intermedio fue diseñado para ese perfil. El siguiente paso es entrar al canal y revisar la orientación de inicio.
-            </p>
-          </div>
-
-          <div class="cta-panel">
-            <ul>
-              <li>Ingreso al canal de orientación inicial</li>
-              <li>Explicación del enfoque y la dinámica del entorno</li>
-              <li>Acceso para usuarios interesados en aprendizaje estructurado</li>
-            </ul>
-            <a class="btn btn-primary" style="width:100%;" href="https://t.ly/ubiYs">Solicitar acceso ahora</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer-wrap">
-      <div>
-        Centro de Investigación Financiera Aplicada — Página de acceso intermedio con fines informativos y educativos.
-      </div>
-      <div>
-        El contenido presentado en esta página está orientado a educación general y acompañamiento de aprendizaje. La disponibilidad de acceso puede variar según revisión interna del canal.
-      </div>
-      <div>
-        Disclaimer: This page is for educational and informational purposes only and does not constitute financial advice, investment solicitation, or guaranteed results.
       </div>
     </div>
-  </footer>
+  </section>
+
+  <section class="section stats-strip">
+    <div class="wrap card">
+      <div class="stats-grid">
+        <div class="stat-box">
+          <strong>3 bloques</strong>
+          <span>Lectura, disciplina y decisiones</span>
+        </div>
+        <div class="stat-box">
+          <strong>Acceso privado</strong>
+          <span>Espacio enfocado y guiado</span>
+        </div>
+        <div class="stat-box">
+          <strong>Contenido útil</strong>
+          <span>Menos ruido, más criterio</span>
+        </div>
+        <div class="stat-box">
+          <strong>Enfoque real</strong>
+          <span>Mercado global + activos cercanos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="metodologia">
+    <div class="wrap">
+      <h2 class="headline">Una página de entrada no basta. Lo importante es lo que pasa después de entrar.</h2>
+      <p class="sub">El objetivo no es prometer resultados rápidos, sino ofrecer una estructura que ayude a interpretar mejor el mercado y tomar decisiones con más contexto.</p>
+
+      <div class="grid-2">
+        <div class="card info-card">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" alt="Equipo revisando datos" />
+          <div class="tag">Qué encontrarás</div>
+          <h3 style="margin:0 0 8px;">Contenido pensado para reducir improvisación</h3>
+          <p class="sub">Trabajamos sobre ideas de mercado, observación de comportamiento, zonas de riesgo y una forma más ordenada de leer oportunidades.</p>
+          <ul class="list">
+            <li>Lectura de acciones de EE.UU. y sectores relevantes</li>
+            <li>Interpretación de movimientos del mercado y contexto macro</li>
+            <li>Disciplina operativa y control emocional</li>
+            <li>Revisión de errores comunes que suelen costar dinero</li>
+          </ul>
+        </div>
+
+        <div class="card info-card">
+          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80" alt="Sesión de aprendizaje financiero" />
+          <div class="tag">Por qué la gente entra</div>
+          <h3 style="margin:0 0 8px;">Porque operar sin marco suele salir caro</h3>
+          <p class="sub">Quien entra normalmente busca dejar de depender de rumores, intuiciones o contenido confuso de internet.</p>
+          <div class="warning-box">
+            La mayoría de los errores no viene por “falta de ganas”, sino por entrar sin metodología, sin proceso y sin acompañamiento.
+          </div>
+          <ul class="list">
+            <li>Mejor comprensión antes de actuar</li>
+            <li>Más claridad sobre qué observar</li>
+            <li>Menos decisiones impulsivas</li>
+            <li>Más constancia en el aprendizaje</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2 class="headline">Lo que comentan algunos participantes</h2>
+      <p class="sub">Estos mensajes reflejan el tipo de experiencia que las personas suelen valorar: claridad, estructura y sensación de acompañamiento.</p>
+
+      <div class="testimonials">
+        <div class="card testimonial">
+          <div class="stars">★★★★★</div>
+          <div class="quote">“Antes miraba precios sin entender nada. Ahora por lo menos tengo una guía clara para revisar sectores, contexto y riesgo antes de moverme.”</div>
+          <div class="profile">
+            <div class="avatar">M</div>
+            <div>
+              <strong>Martín</strong><br />
+              <span style="color:var(--muted);font-size:13px;">Aprendiz en mercados</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card testimonial">
+          <div class="stars">★★★★★</div>
+          <div class="quote">“Lo que más me ayudó fue dejar de entrar por impulso. El grupo tiene explicaciones simples, pero con una lógica mucho más seria.”</div>
+          <div class="profile">
+            <div class="avatar">L</div>
+            <div>
+              <strong>Lucía</strong><br />
+              <span style="color:var(--muted);font-size:13px;">Interesada en acciones y fondos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card testimonial">
+          <div class="stars">★★★★★</div>
+          <div class="quote">“Me gustó que no venden humo. Te explican cómo leer escenarios y eso me dio más confianza para organizarme mejor.”</div>
+          <div class="profile">
+            <div class="avatar">S</div>
+            <div>
+              <strong>Sebastián</strong><br />
+              <span style="color:var(--muted);font-size:13px;">Seguimiento de mercado global</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2 class="headline">Cómo funciona el acceso</h2>
+      <p class="sub">El recorrido está pensado para ser simple y convertir interés en participación real dentro del grupo.</p>
+
+      <div class="process">
+        <div class="card step">
+          <div class="step-num">1</div>
+          <h3 style="margin:0 0 8px;">Solicitas acceso</h3>
+          <p class="sub">Entras al canal privado desde el botón principal y revisas la información inicial.</p>
+        </div>
+        <div class="card step">
+          <div class="step-num">2</div>
+          <h3 style="margin:0 0 8px;">Recibes orientación</h3>
+          <p class="sub">Ves cómo se organiza el contenido, qué tipo de temas se trabajan y cómo aprovechar mejor el espacio.</p>
+        </div>
+        <div class="card step">
+          <div class="step-num">3</div>
+          <h3 style="margin:0 0 8px;">Empiezas a seguir el ritmo</h3>
+          <p class="sub">Accedes a análisis, ideas y materiales para construir criterio de forma progresiva.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap card cta-panel">
+      <div>
+        <h2 style="font-size:34px;line-height:1.15;margin:0 0 10px;">Accede al grupo y empieza a ver el mercado con más estructura</h2>
+        <p style="margin:0;color:rgba(255,255,255,0.86);font-size:16px;">Si te interesa aprender con una lógica más seria, este acceso puede servirte como punto de entrada a una comunidad educativa enfocada en observación, criterio y disciplina.</p>
+        <ul class="cta-list">
+          <li>Entrada rápida al grupo educativo privado</li>
+          <li>Material y contexto para entender mejor lo que estás viendo</li>
+          <li>Ambiente pensado para quienes quieren avanzar con más orden</li>
+        </ul>
+      </div>
+
+      <div class="cta-side">
+        <div style="font-size:13px;color:rgba(255,255,255,0.78);margin-bottom:8px;">Acceso recomendado para:</div>
+        <div style="font-size:22px;font-weight:700;line-height:1.3;">Personas que ya se cansaron de mirar el mercado sin una guía clara</div>
+        <div class="urgency">El acceso funciona mejor cuando realmente quieres entrar, observar y aprender con constancia.</div>
+        <button class="btn btn-primary" style="width:100%;" onclick="trackLead()">Acceder al grupo ahora</button>
+        <div style="font-size:12px;color:rgba(255,255,255,0.72);margin-top:12px;">Entrada orientada a contenido educativo y seguimiento de mercado.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    This content is for educational purposes only and does not constitute financial advice.
+  </div>
+
+  <div class="sticky-bar">
+    <div class="sticky-inner">
+      <div class="sticky-text"><strong>Grupo educativo privado</strong><br />Entra para revisar el enfoque, el contenido y la dinámica de aprendizaje.</div>
+      <button class="sticky-btn" onclick="trackLead()">Unirme ahora</button>
+    </div>
+  </div>
+
+  <script>
+    function trackLead() {
+      try {
+        if (typeof fbq !== 'undefined') {
+          fbq('track', 'Lead');
+        }
+      } catch (e) {}
+      window.location.href = 'https://t.ly/ubiYs';
+    }
+  </script>
 </body>
 </html>
