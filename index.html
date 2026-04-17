@@ -1,827 +1,1068 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="es-AR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Acces Prioritar | Market Insight Hub</title>
-  <meta name="description" content="Acces prioritar către o comunitate educațională privată cu actualizări clare, explicații structurate și suport introductiv prin WhatsApp." />
+  <meta name="description" content="$1" />
+  <meta name="theme-color" content="#06101d" />
+  <meta property="og:title" content="Centro de Análisis de Mercado | Educación financiera y comunidad privada" />
+  <meta property="og:description" content="Accedé a una comunidad privada en WhatsApp con análisis diarios, guía de inicio y contenidos pensados para aprender a leer el mercado con más claridad." />
+  <meta property="og:type" content="website" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>Centro de Análisis de Mercado | Educación financiera y comunidad privada</title>
   <style>
     :root {
-      --bg: #07111f;
-      --bg-2: #0b1b30;
-      --panel: rgba(255,255,255,0.06);
-      --panel-2: rgba(255,255,255,0.08);
-      --line: rgba(255,255,255,0.12);
-      --text: #eef4ff;
-      --muted: #a5b4cf;
-      --gold: #d8b36a;
-      --gold-2: #f1d39b;
-      --green: #1fa971;
-      --green-2: #30c78b;
-      --danger: #ffb4a0;
-      --shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
-      --radius: 20px;
-      --max: 1180px;
+      --bg: #06101d;
+      --bg-soft: #0b1930;
+      --panel: rgba(10, 24, 45, 0.86);
+      --panel-strong: rgba(14, 30, 55, 0.96);
+      --line: rgba(255,255,255,0.08);
+      --line-soft: rgba(214, 176, 96, 0.22);
+      --text: #f4f7fb;
+      --muted: #a7b6cc;
+      --gold: #d8b46c;
+      --gold-2: #f2d497;
+      --green: #63d3a0;
+      --shadow: 0 22px 60px rgba(0,0,0,0.36);
+      --radius-xl: 24px;
+      --radius-lg: 20px;
+      --radius-md: 16px;
+      --container: 1180px;
+      --hero-glow-1: radial-gradient(circle at 20% 10%, rgba(30, 96, 205, 0.22), transparent 30%);
+      --hero-glow-2: radial-gradient(circle at 75% 12%, rgba(216, 180, 108, 0.22), transparent 28%);
+      --hero-glow-3: radial-gradient(circle at 55% 65%, rgba(32, 68, 120, 0.16), transparent 32%);
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+    body::selection { background: rgba(216, 180, 108, 0.24); color: #ffffff; }
+
     body {
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 15% 10%, rgba(216,179,106,0.10), transparent 28%),
-        radial-gradient(circle at 85% 20%, rgba(49,115,255,0.14), transparent 22%),
-        linear-gradient(180deg, #06101d 0%, #091728 45%, #07111f 100%);
-      line-height: 1.55;
+        var(--hero-glow-1),
+        var(--hero-glow-2),
+        var(--hero-glow-3),
+        linear-gradient(180deg, #04101e 0%, #071729 45%, #06111f 100%);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
-    a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
-
+    a { color: inherit; text-decoration: none; }
     .container {
-      width: min(var(--max), calc(100% - 32px));
+      width: min(var(--container), calc(100% - 32px));
       margin: 0 auto;
     }
 
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 50;
+      z-index: 60;
       backdrop-filter: blur(16px);
-      background: rgba(5, 13, 24, 0.78);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(4, 11, 22, 0.74);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .topbar.scrolled {
+      background: rgba(4, 11, 22, 0.86);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
     }
 
     .topbar-inner {
+      min-height: 80px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      padding: 14px 0;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-weight: 700;
-      letter-spacing: 0.2px;
+      gap: 14px;
+      min-width: 0;
     }
 
     .brand-mark {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #0f2846, #183764 48%, #d8b36a 140%);
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 10px 24px rgba(0,0,0,0.28);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .brand-mark::before,
-    .brand-mark::after {
-      content: "";
-      position: absolute;
-      border-radius: 999px;
-    }
-
-    .brand-mark::before {
-      width: 28px;
-      height: 28px;
-      right: -6px;
-      top: -6px;
-      background: radial-gradient(circle, rgba(241,211,155,0.95), rgba(216,179,106,0.15) 70%);
-    }
-
-    .brand-mark::after {
-      width: 18px;
-      height: 18px;
-      left: 8px;
-      bottom: 7px;
-      background: rgba(255,255,255,0.12);
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02)),
+        radial-gradient(circle at 30% 25%, rgba(241, 210, 146, 0.7), transparent 38%),
+        linear-gradient(180deg, #1c335c, #0c1b33);
       border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: inset 0 1px 1px rgba(255,255,255,0.08), 0 14px 34px rgba(0,0,0,0.28);
+      flex: 0 0 auto;
     }
 
-    .brand-text small {
-      display: block;
+    .brand-text {
+      min-width: 0;
+    }
+
+    .brand-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+
+    .brand-subtitle {
       color: var(--muted);
-      font-size: 12px;
-      font-weight: 500;
-      margin-top: 1px;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    .lang-switcher {
-      display: inline-flex;
+    .nav-side {
+      display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       flex-wrap: wrap;
       justify-content: flex-end;
     }
 
-    .lang-btn {
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.05);
-      color: var(--text);
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all .2s ease;
-    }
-
-    .lang-btn:hover,
-    .lang-btn.active {
-      color: #06101d;
-      background: linear-gradient(180deg, var(--gold-2), var(--gold));
-      border-color: rgba(216,179,106,0.5);
-    }
-
-    .top-cta {
+    .market-badge,
+    .lang-pill,
+    .mini-pill {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 12px 18px;
+      justify-content: center;
       border-radius: 999px;
-      color: #06101d;
-      background: linear-gradient(180deg, var(--gold-2), var(--gold));
-      font-weight: 800;
-      box-shadow: 0 10px 24px rgba(216,179,106,0.25);
-      white-space: nowrap;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+      color: #dce7f7;
+      font-size: 0.84rem;
     }
 
+    .market-badge {
+      padding: 8px 12px;
+      gap: 8px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+    }
+
+    .market-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 5px rgba(99, 211, 160, 0.12);
+    }
+
+    .lang-pill,
+    .mini-pill {
+      width: 42px;
+      height: 42px;
+      font-weight: 700;
+    }
+
+    .lang-pill.active {
+      background: linear-gradient(180deg, var(--gold-2), var(--gold));
+      color: #1d1608;
+      border-color: rgba(255,255,255,0.14);
+      box-shadow: 0 10px 24px rgba(216, 180, 108, 0.22);
+    }
+
+    .main-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(180deg, var(--gold-2), var(--gold));
+      color: #1a1308;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      box-shadow: 0 14px 32px rgba(216, 180, 108, 0.26);
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .main-cta:hover { transform: translateY(-1px); box-shadow: 0 18px 36px rgba(216, 180, 108, 0.32); }
+
     .hero {
-      padding: 50px 0 28px;
+      padding: 46px 0 28px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
-      gap: 32px;
-      align-items: center;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(13, 28, 50, 0.9), rgba(9, 20, 37, 0.92));
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-main {
+      min-height: 620px;
+      padding: 42px 42px 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      isolation: isolate;
+    }
+
+    .hero-main::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 24% 14%, rgba(40, 100, 219, 0.18), transparent 28%),
+        radial-gradient(circle at 76% 18%, rgba(216, 180, 108, 0.18), transparent 26%),
+        linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0));
+      pointer-events: none;
+      z-index: -1;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      border: 1px solid rgba(216,179,106,0.28);
-      background: rgba(216,179,106,0.08);
-      color: var(--gold-2);
       padding: 8px 12px;
       border-radius: 999px;
-      font-size: 13px;
-      font-weight: 600;
+      border: 1px solid rgba(216, 180, 108, 0.25);
+      color: var(--gold-2);
+      font-weight: 700;
+      font-size: 0.84rem;
+      letter-spacing: 0.02em;
+      background: rgba(216, 180, 108, 0.08);
+      width: fit-content;
       margin-bottom: 18px;
     }
 
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--green-2);
-      box-shadow: 0 0 0 5px rgba(48,199,139,0.12);
-    }
-
-    .urgency-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 0 0 16px;
-    }
-
-    .mini-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 700;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.05);
-      color: var(--text);
-    }
-
-    .mini-pill.live::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #39d98a;
-      box-shadow: 0 0 0 5px rgba(57,217,138,0.12);
-    }
-
-    h1 {
-      font-size: clamp(36px, 6vw, 64px);
-      line-height: 1.03;
+    .hero-main h1 {
+      font-size: clamp(2.2rem, 5vw, 4.4rem);
+      line-height: 1.05;
       margin: 0 0 18px;
       letter-spacing: -0.03em;
+      max-width: 10ch;
     }
 
-    .lead {
-      font-size: 18px;
-      color: var(--muted);
-      max-width: 700px;
-      margin: 0 0 18px;
+    .hero-main p.lead {
+      margin: 0;
+      color: #d6e2f0;
+      font-size: 1.08rem;
+      max-width: 61ch;
     }
 
-    .sublead {
-      color: #dce7fd;
-      max-width: 700px;
-      margin: 0 0 26px;
-      font-size: 15px;
-    }
-
-    .hero-actions {
+    .hero-note-row {
+      margin-top: 26px;
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 18px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       gap: 10px;
-      min-height: 54px;
-      padding: 0 22px;
-      border-radius: 14px;
-      font-weight: 800;
-      transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
     }
 
-    .btn:hover { transform: translateY(-1px); }
-
-    .btn-primary {
-      color: #07111f;
-      background: linear-gradient(180deg, var(--gold-2), var(--gold));
-      box-shadow: 0 12px 28px rgba(216,179,106,0.18);
-    }
-
-    .btn-secondary {
-      border: 1px solid var(--line);
+    .soft-pill {
+      padding: 10px 14px;
+      border-radius: 999px;
       background: rgba(255,255,255,0.04);
-      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.07);
+      color: #d7e3f2;
+      font-size: 0.92rem;
     }
 
-    .cta-note {
-      color: var(--muted);
-      font-size: 13px;
-      margin-bottom: 24px;
-    }
-
-    .hero-metrics {
+    .hero-bottom {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      max-width: 760px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      align-items: end;
+      margin-top: 34px;
     }
 
-    .metric {
-      padding: 16px 16px 14px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
-      border-radius: 16px;
-      box-shadow: var(--shadow);
+    .chart-frame {
+      padding: 22px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(4, 14, 28, 0.74), rgba(9, 20, 37, 0.88));
+      border: 1px solid rgba(255,255,255,0.06);
+      min-height: 270px;
     }
 
-    .metric strong {
-      display: block;
-      font-size: 22px;
-      margin-bottom: 4px;
+    .chart-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 16px;
     }
 
-    .metric span {
-      display: block;
+    .chart-title {
+      font-weight: 800;
+      font-size: 1rem;
+    }
+
+    .chart-sub {
+      font-size: 0.9rem;
       color: var(--muted);
-      font-size: 14px;
     }
 
-    .visual-wrap { position: relative; }
-
-    .visual-card {
+    .chart-grid {
       position: relative;
-      overflow: hidden;
-      border-radius: 28px;
-      border: 1px solid rgba(255,255,255,0.10);
+      height: 190px;
+      border-radius: 16px;
       background:
-        radial-gradient(circle at 78% 18%, rgba(216,179,106,0.14), transparent 20%),
-        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
-      box-shadow: 0 30px 70px rgba(0,0,0,0.35);
-      min-height: 560px;
+        linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(15, 31, 54, 0.92), rgba(8, 18, 34, 0.96));
+      background-size: 56px 56px, 56px 56px, auto;
+      overflow: hidden;
+    }
+
+    .line-path,
+    .line-path-alt {
+      position: absolute;
+      inset: auto 0 0 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.95;
+    }
+
+    .tag-cluster {
+      display: grid;
+      gap: 12px;
+    }
+
+    .mini-metric {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .mini-metric strong {
+      display: block;
+      font-size: 1.12rem;
+      margin-bottom: 6px;
+    }
+
+    .mini-metric span {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .hero-side {
+      min-height: 620px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .side-panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 20px;
       padding: 22px;
     }
 
-    .screen {
-      height: 100%;
-      border-radius: 22px;
-      border: 1px solid rgba(255,255,255,0.10);
-      background:
-        linear-gradient(180deg, rgba(7,17,31,0.52), rgba(8,17,31,0.92)),
-        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(255,255,255,0.04) 1px, transparent 1px),
-        radial-gradient(circle at 80% 15%, rgba(65,116,255,0.20), transparent 18%);
-      background-size: auto, 36px 36px, 36px 36px, auto;
-      position: relative;
-      overflow: hidden;
-      padding: 26px;
+    .side-panel h3 {
+      margin: 0 0 10px;
+      font-size: 1.26rem;
+      line-height: 1.2;
     }
 
-    .screen::before {
+    .side-panel p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .benefit-list,
+    .check-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .benefit-item,
+    .check-item {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: start;
+      gap: 12px;
+      padding: 14px 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .benefit-item:first-child,
+    .check-item:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .num,
+    .check-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.88rem;
+      font-weight: 800;
+      flex: 0 0 auto;
+    }
+
+    .num {
+      background: rgba(216, 180, 108, 0.16);
+      color: var(--gold-2);
+      border: 1px solid rgba(216, 180, 108, 0.22);
+    }
+
+    .check-dot {
+      background: rgba(99, 211, 160, 0.14);
+      color: #9bf1c9;
+      border: 1px solid rgba(99, 211, 160, 0.22);
+    }
+
+    .benefit-copy strong,
+    .check-copy strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 3px;
+    }
+
+    .benefit-copy span,
+    .check-copy span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .benefit-tag {
+      color: var(--gold-2);
+      font-weight: 700;
+      font-size: 0.92rem;
+      white-space: nowrap;
+      margin-left: 6px;
+    }
+
+    .side-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .section {
+      padding: 28px 0;
+      position: relative;
+    }
+
+    .section::before {
       content: "";
       position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(180deg, transparent 68%, rgba(8,17,31,0.84)),
-        linear-gradient(90deg, transparent 0%, rgba(8,17,31,0.12) 100%);
-      pointer-events: none;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      width: min(1180px, calc(100% - 32px));
+      height: 1px;
+      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.08), rgba(255,255,255,0));
+      opacity: 0.6;
     }
-
-    .screen-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .screen-badge {
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.08);
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .chart {
-      position: absolute;
-      left: 18px;
-      right: 18px;
-      bottom: 18px;
-      top: 92px;
-      z-index: 0;
-    }
-
-    .float-card {
-      position: absolute;
-      z-index: 2;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.09);
-      background: rgba(10, 19, 34, 0.86);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 16px 36px rgba(0,0,0,0.32);
-    }
-
-    .float-card.one { right: 24px; top: 108px; width: 220px; padding: 16px; }
-    .float-card.two { left: 24px; bottom: 28px; width: 260px; padding: 18px; }
-
-    .fc-label {
-      color: var(--muted);
-      font-size: 12px;
-      margin-bottom: 8px;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-    }
-
-    .fc-value {
-      font-size: 28px;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-
-    .fc-note {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .section { padding: 36px 0; }
 
     .section-head {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
       align-items: end;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
-    .section-head h2 {
+    .section h2 {
       margin: 0;
-      font-size: clamp(28px, 4vw, 42px);
+      font-size: clamp(1.9rem, 4vw, 3.4rem);
+      line-height: 1.08;
       letter-spacing: -0.03em;
     }
 
     .section-head p {
       margin: 0;
-      color: var(--muted);
-      max-width: 640px;
+      color: #d5e1ef;
+      font-size: 1.03rem;
     }
 
-    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-
-    .card {
-      padding: 24px;
-      border-radius: var(--radius);
-      border: 1px solid rgba(255,255,255,0.08);
-      background: linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.03));
-      box-shadow: var(--shadow);
-    }
-
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 22px;
-      letter-spacing: -0.02em;
-    }
-
-    .card p { margin: 0; color: var(--muted); }
-
-    .icon {
-      width: 48px;
-      height: 48px;
-      display: inline-grid;
-      place-items: center;
-      border-radius: 14px;
-      margin-bottom: 16px;
-      background: rgba(216,179,106,0.10);
-      border: 1px solid rgba(216,179,106,0.18);
-      color: var(--gold-2);
-      font-weight: 700;
-      font-size: 22px;
-    }
-
-    .proof-strip {
+    .grid-2 {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .info-card {
+      padding: 26px;
+    }
+
+    .info-card h3 {
+      margin: 0 0 18px;
+      font-size: 1.45rem;
+      line-height: 1.2;
+    }
+
+    .bullet-list {
+      display: grid;
       gap: 14px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
     }
 
-    .proof-box {
-      padding: 18px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.04);
-    }
-
-    .proof-box strong {
-      display: block;
-      font-size: 18px;
-      margin-bottom: 6px;
-    }
-
-    .proof-box span {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .feature-list { display: grid; gap: 14px; margin-top: 16px; }
-    .feature-item { display: grid; grid-template-columns: 20px 1fr; gap: 12px; align-items: start; color: var(--muted); }
-
-    .check {
-      width: 20px;
-      height: 20px;
-      border-radius: 999px;
+    .bullet-list li {
       display: grid;
-      place-items: center;
-      color: #051019;
-      background: linear-gradient(180deg, #4cd29a, #24b87e);
-      font-size: 12px;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+      align-items: start;
+      color: #d7e3f2;
+    }
+
+    .bullet-list li span:first-child {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(99, 211, 160, 0.14);
+      border: 1px solid rgba(99, 211, 160, 0.22);
+      color: #9bf1c9;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
       font-weight: 800;
       margin-top: 2px;
     }
 
-    .showcase {
-      display: grid;
-      grid-template-columns: 1fr 0.95fr;
-      gap: 18px;
-      align-items: stretch;
-    }
-
-    .media-card {
-      overflow: hidden;
-      position: relative;
-      min-height: 420px;
-    }
-
-    .media-art {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 75% 25%, rgba(216,179,106,0.18), transparent 16%),
-        radial-gradient(circle at 22% 18%, rgba(64,115,255,0.22), transparent 18%),
-        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)),
-        linear-gradient(135deg, #071120 0%, #0c1c31 55%, #0a1628 100%);
-    }
-
-    .media-overlay {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(180deg, transparent 40%, rgba(5,10,18,0.82) 100%),
-        linear-gradient(90deg, rgba(5,10,18,0.50) 0%, transparent 60%);
-    }
-
-    .bars {
-      position: absolute;
-      left: 8%;
-      right: 8%;
-      bottom: 10%;
-      height: 56%;
-      display: flex;
-      align-items: end;
-      gap: 14px;
-    }
-
-    .bar {
-      flex: 1;
-      border-radius: 14px 14px 0 0;
-      background: linear-gradient(180deg, rgba(216,179,106,0.95), rgba(216,179,106,0.18));
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.18);
-    }
-
-    .bar:nth-child(1){ height: 24%; }
-    .bar:nth-child(2){ height: 38%; }
-    .bar:nth-child(3){ height: 33%; }
-    .bar:nth-child(4){ height: 54%; }
-    .bar:nth-child(5){ height: 48%; }
-    .bar:nth-child(6){ height: 70%; }
-    .bar:nth-child(7){ height: 82%; }
-    .bar:nth-child(8){ height: 92%; }
-
-    .media-copy {
-      position: absolute;
-      left: 28px;
-      right: 28px;
-      bottom: 26px;
-      z-index: 1;
-    }
-
-    .media-copy h3 {
-      margin: 0 0 8px;
-      font-size: clamp(22px, 3vw, 34px);
-      line-height: 1.06;
-      letter-spacing: -0.03em;
-    }
-
-    .media-copy p { margin: 0; color: #d7e1f7; max-width: 560px; }
-
-    .stat-rows { display: grid; gap: 16px; }
-    .stat-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 14px;
-      padding: 16px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .stat-row:last-child { border-bottom: none; padding-bottom: 0; }
-    .stat-row strong { font-size: 22px; white-space: nowrap; }
-
-    .pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
-
-    .pill {
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
+    .bullet-note {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.06);
       color: var(--muted);
-      font-size: 14px;
+      font-size: 0.96rem;
     }
 
-    .process {
+    .analysis-samples {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
-      counter-reset: step;
     }
 
-    .process-card {
-      position: relative;
-      padding-top: 64px;
-    }
-
-    .process-card::before {
-      counter-increment: step;
-      content: counter(step);
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 34px;
-      height: 34px;
-      display: grid;
-      place-items: center;
-      border-radius: 999px;
-      background: linear-gradient(180deg, var(--gold-2), var(--gold));
-      color: #07111f;
-      font-weight: 800;
-      box-shadow: 0 8px 20px rgba(216,179,106,0.16);
-    }
-
-    .compliance {
-      border-radius: 22px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
-      padding: 24px;
-      box-shadow: var(--shadow);
-    }
-
-    .compliance h3 { margin: 0 0 12px; font-size: 20px; }
-    .disclaimer { color: var(--muted); font-size: 14px; margin-top: 16px; }
-
-    .cta-panel {
-      position: relative;
+    .sample-card {
+      padding: 0;
       overflow: hidden;
-      border-radius: 28px;
-      padding: 32px;
-      border: 1px solid rgba(216,179,106,0.16);
+    }
+
+    .sample-chart {
+      padding: 18px;
+      height: 220px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: linear-gradient(180deg, rgba(8, 19, 36, 0.96), rgba(11, 23, 43, 0.92));
+    }
+
+    .chart-canvas {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 16px;
+      overflow: hidden;
       background:
-        radial-gradient(circle at 85% 15%, rgba(216,179,106,0.20), transparent 20%),
-        linear-gradient(135deg, rgba(11,27,48,0.96), rgba(7,17,31,0.96));
-      box-shadow: 0 24px 60px rgba(0,0,0,0.32);
+        linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(15, 31, 54, 0.92), rgba(7, 17, 30, 0.98));
+      background-size: 48px 48px, 48px 48px, auto;
     }
 
-    .cta-panel h2 {
-      margin: 0 0 12px;
-      font-size: clamp(30px, 4vw, 46px);
-      line-height: 1.04;
-      letter-spacing: -0.03em;
+    .sample-body {
+      padding: 22px;
     }
 
-    .cta-panel p { margin: 0 0 22px; color: var(--muted); max-width: 760px; }
-
-    .footer { padding: 26px 0 56px; color: var(--muted); font-size: 14px; }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 16px;
-      align-items: center;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .footer-links { display: flex; flex-wrap: wrap; gap: 16px; justify-content: flex-end; }
-
-    .floating-wa {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 9999;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      min-height: 58px;
-      padding: 0 18px 0 16px;
-      border-radius: 999px;
-      color: #07111f;
-      background: linear-gradient(180deg, #42d392, #1fbf75);
-      box-shadow: 0 18px 38px rgba(20, 108, 70, 0.35);
-      font-weight: 800;
-      letter-spacing: 0.01em;
-      border: 1px solid rgba(255,255,255,0.22);
-      transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(16px);
-      pointer-events: none;
-      animation: wa-breathe 2.8s ease-in-out infinite;
-      animation-play-state: paused;
-    }
-
-    body.show-wa .floating-wa {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-      pointer-events: auto;
-      animation-play-state: paused;
-    }
-
-    body.show-wa.wa-glow .floating-wa {
-      animation-play-state: running;
-    }
-
-    .floating-wa:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 22px 46px rgba(20, 108, 70, 0.42);
-    }
-
-    .floating-wa .wa-icon {
-      width: 30px;
-      height: 30px;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      background: rgba(255,255,255,0.22);
-      color: #07111f;
-      font-size: 16px;
-      font-weight: 900;
-      flex: 0 0 auto;
-    }
-
-    .floating-wa .wa-copy {
+    .sample-top {
       display: flex;
-      flex-direction: column;
-      line-height: 1.05;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
     }
 
-    .floating-wa .wa-copy small {
-      font-size: 11px;
+    .sample-top strong {
+      font-size: 1.08rem;
+    }
+
+    .sample-chip {
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
       font-weight: 700;
-      opacity: 0.8;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 3px;
-    }
-
-    .floating-wa .wa-copy span {
-      font-size: 15px;
+      color: var(--gold-2);
+      background: rgba(216, 180, 108, 0.1);
+      border: 1px solid rgba(216, 180, 108, 0.18);
       white-space: nowrap;
     }
 
-    @keyframes wa-breathe {
-      0%, 100% { box-shadow: 0 18px 38px rgba(20, 108, 70, 0.35); }
-      50% { box-shadow: 0 22px 46px rgba(20, 108, 70, 0.55); }
+    .sample-body p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .sample-points {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .sample-points li {
+      color: #d9e4f2;
+      font-size: 0.94rem;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .sample-points li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .step-card {
+      padding: 28px;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .step-number {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, var(--gold-2), var(--gold));
+      color: #1c1508;
+      font-weight: 900;
+      box-shadow: 0 12px 28px rgba(216, 180, 108, 0.24);
+    }
+
+    .step-card h3 {
+      margin: 0;
+      font-size: 1.42rem;
+    }
+
+    .step-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .step-foot {
+      margin-top: auto;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      color: #dbe6f4;
+      font-size: 0.95rem;
+    }
+
+    .community-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 18px;
+    }
+
+    .community-card,
+    .faq-card,
+    .cta-panel,
+    .disclaimer-card,
+    .footer-card {
+      padding: 28px;
+    }
+
+    .community-card h3,
+    .faq-card h3,
+    .cta-panel h3,
+    .disclaimer-card h3 {
+      margin: 0 0 14px;
+      font-size: 1.5rem;
+      line-height: 1.16;
+    }
+
+    .community-card p,
+    .faq-card p,
+    .cta-panel p,
+    .disclaimer-card p,
+    .footer-copy {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .credibility-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .credibility-item {
+      padding: 22px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .credibility-item strong {
+      display: block;
+      font-size: 1.06rem;
+      margin-bottom: 8px;
+      color: #eef4fb;
+    }
+
+    .credibility-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .metric-box {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .metric-box strong {
+      display: block;
+      font-size: 1.25rem;
+      margin-bottom: 4px;
+    }
+
+    .metric-box span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    details.faq-item {
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.03);
+      padding: 16px 18px;
+    }
+
+    details.faq-item summary {
+      cursor: pointer;
+      list-style: none;
+      font-weight: 700;
+    }
+
+    details.faq-item summary::-webkit-details-marker { display: none; }
+
+    details.faq-item p {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .cta-wrap {
+      padding: 8px 0 34px;
+    }
+
+    .cta-panel {
+      display: grid;
+      grid-template-columns: 1.1fr auto;
+      gap: 18px;
+      align-items: center;
+      background:
+        radial-gradient(circle at 18% 30%, rgba(35, 97, 205, 0.16), transparent 26%),
+        radial-gradient(circle at 82% 18%, rgba(216, 180, 108, 0.18), transparent 22%),
+        linear-gradient(180deg, rgba(12, 28, 49, 0.96), rgba(9, 19, 35, 0.98));
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: flex-end;
+    }
+
+    .ghost-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #e4edf9;
+      background: rgba(255,255,255,0.04);
+      font-weight: 700;
+    }
+
+    .disclaimer-card {
+      margin-top: 18px;
+    }
+
+    .disclaimer-card ul {
+      margin: 16px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .disclaimer-card li + li { margin-top: 10px; }
+
+    footer {
+      padding: 0 0 90px;
+    }
+
+    .footer-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    .reveal.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .floating-cta {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%) translateY(110px);
+      width: min(780px, calc(100% - 24px));
+      z-index: 80;
+      background: rgba(8, 18, 34, 0.88);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      backdrop-filter: blur(18px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.34);
+      transition: transform .45s ease, opacity .45s ease;
+      opacity: 0;
+      overflow: hidden;
+    }
+
+    .floating-cta.visible {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      animation: breathe 3.2s ease-in-out infinite 3s;
+    }
+
+    .floating-inner {
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .floating-copy {
+      min-width: 0;
+    }
+
+    .floating-copy strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 2px;
+    }
+
+    .floating-copy span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.9rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .floating-inner .main-cta {
+      min-width: 180px;
+      flex: 0 0 auto;
+    }
+
+    @keyframes breathe {
+      0%, 100% { box-shadow: 0 20px 50px rgba(0,0,0,0.34), 0 0 0 0 rgba(216, 180, 108, 0.12); }
+      50% { box-shadow: 0 20px 50px rgba(0,0,0,0.34), 0 0 0 10px rgba(216, 180, 108, 0.04); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
     }
 
     @media (max-width: 1080px) {
-      .hero-grid, .showcase, .grid-3, .process, .grid-2, .proof-strip { grid-template-columns: 1fr; }
-      .hero-metrics { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 780px) {
-      .topbar-inner { align-items: flex-start; flex-direction: column; }
-      .lang-switcher { justify-content: flex-start; }
-    }
-
-    @media (max-width: 680px) {
-      .floating-wa {
-        right: 12px;
-        left: 12px;
-        bottom: 12px;
-        justify-content: center;
-        min-height: 56px;
+      .hero-grid,
+      .section-head,
+      .community-grid,
+      .cta-panel {
+        grid-template-columns: 1fr;
       }
-      .floating-wa .wa-copy span { font-size: 14px; }
-      .visual-card { min-height: 430px; }
-      .float-card.one { width: 185px; right: 18px; }
-      .float-card.two { width: 210px; }
-      .section { padding: 28px 0; }
-      .card, .cta-panel, .compliance { padding: 20px; }
-      .hero { padding-top: 40px; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .footer-links { justify-content: flex-start; }
+
+      .analysis-samples,
+      .process-grid,
+      .grid-2,
+      .credibility-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-bottom {
+        grid-template-columns: 1fr;
+      }
+
+      .metric-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      .cta-actions {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .topbar-inner {
+        min-height: auto;
+        padding: 14px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .brand-subtitle,
+      .market-badge,
+      .mini-pill { display: none; }
+
+      .nav-side { width: 100%; justify-content: space-between; }
+
+      .hero { padding-top: 24px; }
+
+      .hero-main,
+      .hero-side,
+      .info-card,
+      .step-card,
+      .community-card,
+      .faq-card,
+      .cta-panel,
+      .disclaimer-card,
+      .footer-card {
+        padding: 22px;
+      }
+
+      .hero-main { min-height: auto; }
+      .hero-side { min-height: auto; }
+
+      .hero-main h1 {
+        max-width: 100%;
+        font-size: clamp(2rem, 10vw, 3.1rem);
+      }
+
+      .hero-main p.lead,
+      .section-head p,
+      .community-card p,
+      .faq-card p,
+      .cta-panel p { font-size: 0.98rem; }
+
+      .metric-grid,
+      .process-grid,
+      .analysis-samples {
+        grid-template-columns: 1fr;
+      }
+
+      .floating-inner {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .floating-inner .main-cta {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .footer-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
-
-  <!-- Meta Pixel 占位：把 YOUR_PIXEL_ID 替换成你的 ID -->
   <script>
-    window.META_PIXEL_ID = 'YOUR_PIXEL_ID';
-    if (window.META_PIXEL_ID && window.META_PIXEL_ID !== 'YOUR_PIXEL_ID') {
-      !(function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)})(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', window.META_PIXEL_ID);
-      fbq('track', 'PageView');
-    }
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '769607062918048');
+    fbq('track', 'PageView');
   </script>
-
-  <!-- TikTok Pixel 占位：把 YOUR_TIKTOK_PIXEL_ID 替换成你的 ID -->
-  <script>
-    window.TIKTOK_PIXEL_ID = 'YOUR_TIKTOK_PIXEL_ID';
-    if (window.TIKTOK_PIXEL_ID && window.TIKTOK_PIXEL_ID !== 'YOUR_TIKTOK_PIXEL_ID') {
-      !function (w, d, t) {
-        w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};
-        for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-        ttq.load(window.TIKTOK_PIXEL_ID);ttq.page();
-      }(window, document, 'ttq');
-    }
-  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=769607062918048&ev=PageView&noscript=1"/>
+  </noscript>
 </head>
 <body>
-  <header class="topbar" id="top">
+  <header class="topbar">
     <div class="container topbar-inner">
       <div class="brand">
         <div class="brand-mark"></div>
         <div class="brand-text">
-          Market Insight Hub
-          <small data-i18n="brandSub">Educație financiară • Analiză de piață • Comunitate privată</small>
+          <div class="brand-title">Centro de Análisis de Mercado</div>
+          <div class="brand-subtitle">Educación financiera · Lectura de mercado · Comunidad privada</div>
         </div>
       </div>
-      <div class="lang-switcher">
-        <button class="lang-btn" data-lang-btn="ro">RO</button>
-        <button class="lang-btn" data-lang-btn="en">EN</button>
-        <button class="lang-btn" data-lang-btn="es">ES</button>
-        <button class="lang-btn" data-lang-btn="id">ID</button>
-        <button class="lang-btn" data-lang-btn="hi">HI</button>
-        <a class="top-cta wa-link" href="https://t.ly/ubiYs" data-i18n="topCta">Intră pe WhatsApp</a>
+      <div class="nav-side">
+        <div class="market-badge"><span class="market-dot"></span> Enfoque para Argentina</div>
+        <div class="lang-pill active">ES</div>
+        <a class="main-cta js-whatsapp-cta" href="https://t.ly/ubiYs" target="_blank" rel="noopener noreferrer">Sumate a WhatsApp</a>
       </div>
     </div>
   </header>
@@ -829,195 +1070,294 @@
   <main>
     <section class="hero">
       <div class="container hero-grid">
-        <div>
-          <div class="eyebrow"><span class="dot"></span><span data-i18n="eyebrow">Acces prioritar • Comunitate privată • Asistență zilnică</span></div>
-
-          <div class="urgency-row">
-            <div class="mini-pill live" data-i18n="urgent1">Acces deschis astăzi</div>
-            <div class="mini-pill" data-i18n="urgent2">Locuri limitate pentru noii membri</div>
-          </div>
-
-          <h1 data-i18n="heroTitle">Intră acum în comunitatea privată și începe cu un cadru clar de învățare.</h1>
-          <p class="lead" data-i18n="heroLead">Un spațiu pentru cei care vor să înțeleagă mai clar piețele, să evite greșelile frecvente și să primească explicații simple, structurate și ușor de urmărit.</p>
-          <p class="sublead" data-i18n="heroSublead">Accesul inițial este gratuit. După intrare, primești detaliile introductive direct în WhatsApp și poți vedea cum este organizată comunitatea.</p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary wa-link" href="https://t.ly/ubiYs" data-i18n="heroBtnPrimary">Intră acum pe WhatsApp</a>
-            <a class="btn btn-secondary" href="#despre" data-i18n="heroBtnSecondary">Vezi cum funcționează</a>
-          </div>
-
-          <div class="cta-note" data-i18n="ctaNote">Fără pași complicați. Fără descărcări. Intri direct în canalul de acces.</div>
-
-          <div class="hero-metrics">
-            <div class="metric">
-              <strong>1.200+</strong>
-              <span data-i18n="metric1">Membri activi în comunitate</span>
-            </div>
-            <div class="metric">
-              <strong data-i18n="metric2Value">Zilnic</strong>
-              <span data-i18n="metric2">Explicații clare și actualizări educaționale</span>
-            </div>
-            <div class="metric">
-              <strong data-i18n="metric3Value">Acces gratuit</strong>
-              <span data-i18n="metric3">Primul pas de intrare fără cost</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="visual-wrap">
-          <div class="visual-card">
-            <div class="screen">
-              <div class="screen-top">
-                <div class="screen-badge" data-i18n="screenBadge1">Member Access Window</div>
-                <div class="screen-badge" data-i18n="screenBadge2">Actualizat periodic</div>
-              </div>
-
-              <svg class="chart" viewBox="0 0 800 520" preserveAspectRatio="none" aria-hidden="true">
-                <defs>
-                  <linearGradient id="areaA" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="rgba(216,179,106,0.55)" />
-                    <stop offset="100%" stop-color="rgba(216,179,106,0.02)" />
-                  </linearGradient>
-                  <linearGradient id="lineA" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stop-color="#96b5ff" />
-                    <stop offset="100%" stop-color="#d8b36a" />
-                  </linearGradient>
-                  <filter id="glow">
-                    <feGaussianBlur stdDeviation="4" result="b"/>
-                    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-                  </filter>
-                </defs>
-                <path d="M0,430 C60,420 95,340 145,325 C190,312 225,350 280,300 C340,245 385,270 430,220 C490,150 530,185 575,150 C630,108 690,98 760,62 L800,54 L800,520 L0,520 Z" fill="url(#areaA)" opacity="0.9"></path>
-                <path d="M0,430 C60,420 95,340 145,325 C190,312 225,350 280,300 C340,245 385,270 430,220 C490,150 530,185 575,150 C630,108 690,98 760,62 L800,54" fill="none" stroke="url(#lineA)" stroke-width="5" filter="url(#glow)"></path>
-                <path d="M0,390 C65,390 110,370 155,360 C205,348 248,330 310,308 C360,290 410,290 455,268 C500,248 548,230 590,190 C640,140 700,128 800,118" fill="none" stroke="#3b7cff" stroke-opacity="0.65" stroke-width="3"></path>
-                <g fill="#d8b36a">
-                  <circle cx="145" cy="325" r="6"/>
-                  <circle cx="430" cy="220" r="6"/>
-                  <circle cx="760" cy="62" r="6"/>
-                </g>
-              </svg>
-
-              <div class="float-card one">
-                <div class="fc-label" data-i18n="float1Label">Acces deschis</div>
-                <div class="fc-value" data-i18n="float1Value">Locuri limitate</div>
-                <div class="fc-note" data-i18n="float1Note">Intră acum pentru a vedea pașii introductivi și structura comunității.</div>
-              </div>
-
-              <div class="float-card two">
-                <div class="fc-label" data-i18n="float2Label">Canal principal</div>
-                <div class="fc-value">WhatsApp</div>
-                <div class="fc-note" data-i18n="float2Note">Confirmi accesul și primești detaliile direct în conversație.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="proof-strip">
-          <div class="proof-box"><strong data-i18n="proof1Title">Acces rapid</strong><span data-i18n="proof1Text">Un singur clic până la canalul de intrare.</span></div>
-          <div class="proof-box"><strong data-i18n="proof2Title">Mesaj clar</strong><span data-i18n="proof2Text">Utilizatorul înțelege imediat ce primește.</span></div>
-          <div class="proof-box"><strong data-i18n="proof3Title">Mobile first</strong><span data-i18n="proof3Text">Experiență optimizată pentru telefon.</span></div>
-          <div class="proof-box"><strong data-i18n="proof4Title">CTA constant</strong><span data-i18n="proof4Text">Butonul de intrare rămâne vizibil pe parcurs.</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="despre">
-      <div class="container">
-        <div class="section-head">
+        <article class="card hero-main">
           <div>
-            <h2 data-i18n="section1Title">Un cadru clar, profesionist și ușor de urmărit.</h2>
+            <div class="eyebrow">Análisis diario · Educación financiera</div>
+            <h1>Entendé el mercado con más claridad y menos ruido</h1>
+            <p class="lead">
+              Un espacio pensado para personas que quieren aprender a leer tendencias, ordenar ideas y recibir análisis de mercado en un formato claro. En vez de depender de rumores o decisiones impulsivas, accedés a una comunidad educativa con enfoque práctico.
+            </p>
+            <div class="hero-note-row">
+              <div class="soft-pill">Lectura de contexto</div>
+              <div class="soft-pill">Niveles clave</div>
+              <div class="soft-pill">Gestión de riesgo</div>
+              <div class="soft-pill">Guía para empezar</div>
+            </div>
           </div>
-          <p data-i18n="section1Lead">Pagina este construită pentru a reduce ezitarea, a inspira încredere și a conduce utilizatorul către un singur pas logic: intrarea în canalul WhatsApp.</p>
+
+          <div class="hero-bottom">
+            <div class="chart-frame">
+              <div class="chart-head">
+                <div>
+                  <div class="chart-title">Ejemplo de lectura de mercado</div>
+                  <div class="chart-sub">Estructura, zonas clave y validación del escenario</div>
+                </div>
+                <div class="sample-chip">Vista educativa</div>
+              </div>
+              <div class="chart-grid">
+                <svg class="line-path" viewBox="0 0 600 260" preserveAspectRatio="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="goldStroke" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0%" stop-color="#8f7640" />
+                      <stop offset="55%" stop-color="#d8b46c" />
+                      <stop offset="100%" stop-color="#f2d497" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M0,188 C52,176 82,156 118,148 C161,138 182,160 220,142 C254,125 278,98 320,106 C362,114 386,162 422,154 C465,145 495,95 532,70 C552,57 573,52 600,48" fill="none" stroke="url(#goldStroke)" stroke-width="5" stroke-linecap="round"/>
+                  <path d="M370,40 L370,220" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-dasharray="8 8" />
+                  <path d="M120,130 L500,130" stroke="rgba(99,211,160,0.18)" stroke-width="2" stroke-dasharray="8 8" />
+                  <circle cx="220" cy="142" r="6" fill="#63d3a0" />
+                  <circle cx="532" cy="70" r="6" fill="#f2d497" />
+                </svg>
+              </div>
+            </div>
+            <div class="tag-cluster">
+              <div class="mini-metric">
+                <strong>Contexto primero</strong>
+                <span>Antes de mirar un movimiento puntual, se analiza el panorama general y la lógica del escenario.</span>
+              </div>
+              <div class="mini-metric">
+                <strong>Menos improvisación</strong>
+                <span>El objetivo es desarrollar criterio, no reaccionar emocionalmente a cada cambio del mercado.</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <aside class="card hero-side">
+          <section class="side-panel">
+            <h3>¿Qué recibís al entrar?</h3>
+            <p>Acceso rápido a una comunidad educativa privada en WhatsApp, contenidos organizados y una ruta clara para empezar.</p>
+            <div class="benefit-list">
+              <div class="benefit-item">
+                <div class="num">1</div>
+                <div class="benefit-copy">
+                  <strong>Análisis diarios</strong>
+                  <span>Lectura de escenarios, zonas relevantes y explicación de contexto.</span>
+                </div>
+                <div class="benefit-tag">Diario</div>
+              </div>
+              <div class="benefit-item">
+                <div class="num">2</div>
+                <div class="benefit-copy">
+                  <strong>Guía de inicio</strong>
+                  <span>Un punto de partida simple para entender cómo aprovechar el contenido desde el primer día.</span>
+                </div>
+                <div class="benefit-tag">Claro</div>
+              </div>
+              <div class="benefit-item">
+                <div class="num">3</div>
+                <div class="benefit-copy">
+                  <strong>Formato pensado para aprender</strong>
+                  <span>Menos ruido, más estructura y explicaciones útiles para el seguimiento diario.</span>
+                </div>
+                <div class="benefit-tag">Práctico</div>
+              </div>
+              <div class="benefit-item">
+                <div class="num">4</div>
+                <div class="benefit-copy">
+                  <strong>Acceso desde el celular</strong>
+                  <span>Todo el flujo está diseñado para entrar, entender y seguir desde móvil sin vueltas.</span>
+                </div>
+                <div class="benefit-tag">Móvil</div>
+              </div>
+            </div>
+            <div class="side-tags">
+              <div class="soft-pill">Ingreso directo</div>
+              <div class="soft-pill">Sin pasos innecesarios</div>
+              <div class="soft-pill">Contenido guiado</div>
+            </div>
+          </section>
+
+          <section class="side-panel">
+            <h3>Orientado a una necesidad real</h3>
+            <div class="check-list">
+              <div class="check-item">
+                <div class="check-dot">✓</div>
+                <div class="check-copy">
+                  <strong>Entender la volatilidad</strong>
+                  <span>Aprender a leer movimientos del mercado con más contexto.</span>
+                </div>
+              </div>
+              <div class="check-item">
+                <div class="check-dot">✓</div>
+                <div class="check-copy">
+                  <strong>Ordenar decisiones</strong>
+                  <span>Evitar actuar por impulso y construir un marco más claro.</span>
+                </div>
+              </div>
+              <div class="check-item">
+                <div class="check-dot">✓</div>
+                <div class="check-copy">
+                  <strong>Seguir una rutina</strong>
+                  <span>Recibir actualización frecuente en un entorno continuo de aprendizaje.</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="container">
+        <div class="research-header">
+          <div>
+            <strong>Research Desk · Argentina Edition</strong>
+            <span>Lectura estructurada del mercado con enfoque educativo y continuidad diaria.</span>
+          </div>
+          <div class="research-badges">
+            <div class="research-badge">Daily Brief</div>
+            <div class="research-badge">Market Structure</div>
+            <div class="research-badge">Risk Framework</div>
+          </div>
         </div>
 
-        <div class="grid-3">
-          <div class="card">
-            <div class="icon">01</div>
-            <h3 data-i18n="card1Title">Mesaj simplu</h3>
-            <p data-i18n="card1Text">Promisiunea principală este clară, ușor de înțeles și orientată spre acces imediat.</p>
+        <div class="credibility-strip">
+          <div class="credibility-item">
+            <strong>Marco de análisis</strong>
+            <span>Contexto, estructura y niveles clave en cada lectura.</span>
           </div>
-          <div class="card">
-            <div class="icon">02</div>
-            <h3 data-i18n="card2Title">Intrare directă</h3>
-            <p data-i18n="card2Text">Fără fricțiuni inutile, fără etape tehnice complicate și fără deturnarea conversiei.</p>
+          <div class="credibility-item">
+            <strong>Enfoque educativo</strong>
+            <span>Contenido para desarrollar criterio, no para reaccionar.</span>
           </div>
-          <div class="card">
-            <div class="icon">03</div>
-            <h3 data-i18n="card3Title">Imagine premium</h3>
-            <p data-i18n="card3Text">Aspect sobru, modern și credibil, potrivit pentru o ofertă educațională prezentată profesionist.</p>
+          <div class="credibility-item">
+            <strong>Experiencia móvil</strong>
+            <span>Optimizado para consumo desde WhatsApp.</span>
+          </div>
+          <div class="credibility-item">
+            <strong>Comunicación sobria</strong>
+            <span>Menos promesas, más claridad y consistencia.</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container showcase">
-        <div class="card media-card">
-          <div class="media-art"></div>
-          <div class="bars">
-            <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
-            <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
-          </div>
-          <div class="media-overlay"></div>
-          <div class="media-copy">
-            <div class="eyebrow" style="margin-bottom:12px;"><span data-i18n="mediaEyebrow">Experiență premium</span></div>
-            <h3 data-i18n="mediaTitle">Claritate vizuală și drum scurt până la conversie.</h3>
-            <p data-i18n="mediaText">Fiecare secțiune susține același obiectiv: utilizatorul să înțeleagă rapid oferta și să intre în grup fără blocaje.</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3 style="margin-bottom:12px;" data-i18n="benefitsTitle">Ce primește utilizatorul după activare</h3>
-          <p style="margin-bottom:6px;" data-i18n="benefitsLead">Un parcurs simplu, clar și fără pași inutili. Intrarea se face rapid, iar detaliile introductive vin direct în conversație.</p>
-
-          <div class="stat-rows">
-            <div class="stat-row"><span data-i18n="row1Label">Acces la comunitatea privată</span><strong data-i18n="row1Value">Imediat</strong></div>
-            <div class="stat-row"><span data-i18n="row2Label">Explicații introductive</span><strong data-i18n="row2Value">Disponibil</strong></div>
-            <div class="stat-row"><span data-i18n="row3Label">Format prietenos pentru începători</span><strong data-i18n="row3Value">Clar</strong></div>
-            <div class="stat-row"><span data-i18n="row4Label">Experiență optimizată pentru mobil</span><strong data-i18n="row4Value">Da</strong></div>
-          </div>
-
-          <div class="pill-row">
-            <div class="pill" data-i18n="pill1">Acces direct</div>
-            <div class="pill" data-i18n="pill2">Fără descărcări</div>
-            <div class="pill" data-i18n="pill3">Mesaj coerent</div>
-            <div class="pill" data-i18n="pill4">UX premium</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
+    <section class="section reveal">
       <div class="container">
         <div class="section-head">
-          <div><h2 data-i18n="section2Title">De ce această pagină convertește mai bine</h2></div>
-          <p data-i18n="section2Lead">Combinația dintre claritate, credibilitate și un singur CTA puternic reduce ezitarea și crește șansa ca utilizatorul să facă pasul următor.</p>
+          <h2>Marco metodológico de análisis</h2>
+          <p>
+            Un enfoque claro permite interpretar mejor el mercado. Este modelo ordena cómo se observa, valida y gestiona cada escenario.
+          </p>
+        </div>
+
+        <div class="process-grid">
+          <article class="card step-card">
+            <div class="step-number">1</div>
+            <h3>Contexto macro</h3>
+            <p>Se analiza el entorno general antes de cualquier decisión puntual.</p>
+          </article>
+          <article class="card step-card">
+            <div class="step-number">2</div>
+            <h3>Estructura técnica</h3>
+            <p>Identificación de tendencia, zonas clave y comportamiento del precio.</p>
+          </article>
+          <article class="card step-card">
+            <div class="step-number">3</div>
+            <h3>Validación</h3>
+            <p>Definición de qué confirma o invalida cada escenario.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="container">
+        <div class="section-head">
+          <h2>Ejemplo de brief diario</h2>
+          <p>
+            Simulación de cómo se presenta una lectura diaria dentro del entorno educativo.
+          </p>
         </div>
 
         <div class="grid-2">
-          <div class="card">
-            <h3 data-i18n="featuresTitle">Elemente cheie de conversie</h3>
-            <div class="feature-list">
-              <div class="feature-item"><div class="check">✓</div><div data-i18n="feature1">Headline clar, orientat spre acțiune, fără promisiuni exagerate.</div></div>
-              <div class="feature-item"><div class="check">✓</div><div data-i18n="feature2">CTA principal repetat strategic în cele mai importante zone ale paginii.</div></div>
-              <div class="feature-item"><div class="check">✓</div><div data-i18n="feature3">Elemente de încredere și structură vizuală care susțin seriozitatea ofertei.</div></div>
-              <div class="feature-item"><div class="check">✓</div><div data-i18n="feature4">Acces rapid spre canalul final, fără a rupe fluxul utilizatorului.</div></div>
-            </div>
-          </div>
+          <article class="card info-card">
+            <h3>Market Brief · Apertura</h3>
+            <ul class="bullet-list">
+              <li><span>•</span><span><strong>Sesgo base:</strong> continuidad con vigilancia en zonas clave.</span></li>
+              <li><span>•</span><span><strong>Nivel clave:</strong> área que define la validez del escenario.</span></li>
+              <li><span>•</span><span><strong>Escenario alternativo:</strong> qué cambia si falla la hipótesis.</span></li>
+              <li><span>•</span><span><strong>Lectura operativa:</strong> prioridad en confirmación y control de riesgo.</span></li>
+            </ul>
+          </article>
 
-          <div class="card">
-            <h3 data-i18n="mobileTitle">Construită pentru mobil și ads traffic</h3>
-            <div class="feature-list">
-              <div class="feature-item"><div class="check">✓</div><div data-i18n="mobile1">Headline puternic și lizibil încă din primul ecran.</div></div>
-              <div class="feature-item"><div class="check">✓</div><div data-i18n="mobile2">CTA vizibil imediat, fără scroll lung până la acțiune.</div></div>
-              <div class="feature-item"><div class="check">✓</div><div data-i18n="mobile3">Buton flotant care reapare după scroll pentru a susține conversia.</div></div>
-              <div class="feature-item"><div class="check">✓</div><div data-i18n="mobile4">Structură potrivită pentru trafic din Facebook, TikTok și alte surse mobile.</div></div>
+          <article class="card info-card">
+            <h3>Notas del research desk</h3>
+            <p>
+              Este tipo de estructura ayuda a entender que hay un proceso detrás del contenido. No es solo información suelta, sino una forma consistente de interpretar el mercado.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="ejemplos">
+      <div class="container">
+        <div class="section-head">
+          <h2>Ejemplos del tipo de contenido que vas a encontrar</h2>
+          <p>
+            Esta sección está diseñada para que el visitante vea “análisis” y no solo “promoción”. Podés reemplazar estos bloques por capturas reales, gráficos comentados o imágenes de informes cuando quieras llevarlo a una versión aún más fuerte.
+          </p>
+        </div>
+
+        <div class="analysis-samples">
+
+          <article class="card sample-card">
+            <div class="sample-chart">
+              <img src="https://images.unsplash.com/photo-1642790551116-18e2d3f2a444?q=80&w=1200&auto=format&fit=crop" alt="Grafico de mercado" />
             </div>
-          </div>
+            <div class="sample-body">
+              <div class="sample-top">
+                <strong>BTC · Estructura alcista</strong>
+                <span class="sample-chip">Soporte clave</span>
+              </div>
+              <p>Zona marcada donde el precio reacciona. Mientras se mantenga, el escenario principal sigue vigente.</p>
+              <ul class="sample-points">
+                <li>Soporte validado en múltiples tests.</li>
+                <li>Reacción con volumen creciente.</li>
+                <li>Escenario válido mientras no se pierda el nivel.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card sample-card">
+            <div class="sample-chart">
+              <img src="https://images.unsplash.com/photo-1640161704729-cbe966a08476?q=80&w=1200&auto=format&fit=crop" alt="Grafico tecnico" />
+            </div>
+            <div class="sample-body">
+              <div class="sample-top">
+                <strong>ETH · Zona de decisión</strong>
+                <span class="sample-chip">Breakout</span>
+              </div>
+              <p>El precio entra en una zona donde necesita confirmar dirección. Se espera validación antes de actuar.</p>
+              <ul class="sample-points">
+                <li>Compresión previa al movimiento.</li>
+                <li>Zona de alta liquidez.</li>
+                <li>Confirmación necesaria para continuidad.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card sample-card">
+            <div class="sample-chart">
+              <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=1200&auto=format&fit=crop" alt="Analisis de riesgo" />
+            </div>
+            <div class="sample-body">
+              <div class="sample-top">
+                <strong>Gestión de riesgo</strong>
+                <span class="sample-chip">Plan</span>
+              </div>
+              <p>No todo movimiento es operable. La clave es definir invalidación antes de entrar.</p>
+              <ul class="sample-points">
+                <li>Entrada basada en confirmación.</li>
+                <li>Invalidación clara.</li>
+                <li>Control del riesgo como prioridad.</li>
+              </ul>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
@@ -1025,287 +1365,210 @@
     <section class="section">
       <div class="container">
         <div class="section-head">
-          <div><h2 data-i18n="processTitle">Procesul de acces în 3 pași</h2></div>
-          <p data-i18n="processLead">Totul este gândit pentru simplitate: utilizatorul înțelege oferta, confirmă interesul și intră direct în canalul principal.</p>
+          <h2>Cómo funciona el acceso en 3 pasos</h2>
+          <p>
+            El recorrido está pensado para que una persona entienda rápido el valor, ingrese sin fricción y reciba una guía clara para arrancar.
+          </p>
         </div>
 
-        <div class="process">
-          <div class="card process-card"><h3 data-i18n="step1Title">Vezi oferta</h3><p data-i18n="step1Text">Ajungi pe pagină și înțelegi imediat ce tip de acces primești și de ce merită să continui.</p></div>
-          <div class="card process-card"><h3 data-i18n="step2Title">Apeși pe buton</h3><p data-i18n="step2Text">Folosești CTA-ul principal și continui direct spre WhatsApp, fără pași inutili sau întreruperi.</p></div>
-          <div class="card process-card"><h3 data-i18n="step3Title">Primești detaliile</h3><p data-i18n="step3Text">După intrare, utilizatorul poate primi mesajul introductiv și pașii necesari pentru onboarding.</p></div>
+        <div class="process-grid">
+          <article class="card step-card">
+            <div class="step-number">1</div>
+            <h3>Revisá la propuesta</h3>
+            <p>Ves una presentación clara del enfoque, el tipo de contenido y la lógica detrás del espacio educativo.</p>
+            <div class="step-foot">Objetivo: generar confianza antes del clic.</div>
+          </article>
+
+          <article class="card step-card">
+            <div class="step-number">2</div>
+            <h3>Entrá al grupo de WhatsApp</h3>
+            <p>Accedés directamente sin rodeos a un entorno privado donde el contenido está organizado para seguimiento diario.</p>
+            <div class="step-foot">Objetivo: reducir fricción y acelerar la conversión.</div>
+          </article>
+
+          <article class="card step-card">
+            <div class="step-number">3</div>
+            <h3>Recibí guía y actualizaciones</h3>
+            <p>Una vez adentro, encontrás orientación inicial, explicación del formato y un flujo continuo de aprendizaje.</p>
+            <div class="step-foot">Objetivo: sostener interés y continuidad dentro de la comunidad.</div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="compliance">
-          <h3 data-i18n="noteTitle">Notă importantă</h3>
-          <p data-i18n="noteText">Această pagină folosește un stil vizual corporate original și elegant pentru prezentarea unei oferte educaționale. Nu este construită pentru a imita identitatea, marca sau prezentarea unei instituții financiare reale.</p>
-          <p class="disclaimer" data-i18n="noteSub">Conținutul are scop informativ și educațional. Orice material despre piață, analiză sau învățare trebuie prezentat clar, responsabil și fără promisiuni nerealiste.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="cta-panel">
-          <div class="eyebrow"><span data-i18n="finalEyebrow">Ultimul pas</span></div>
-          <h2 data-i18n="finalTitle">Intră acum în canalul WhatsApp și vezi detaliile introductive.</h2>
-          <p data-i18n="finalText">Dacă vrei să continui, apasă pe butonul de mai jos. Accesul inițial este gratuit, iar următorii pași sunt primiți direct în conversație.</p>
-          <div class="hero-actions" style="margin-bottom:0;">
-            <a class="btn btn-primary wa-link" href="https://t.ly/ubiYs" data-i18n="finalBtn">Intră pe WhatsApp acum</a>
-            <a class="btn btn-secondary" href="#top" data-i18n="backTop">Revino sus</a>
+    <section class="section reveal">
+      <div class="container community-grid">
+        <article class="card community-card">
+          <h3>Un entorno más ordenado para aprender</h3>
+          <p>
+            Esta propuesta no busca abrumarte con información suelta. La idea es ofrecer una rutina clara: contexto, lectura visual, explicación breve y seguimiento. Eso ayuda a entender mejor qué estás viendo y por qué importa.
+          </p>
+          <div class="metric-grid">
+            <div class="metric-box">
+              <strong>Diario</strong>
+              <span>Actualización frecuente del escenario.</span>
+            </div>
+            <div class="metric-box">
+              <strong>Claro</strong>
+              <span>Lenguaje directo y visual.</span>
+            </div>
+            <div class="metric-box">
+              <strong>Móvil</strong>
+              <span>Acceso simple desde WhatsApp.</span>
+            </div>
           </div>
+        </article>
+
+        <article class="card faq-card">
+          <h3>Preguntas frecuentes</h3>
+          <p>Una pequeña capa de claridad extra para reforzar confianza antes del ingreso.</p>
+          <div class="faq-list">
+            <details class="faq-item" open>
+              <summary>¿Esto es para expertos o también para personas que recién empiezan?</summary>
+              <p>Está pensado para que una persona pueda empezar desde una base simple y, al mismo tiempo, seguir contenido útil de forma diaria.</p>
+            </details>
+            <details class="faq-item">
+              <summary>¿Qué tipo de contenido se comparte?</summary>
+              <p>Análisis de mercado, lecturas visuales, explicaciones de contexto y material orientado a desarrollar criterio.</p>
+            </details>
+            <details class="faq-item">
+              <summary>¿El acceso es desde el celular?</summary>
+              <p>Sí. Toda la experiencia está diseñada para funcionar bien desde móvil, especialmente para usuarios que llegan desde tráfico de anuncios.</p>
+            </details>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta-wrap reveal">
+      <div class="container">
+        <div class="card cta-panel">
+          <div>
+            <h3>Si querés recibir análisis en un formato claro, este es el mejor punto de entrada</h3>
+            <p>
+              Entrá a la comunidad privada en WhatsApp y accedé a una experiencia pensada para aprender a observar el mercado con más orden, más criterio y menos ruido.
+            </p>
+          </div>
+          <div class="cta-actions">
+            <a class="ghost-btn" href="#ejemplos">Ver ejemplos</a>
+            <a class="main-cta js-whatsapp-cta" href="https://t.ly/ubiYs" target="_blank" rel="noopener noreferrer">Accedé ahora</a>
+          </div>
+        </div>
+
+        <div class="card disclaimer-card">
+          <h3>Información importante</h3>
+          <p>
+            Este espacio tiene un enfoque educativo e informativo. El contenido busca ayudar a entender mejor el mercado y desarrollar criterio propio a través de análisis, contexto y seguimiento.
+          </p>
+          <ul>
+            <li>No se presentan resultados garantizados ni promesas de ganancias.</li>
+            <li>La participación y cualquier decisión vinculada al mercado requieren evaluación personal y gestión responsable del riesgo.</li>
+            <li>El objetivo principal es aprendizaje, comprensión y acompañamiento informativo.</li>
+          </ul>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div>
-        © 2026 Market Insight Hub. <span data-i18n="footerRights">Toate drepturile rezervate.</span>
-        <div class="disclaimer" style="margin-top:8px; max-width:760px;" data-i18n="footerNote">This page is for educational presentation only. It does not represent a regulated financial institution, licensed brokerage, or investment advisor.</div>
+  <footer>
+    <div class="container">
+      <div class="card footer-card">
+        <div class="footer-brand">
+          <div class="brand-mark"></div>
+          <div>
+            <div class="brand-title">Centro de Análisis de Mercado</div>
+            <div class="footer-copy">Diseño orientado a una audiencia de Argentina · Acceso directo a comunidad educativa en WhatsApp</div>
+          </div>
+        </div>
+        <a class="main-cta js-whatsapp-cta" href="https://t.ly/ubiYs" target="_blank" rel="noopener noreferrer">Sumate a la comunidad</a>
       </div>
-      <div class="footer-links">
-        <a href="#" data-i18n="privacy">Confidențialitate</a>
-        <a href="#" data-i18n="terms">Termeni</a>
-        <a href="#" data-i18n="contact">Contact</a>
-      </div>
+      <p style="text-align:center; color:#93a6c0; font-size:13px; margin:22px 0 0;">Disclaimer: This content is for educational and informational purposes only and does not constitute financial advice or a promise of results.</p>
     </div>
   </footer>
 
-  <a class="floating-wa wa-link" href="https://t.ly/ubiYs" aria-label="Open access now">
-    <span class="wa-icon">✆</span>
-    <span class="wa-copy">
-      <small>WhatsApp</small>
-      <span data-i18n="floatingWa">Intră acum în grup</span>
-    </span>
-  </a>
-
-  <noscript>
-    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1" alt="" />
-  </noscript>
+  <div class="floating-cta" id="floatingCta">
+    <div class="floating-inner">
+      <div class="floating-copy">
+        <strong>Accedé a la comunidad privada</strong>
+        <span>Recibí análisis, guía de inicio y contenido pensado para aprender desde WhatsApp.</span>
+      </div>
+      <a class="main-cta js-whatsapp-cta" href="https://t.ly/ubiYs" target="_blank" rel="noopener noreferrer">Entrar ahora</a>
+    </div>
+  </div>
 
   <script>
-    const translations = {
-      ro: {
-        brandSub: 'Educație financiară • Analiză de piață • Comunitate privată',
-        topCta: 'Intră pe WhatsApp',
-        eyebrow: 'Acces prioritar • Comunitate privată • Asistență zilnică',
-        urgent1: 'Acces deschis astăzi',
-        urgent2: 'Locuri limitate pentru noii membri',
-        heroTitle: 'Intră acum în comunitatea privată și începe cu un cadru clar de învățare.',
-        heroLead: 'Un spațiu pentru cei care vor să înțeleagă mai clar piețele, să evite greșelile frecvente și să primească explicații simple, structurate și ușor de urmărit.',
-        heroSublead: 'Accesul inițial este gratuit. După intrare, primești detaliile introductive direct în WhatsApp și poți vedea cum este organizată comunitatea.',
-        heroBtnPrimary: 'Intră acum pe WhatsApp',
-        heroBtnSecondary: 'Vezi cum funcționează',
-        ctaNote: 'Fără pași complicați. Fără descărcări. Intri direct în canalul de acces.',
-        metric1: 'Membri activi în comunitate',
-        metric2Value: 'Zilnic',
-        metric2: 'Explicații clare și actualizări educaționale',
-        metric3Value: 'Acces gratuit',
-        metric3: 'Primul pas de intrare fără cost',
-        screenBadge1: 'Member Access Window',
-        screenBadge2: 'Actualizat periodic',
-        float1Label: 'Acces deschis',
-        float1Value: 'Locuri limitate',
-        float1Note: 'Intră acum pentru a vedea pașii introductivi și structura comunității.',
-        float2Label: 'Canal principal',
-        float2Note: 'Confirmi accesul și primești detaliile direct în conversație.',
-        proof1Title: 'Acces rapid', proof1Text: 'Un singur clic până la canalul de intrare.',
-        proof2Title: 'Mesaj clar', proof2Text: 'Utilizatorul înțelege imediat ce primește.',
-        proof3Title: 'Mobile first', proof3Text: 'Experiență optimizată pentru telefon.',
-        proof4Title: 'CTA constant', proof4Text: 'Butonul de intrare rămâne vizibil pe parcurs.',
-        section1Title: 'Un cadru clar, profesionist și ușor de urmărit.',
-        section1Lead: 'Pagina este construită pentru a reduce ezitarea, a inspira încredere și a conduce utilizatorul către un singur pas logic: intrarea în canalul WhatsApp.',
-        card1Title: 'Mesaj simplu', card1Text: 'Promisiunea principală este clară, ușor de înțeles și orientată spre acces imediat.',
-        card2Title: 'Intrare directă', card2Text: 'Fără fricțiuni inutile, fără etape tehnice complicate și fără deturnarea conversiei.',
-        card3Title: 'Imagine premium', card3Text: 'Aspect sobru, modern și credibil, potrivit pentru o ofertă educațională prezentată profesionist.',
-        mediaEyebrow: 'Experiență premium',
-        mediaTitle: 'Claritate vizuală și drum scurt până la conversie.',
-        mediaText: 'Fiecare secțiune susține același obiectiv: utilizatorul să înțeleagă rapid oferta și să intre în grup fără blocaje.',
-        benefitsTitle: 'Ce primește utilizatorul după activare',
-        benefitsLead: 'Un parcurs simplu, clar și fără pași inutili. Intrarea se face rapid, iar detaliile introductive vin direct în conversație.',
-        row1Label: 'Acces la comunitatea privată', row1Value: 'Imediat',
-        row2Label: 'Explicații introductive', row2Value: 'Disponibil',
-        row3Label: 'Format prietenos pentru începători', row3Value: 'Clar',
-        row4Label: 'Experiență optimizată pentru mobil', row4Value: 'Da',
-        pill1: 'Acces direct', pill2: 'Fără descărcări', pill3: 'Mesaj coerent', pill4: 'UX premium',
-        section2Title: 'De ce această pagină convertește mai bine',
-        section2Lead: 'Combinația dintre claritate, credibilitate și un singur CTA puternic reduce ezitarea și crește șansa ca utilizatorul să facă pasul următor.',
-        featuresTitle: 'Elemente cheie de conversie',
-        feature1: 'Headline clar, orientat spre acțiune, fără promisiuni exagerate.',
-        feature2: 'CTA principal repetat strategic în cele mai importante zone ale paginii.',
-        feature3: 'Elemente de încredere și structură vizuală care susțin seriozitatea ofertei.',
-        feature4: 'Acces rapid spre canalul final, fără a rupe fluxul utilizatorului.',
-        mobileTitle: 'Construită pentru mobil și ads traffic',
-        mobile1: 'Headline puternic și lizibil încă din primul ecran.',
-        mobile2: 'CTA vizibil imediat, fără scroll lung până la acțiune.',
-        mobile3: 'Buton flotant care reapare după scroll pentru a susține conversia.',
-        mobile4: 'Structură potrivită pentru trafic din Facebook, TikTok și alte surse mobile.',
-        processTitle: 'Procesul de acces în 3 pași',
-        processLead: 'Totul este gândit pentru simplitate: utilizatorul înțelege oferta, confirmă interesul și intră direct în canalul principal.',
-        step1Title: 'Vezi oferta', step1Text: 'Ajungi pe pagină și înțelegi imediat ce tip de acces primești și de ce merită să continui.',
-        step2Title: 'Apeși pe buton', step2Text: 'Folosești CTA-ul principal și continui direct spre WhatsApp, fără pași inutili sau întreruperi.',
-        step3Title: 'Primești detaliile', step3Text: 'După intrare, utilizatorul poate primi mesajul introductiv și pașii necesari pentru onboarding.',
-        noteTitle: 'Notă importantă',
-        noteText: 'Această pagină folosește un stil vizual corporate original și elegant pentru prezentarea unei oferte educaționale. Nu este construită pentru a imita identitatea, marca sau prezentarea unei instituții financiare reale.',
-        noteSub: 'Conținutul are scop informativ și educațional. Orice material despre piață, analiză sau învățare trebuie prezentat clar, responsabil și fără promisiuni nerealiste.',
-        finalEyebrow: 'Ultimul pas',
-        finalTitle: 'Intră acum în canalul WhatsApp și vezi detaliile introductive.',
-        finalText: 'Dacă vrei să continui, apasă pe butonul de mai jos. Accesul inițial este gratuit, iar următorii pași sunt primiți direct în conversație.',
-        finalBtn: 'Intră pe WhatsApp acum', backTop: 'Revino sus',
-        footerRights: 'Toate drepturile rezervate.',
-        footerNote: 'This page is for educational presentation only. It does not represent a regulated financial institution, licensed brokerage, or investment advisor.',
-        privacy: 'Confidențialitate', terms: 'Termeni', contact: 'Contact',
-        floatingWa: 'Intră acum în grup'
-      },
-      en: {
-        brandSub: 'Financial education • Market analysis • Private community',
-        topCta: 'Join WhatsApp',
-        eyebrow: 'Priority access • Private community • Daily support',
-        urgent1: 'Access open today',
-        urgent2: 'Limited spots for new members',
-        heroTitle: 'Join the private community now and start with a clear learning framework.',
-        heroLead: 'A space for people who want to understand markets more clearly, avoid common mistakes, and receive simple, structured guidance that is easy to follow.',
-        heroSublead: 'Initial access is free. After joining, you receive the introductory details directly on WhatsApp and can see how the community is organized.',
-        heroBtnPrimary: 'Join WhatsApp now',
-        heroBtnSecondary: 'See how it works',
-        ctaNote: 'No complicated steps. No downloads. Direct entry into the access channel.',
-        metric1: 'Active community members',
-        metric2Value: 'Daily',
-        metric2: 'Clear explanations and educational updates',
-        metric3Value: 'Free access',
-        metric3: 'Initial entry without cost',
-        screenBadge1: 'Member Access Window',
-        screenBadge2: 'Updated regularly',
-        float1Label: 'Open access',
-        float1Value: 'Limited spots',
-        float1Note: 'Join now to see the introductory steps and community structure.',
-        float2Label: 'Main channel',
-        float2Note: 'Confirm access and receive the details directly in the conversation.',
-        proof1Title: 'Fast access', proof1Text: 'One click to the entry channel.',
-        proof2Title: 'Clear message', proof2Text: 'The user immediately understands what they get.',
-        proof3Title: 'Mobile first', proof3Text: 'Optimized experience for phone users.',
-        proof4Title: 'Persistent CTA', proof4Text: 'The join button stays visible throughout the page.',
-        section1Title: 'A clear, professional, and easy-to-follow framework.',
-        section1Lead: 'This page is built to reduce hesitation, increase trust, and move the user toward one logical next step: entering the WhatsApp channel.',
-        card1Title: 'Simple message', card1Text: 'The core promise is clear, easy to understand, and oriented toward immediate access.',
-        card2Title: 'Direct entry', card2Text: 'No unnecessary friction, no technical complexity, and no broken conversion flow.',
-        card3Title: 'Premium image', card3Text: 'A sober, modern, credible layout suited to a professionally presented educational offer.',
-        mediaEyebrow: 'Premium experience', mediaTitle: 'Visual clarity and a short path to conversion.', mediaText: 'Each section supports the same goal: help the user understand the offer quickly and join the group without friction.',
-        benefitsTitle: 'What the user receives after activation', benefitsLead: 'A simple, clear path without unnecessary steps. Entry is quick, and introductory details are delivered directly in the conversation.',
-        row1Label: 'Access to the private community', row1Value: 'Immediate', row2Label: 'Introductory guidance', row2Value: 'Available', row3Label: 'Beginner-friendly format', row3Value: 'Clear', row4Label: 'Mobile-optimized experience', row4Value: 'Yes',
-        pill1: 'Direct access', pill2: 'No downloads', pill3: 'Clear message', pill4: 'Premium UX',
-        section2Title: 'Why this page converts better', section2Lead: 'The combination of clarity, credibility, and one strong CTA reduces hesitation and increases the chance that the user takes the next step.',
-        featuresTitle: 'Key conversion elements', feature1: 'Action-oriented headline without exaggerated claims.', feature2: 'Primary CTA repeated strategically in the most important areas.', feature3: 'Trust elements and visual structure that support seriousness.', feature4: 'Fast path to the final channel without breaking the user flow.',
-        mobileTitle: 'Built for mobile and ad traffic', mobile1: 'Strong headline readable from the first screen.', mobile2: 'CTA visible immediately without a long scroll.', mobile3: 'Floating button reappears after scroll to support conversion.', mobile4: 'Structure suited for Facebook, TikTok, and other mobile traffic sources.',
-        processTitle: 'Access process in 3 steps', processLead: 'Everything is designed for simplicity: the user understands the offer, confirms interest, and enters the main channel directly.',
-        step1Title: 'See the offer', step1Text: 'You land on the page and immediately understand what kind of access you get and why it is worth continuing.',
-        step2Title: 'Tap the button', step2Text: 'Use the main CTA and continue directly to WhatsApp without unnecessary steps or interruptions.',
-        step3Title: 'Receive the details', step3Text: 'After joining, the user can receive the intro message and onboarding steps.',
-        noteTitle: 'Important note', noteText: 'This page uses an original and elegant corporate visual style for presenting an educational offer. It is not built to imitate the identity, brand, or presentation of any real financial institution.', noteSub: 'The content is informational and educational. Any market, analysis, or learning material should be presented clearly, responsibly, and without unrealistic promises.',
-        finalEyebrow: 'Final step', finalTitle: 'Join the WhatsApp channel now and receive the introductory details.', finalText: 'If you want to continue, click the button below. Initial access is free, and the next steps are delivered directly in the conversation.', finalBtn: 'Join WhatsApp now', backTop: 'Back to top', footerRights: 'All rights reserved.', footerNote: 'This page is for educational presentation only. It does not represent a regulated financial institution, licensed brokerage, or investment advisor.', privacy: 'Privacy', terms: 'Terms', contact: 'Contact', floatingWa: 'Join the group now'
-      },
-      es: {
-        brandSub: 'Educación financiera • Análisis de mercado • Comunidad privada', topCta: 'Entrar a WhatsApp', eyebrow: 'Acceso prioritario • Comunidad privada • Soporte diario', urgent1: 'Acceso abierto hoy', urgent2: 'Cupos limitados para nuevos miembros', heroTitle: 'Entra ahora en la comunidad privada y empieza con un marco de aprendizaje claro.', heroLead: 'Un espacio para quienes quieren entender mejor los mercados, evitar errores comunes y recibir orientación simple y estructurada.', heroSublead: 'El acceso inicial es gratuito. Después de entrar, recibes los detalles introductorios directamente en WhatsApp.', heroBtnPrimary: 'Entrar ahora a WhatsApp', heroBtnSecondary: 'Ver cómo funciona', ctaNote: 'Sin pasos complicados. Sin descargas. Entrada directa al canal de acceso.', metric1: 'Miembros activos en la comunidad', metric2Value: 'Diario', metric2: 'Explicaciones claras y actualizaciones educativas', metric3Value: 'Acceso gratis', metric3: 'Entrada inicial sin costo', screenBadge1: 'Ventana de acceso', screenBadge2: 'Actualizado regularmente', float1Label: 'Acceso abierto', float1Value: 'Cupos limitados', float1Note: 'Entra ahora para ver los pasos introductorios y la estructura de la comunidad.', float2Label: 'Canal principal', float2Note: 'Confirma el acceso y recibe los detalles directamente en la conversación.', proof1Title: 'Acceso rápido', proof1Text: 'Un clic hasta el canal de entrada.', proof2Title: 'Mensaje claro', proof2Text: 'El usuario entiende enseguida lo que recibe.', proof3Title: 'Mobile first', proof3Text: 'Experiencia optimizada para teléfono.', proof4Title: 'CTA constante', proof4Text: 'El botón de entrada sigue visible durante la página.', section1Title: 'Un marco claro, profesional y fácil de seguir.', section1Lead: 'Esta página está construida para reducir la duda, aumentar la confianza y llevar al usuario a un siguiente paso lógico: entrar al canal de WhatsApp.', card1Title: 'Mensaje simple', card1Text: 'La promesa principal es clara, fácil de entender y orientada al acceso inmediato.', card2Title: 'Entrada directa', card2Text: 'Sin fricción innecesaria, sin complejidad técnica y sin romper el flujo de conversión.', card3Title: 'Imagen premium', card3Text: 'Diseño sobrio, moderno y creíble para una oferta educativa presentada profesionalmente.', mediaEyebrow: 'Experiencia premium', mediaTitle: 'Claridad visual y camino corto hacia la conversión.', mediaText: 'Cada sección apoya el mismo objetivo: ayudar al usuario a entender la oferta rápidamente y entrar al grupo sin fricción.', benefitsTitle: 'Qué recibe el usuario después de activar el acceso', benefitsLead: 'Un recorrido simple y claro, sin pasos innecesarios. La entrada es rápida y los detalles introductorios llegan directamente en la conversación.', row1Label: 'Acceso a la comunidad privada', row1Value: 'Inmediato', row2Label: 'Orientación introductoria', row2Value: 'Disponible', row3Label: 'Formato amigable para principiantes', row3Value: 'Claro', row4Label: 'Experiencia optimizada para móvil', row4Value: 'Sí', pill1: 'Acceso directo', pill2: 'Sin descargas', pill3: 'Mensaje claro', pill4: 'UX premium', section2Title: 'Por qué esta página convierte mejor', section2Lead: 'La combinación de claridad, credibilidad y un CTA fuerte reduce la duda y aumenta la probabilidad de que el usuario dé el siguiente paso.', featuresTitle: 'Elementos clave de conversión', feature1: 'Titular orientado a la acción sin promesas exageradas.', feature2: 'CTA principal repetido estratégicamente en las zonas más importantes.', feature3: 'Elementos de confianza y estructura visual que transmiten seriedad.', feature4: 'Ruta rápida hacia el canal final sin romper el flujo del usuario.', mobileTitle: 'Diseñada para móvil y tráfico de anuncios', mobile1: 'Titular potente y legible desde la primera pantalla.', mobile2: 'CTA visible de inmediato sin necesidad de mucho scroll.', mobile3: 'Botón flotante que reaparece tras el scroll para apoyar la conversión.', mobile4: 'Estructura pensada para Facebook, TikTok y otras fuentes de tráfico móvil.', processTitle: 'Proceso de acceso en 3 pasos', processLead: 'Todo está pensado para la simplicidad: el usuario entiende la oferta, confirma su interés y entra directamente al canal principal.', step1Title: 'Ve la oferta', step1Text: 'Llegas a la página y entiendes enseguida qué tipo de acceso recibes y por qué vale la pena continuar.', step2Title: 'Pulsa el botón', step2Text: 'Usa el CTA principal y continúa directamente a WhatsApp sin pasos innecesarios ni interrupciones.', step3Title: 'Recibe los detalles', step3Text: 'Después de entrar, el usuario puede recibir el mensaje introductorio y los pasos de onboarding.', noteTitle: 'Nota importante', noteText: 'Esta página usa un estilo visual corporativo original y elegante para presentar una oferta educativa. No está construida para imitar la identidad o marca de ninguna institución financiera real.', noteSub: 'El contenido es informativo y educativo. Todo material sobre mercado, análisis o aprendizaje debe presentarse con claridad, responsabilidad y sin promesas irreales.', finalEyebrow: 'Último paso', finalTitle: 'Entra ahora al canal de WhatsApp y recibe los detalles introductorios.', finalText: 'Si quieres continuar, pulsa el botón de abajo. El acceso inicial es gratuito y los siguientes pasos llegan directamente en la conversación.', finalBtn: 'Entrar a WhatsApp ahora', backTop: 'Volver arriba', footerRights: 'Todos los derechos reservados.', footerNote: 'This page is for educational presentation only. It does not represent a regulated financial institution, licensed brokerage, or investment advisor.', privacy: 'Privacidad', terms: 'Términos', contact: 'Contacto', floatingWa: 'Entrar al grupo ahora'
-      },
-      id: {
-        brandSub: 'Edukasi finansial • Analisis pasar • Komunitas privat', topCta: 'Masuk WhatsApp', eyebrow: 'Akses prioritas • Komunitas privat • Dukungan harian', urgent1: 'Akses dibuka hari ini', urgent2: 'Kuota terbatas untuk anggota baru', heroTitle: 'Masuk sekarang ke komunitas privat dan mulai dengan kerangka belajar yang jelas.', heroLead: 'Tempat untuk orang yang ingin memahami pasar dengan lebih jelas, menghindari kesalahan umum, dan menerima panduan sederhana serta terstruktur.', heroSublead: 'Akses awal gratis. Setelah masuk, detail pengantar akan dikirim langsung lewat WhatsApp.', heroBtnPrimary: 'Masuk WhatsApp sekarang', heroBtnSecondary: 'Lihat cara kerjanya', ctaNote: 'Tanpa langkah rumit. Tanpa download. Langsung masuk ke kanal akses.', metric1: 'Anggota komunitas aktif', metric2Value: 'Harian', metric2: 'Penjelasan jelas dan update edukatif', metric3Value: 'Akses gratis', metric3: 'Masuk awal tanpa biaya', screenBadge1: 'Jendela akses anggota', screenBadge2: 'Diperbarui berkala', float1Label: 'Akses dibuka', float1Value: 'Kuota terbatas', float1Note: 'Masuk sekarang untuk melihat langkah pengantar dan struktur komunitas.', float2Label: 'Kanal utama', float2Note: 'Konfirmasi akses dan terima detail langsung di percakapan.', proof1Title: 'Akses cepat', proof1Text: 'Satu klik ke kanal masuk.', proof2Title: 'Pesan jelas', proof2Text: 'Pengguna langsung paham apa yang didapat.', proof3Title: 'Mobile first', proof3Text: 'Dioptimalkan untuk ponsel.', proof4Title: 'CTA konsisten', proof4Text: 'Tombol masuk tetap terlihat saat scroll.', section1Title: 'Kerangka yang jelas, profesional, dan mudah diikuti.', section1Lead: 'Halaman ini dibuat untuk mengurangi keraguan, meningkatkan kepercayaan, dan mengarahkan pengguna ke satu langkah logis: masuk ke kanal WhatsApp.', card1Title: 'Pesan sederhana', card1Text: 'Janji utama jelas, mudah dipahami, dan langsung mengarah ke akses.', card2Title: 'Masuk langsung', card2Text: 'Tanpa friksi yang tidak perlu, tanpa kerumitan teknis, dan tanpa memutus alur konversi.', card3Title: 'Tampilan premium', card3Text: 'Desain yang rapi, modern, dan kredibel untuk penawaran edukatif yang dipresentasikan secara profesional.', mediaEyebrow: 'Pengalaman premium', mediaTitle: 'Kejelasan visual dan jalur singkat menuju konversi.', mediaText: 'Setiap bagian mendukung tujuan yang sama: membantu pengguna memahami penawaran dengan cepat dan masuk ke grup tanpa hambatan.', benefitsTitle: 'Apa yang diterima pengguna setelah aktivasi', benefitsLead: 'Alur yang sederhana dan jelas tanpa langkah yang tidak perlu. Masuk cepat, dan detail pengantar diberikan langsung di percakapan.', row1Label: 'Akses ke komunitas privat', row1Value: 'Langsung', row2Label: 'Panduan pengantar', row2Value: 'Tersedia', row3Label: 'Format ramah pemula', row3Value: 'Jelas', row4Label: 'Pengalaman mobile optimal', row4Value: 'Ya', pill1: 'Akses langsung', pill2: 'Tanpa download', pill3: 'Pesan jelas', pill4: 'UX premium', section2Title: 'Mengapa halaman ini lebih efektif', section2Lead: 'Kombinasi kejelasan, kredibilitas, dan satu CTA kuat mengurangi keraguan dan meningkatkan peluang pengguna mengambil langkah berikutnya.', featuresTitle: 'Elemen konversi utama', feature1: 'Headline yang mengarahkan aksi tanpa klaim berlebihan.', feature2: 'CTA utama diulang secara strategis di area terpenting.', feature3: 'Elemen kepercayaan dan struktur visual yang mendukung kesan serius.', feature4: 'Jalur cepat ke kanal akhir tanpa memutus alur pengguna.', mobileTitle: 'Dibuat untuk mobile dan traffic ads', mobile1: 'Headline kuat dan terbaca sejak layar pertama.', mobile2: 'CTA langsung terlihat tanpa scroll panjang.', mobile3: 'Tombol mengambang muncul lagi setelah scroll untuk mendukung konversi.', mobile4: 'Struktur cocok untuk Facebook, TikTok, dan sumber traffic mobile lainnya.', processTitle: 'Proses akses dalam 3 langkah', processLead: 'Semua dibuat sesederhana mungkin: pengguna memahami penawaran, mengonfirmasi minat, lalu masuk langsung ke kanal utama.', step1Title: 'Lihat penawaran', step1Text: 'Pengguna tiba di halaman dan langsung memahami jenis akses yang didapat dan mengapa layak untuk lanjut.', step2Title: 'Klik tombol', step2Text: 'Gunakan CTA utama dan lanjut langsung ke WhatsApp tanpa langkah tambahan.', step3Title: 'Terima detail', step3Text: 'Setelah masuk, pengguna dapat menerima pesan pengantar dan langkah onboarding.', noteTitle: 'Catatan penting', noteText: 'Halaman ini menggunakan gaya visual korporat yang orisinal dan elegan untuk presentasi penawaran edukatif. Halaman ini tidak dibuat untuk meniru identitas atau merek institusi keuangan nyata.', noteSub: 'Konten bersifat informatif dan edukatif. Materi tentang pasar, analisis, atau pembelajaran harus disampaikan dengan jelas, bertanggung jawab, dan tanpa janji yang tidak realistis.', finalEyebrow: 'Langkah terakhir', finalTitle: 'Masuk sekarang ke kanal WhatsApp dan lihat detail pengantar.', finalText: 'Jika ingin lanjut, klik tombol di bawah. Akses awal gratis, dan langkah berikutnya diberikan langsung di percakapan.', finalBtn: 'Masuk WhatsApp sekarang', backTop: 'Kembali ke atas', footerRights: 'Hak cipta dilindungi.', footerNote: 'This page is for educational presentation only. It does not represent a regulated financial institution, licensed brokerage, or investment advisor.', privacy: 'Privasi', terms: 'Ketentuan', contact: 'Kontak', floatingWa: 'Masuk grup sekarang'
-      },
-      hi: {
-        brandSub: 'वित्तीय शिक्षा • मार्केट विश्लेषण • निजी समुदाय', topCta: 'WhatsApp पर जाएँ', eyebrow: 'प्राथमिक पहुँच • निजी समुदाय • दैनिक सहायता', urgent1: 'आज पहुँच खुली है', urgent2: 'नए सदस्यों के लिए सीमित स्थान', heroTitle: 'अभी निजी समुदाय में शामिल हों और एक स्पष्ट सीखने की रूपरेखा से शुरुआत करें।', heroLead: 'उन लोगों के लिए एक स्थान जो बाज़ार को अधिक स्पष्ट रूप से समझना चाहते हैं, आम गलतियों से बचना चाहते हैं और सरल, संरचित मार्गदर्शन चाहते हैं।', heroSublead: 'शुरुआती पहुँच निःशुल्क है। जुड़ने के बाद शुरुआती विवरण सीधे WhatsApp पर मिलते हैं।', heroBtnPrimary: 'अभी WhatsApp जॉइन करें', heroBtnSecondary: 'देखें यह कैसे काम करता है', ctaNote: 'कोई जटिल चरण नहीं। कोई डाउनलोड नहीं। सीधे एक्सेस चैनल में प्रवेश।', metric1: 'सक्रिय समुदाय सदस्य', metric2Value: 'दैनिक', metric2: 'स्पष्ट व्याख्याएँ और शैक्षिक अपडेट', metric3Value: 'मुफ़्त पहुँच', metric3: 'शुरुआती प्रवेश बिना शुल्क', screenBadge1: 'सदस्य प्रवेश विंडो', screenBadge2: 'नियमित अपडेट', float1Label: 'प्रवेश खुला', float1Value: 'सीमित स्थान', float1Note: 'अभी जुड़ें और शुरुआती चरण व समुदाय संरचना देखें।', float2Label: 'मुख्य चैनल', float2Note: 'प्रवेश की पुष्टि करें और विवरण सीधे बातचीत में प्राप्त करें।', proof1Title: 'तेज़ पहुँच', proof1Text: 'प्रवेश चैनल तक एक क्लिक।', proof2Title: 'स्पष्ट संदेश', proof2Text: 'उपयोगकर्ता तुरंत समझ जाता है कि उसे क्या मिलेगा।', proof3Title: 'मोबाइल फर्स्ट', proof3Text: 'फोन उपयोग के लिए अनुकूलित।', proof4Title: 'स्थिर CTA', proof4Text: 'जॉइन बटन पूरे पेज में दिखाई देता रहता है।', section1Title: 'एक स्पष्ट, पेशेवर और आसानी से समझ आने वाला ढाँचा।', section1Lead: 'यह पेज झिझक कम करने, भरोसा बढ़ाने और उपयोगकर्ता को एक ही तार्किक अगले कदम की ओर ले जाने के लिए बनाया गया है: WhatsApp चैनल में प्रवेश।', card1Title: 'सरल संदेश', card1Text: 'मुख्य वादा स्पष्ट, समझने में आसान और तत्काल पहुँच पर केंद्रित है।', card2Title: 'सीधा प्रवेश', card2Text: 'कोई अनावश्यक रुकावट नहीं, कोई तकनीकी जटिलता नहीं, और कोई टूटा हुआ कन्वर्ज़न फ्लो नहीं।', card3Title: 'प्रीमियम छवि', card3Text: 'एक आधुनिक, भरोसेमंद लेआउट जो पेशेवर शैक्षिक प्रस्तुति के लिए उपयुक्त है।', mediaEyebrow: 'प्रीमियम अनुभव', mediaTitle: 'दृश्य स्पष्टता और कन्वर्ज़न तक छोटा रास्ता।', mediaText: 'हर सेक्शन एक ही लक्ष्य को सपोर्ट करता है: उपयोगकर्ता ऑफ़र को जल्दी समझे और बिना रुकावट समूह में शामिल हो।', benefitsTitle: 'एक्टिवेशन के बाद उपयोगकर्ता को क्या मिलता है', benefitsLead: 'एक सरल और स्पष्ट मार्ग, बिना अनावश्यक चरणों के। प्रवेश तेज़ है और शुरुआती विवरण सीधे बातचीत में मिलते हैं।', row1Label: 'निजी समुदाय तक पहुँच', row1Value: 'तुरंत', row2Label: 'शुरुआती मार्गदर्शन', row2Value: 'उपलब्ध', row3Label: 'शुरुआती लोगों के लिए अनुकूल', row3Value: 'स्पष्ट', row4Label: 'मोबाइल-अनुकूल अनुभव', row4Value: 'हाँ', pill1: 'सीधी पहुँच', pill2: 'कोई डाउनलोड नहीं', pill3: 'स्पष्ट संदेश', pill4: 'प्रीमियम UX', section2Title: 'यह पेज बेहतर कन्वर्ट क्यों करता है', section2Lead: 'स्पष्टता, भरोसे और एक मजबूत CTA का संयोजन झिझक कम करता है और अगले कदम की संभावना बढ़ाता है।', featuresTitle: 'मुख्य कन्वर्ज़न तत्व', feature1: 'एक्शन-ओरिएंटेड हेडलाइन, बिना बढ़ा-चढ़ाकर दावे के।', feature2: 'मुख्य CTA को रणनीतिक रूप से अहम क्षेत्रों में दोहराया गया है।', feature3: 'भरोसा बढ़ाने वाले तत्व और दृश्य संरचना।', feature4: 'अंतिम चैनल तक तेज़ रास्ता, बिना उपयोगकर्ता फ्लो तोड़े।', mobileTitle: 'मोबाइल और ऐड ट्रैफ़िक के लिए बनाया गया', mobile1: 'पहली स्क्रीन से पढ़ने योग्य मजबूत हेडलाइन।', mobile2: 'CTA तुरंत दिखाई देता है, लंबा स्क्रॉल नहीं चाहिए।', mobile3: 'फ्लोटिंग बटन स्क्रॉल के बाद फिर दिखता है ताकि कन्वर्ज़न बढ़े।', mobile4: 'Facebook, TikTok और अन्य मोबाइल ट्रैफ़िक स्रोतों के लिए उपयुक्त।', processTitle: '3 चरणों में प्रवेश प्रक्रिया', processLead: 'सब कुछ सरलता के लिए डिज़ाइन किया गया है: उपयोगकर्ता ऑफ़र समझता है, रुचि की पुष्टि करता है और सीधे मुख्य चैनल में प्रवेश करता है।', step1Title: 'ऑफ़र देखें', step1Text: 'उपयोगकर्ता पेज पर आता है और तुरंत समझ जाता है कि उसे किस प्रकार की पहुँच मिलेगी और क्यों आगे बढ़ना चाहिए।', step2Title: 'बटन दबाएँ', step2Text: 'मुख्य CTA का उपयोग करें और बिना अनावश्यक चरणों के सीधे WhatsApp पर जाएँ।', step3Title: 'विवरण प्राप्त करें', step3Text: 'जुड़ने के बाद उपयोगकर्ता परिचय संदेश और ऑनबोर्डिंग चरण प्राप्त कर सकता है।', noteTitle: 'महत्वपूर्ण नोट', noteText: 'यह पेज एक शैक्षिक ऑफ़र को प्रस्तुत करने के लिए मौलिक और सुरुचिपूर्ण कॉर्पोरेट दृश्य शैली का उपयोग करता है। इसे किसी वास्तविक वित्तीय संस्था की पहचान या ब्रांड की नकल करने के लिए नहीं बनाया गया है।', noteSub: 'सामग्री सूचनात्मक और शैक्षिक है। बाज़ार, विश्लेषण या सीखने से जुड़ी सामग्री स्पष्ट, ज़िम्मेदार और बिना अवास्तविक वादों के प्रस्तुत की जानी चाहिए।', finalEyebrow: 'अंतिम चरण', finalTitle: 'अभी WhatsApp चैनल में शामिल हों और शुरुआती विवरण प्राप्त करें।', finalText: 'यदि आप आगे बढ़ना चाहते हैं, नीचे दिए गए बटन पर क्लिक करें। शुरुआती पहुँच निःशुल्क है और अगले चरण सीधे बातचीत में मिलेंगे।', finalBtn: 'अभी WhatsApp जॉइन करें', backTop: 'ऊपर जाएँ', footerRights: 'सभी अधिकार सुरक्षित।', footerNote: 'This page is for educational presentation only. It does not represent a regulated financial institution, licensed brokerage, or investment advisor.', privacy: 'गोपनीयता', terms: 'शर्तें', contact: 'संपर्क', floatingWa: 'अभी समूह जॉइन करें'
+    const floatingCta = document.getElementById('floatingCta');
+    const topbar = document.querySelector('.topbar');
+    const revealItems = document.querySelectorAll('.reveal');
+    let revealTimerStarted = false;
+
+    const showFloatingCta = () => {
+      if (!floatingCta.classList.contains('visible')) {
+        floatingCta.classList.add('visible');
       }
     };
 
-    function getCountryLanguage() {
-      const host = (location.hostname || '').toLowerCase();
-      if (host.endsWith('.ro')) return 'ro';
-      if (host.endsWith('.es')) return 'es';
-      return null;
-    }
+    const handleScrollReveal = () => {
+      const triggerPoint = window.innerHeight * 0.35;
+      if (window.scrollY > 8) {
+        topbar.classList.add('scrolled');
+      } else {
+        topbar.classList.remove('scrolled');
+      }
+      if (window.scrollY > triggerPoint && !revealTimerStarted) {
+        revealTimerStarted = true;
+        setTimeout(showFloatingCta, 3000);
+      }
+    };
 
-    function detectLanguage() {
-      const saved = localStorage.getItem('mih_lang');
-      if (saved && translations[saved]) return saved;
-
-      const fromHost = getCountryLanguage();
-      if (fromHost && translations[fromHost]) return fromHost;
-
-      const browserLang = (navigator.language || '').toLowerCase();
-      if (browserLang.startsWith('ro')) return 'ro';
-      if (browserLang.startsWith('es')) return 'es';
-      if (browserLang.startsWith('id')) return 'id';
-      if (browserLang.startsWith('hi')) return 'hi';
-      return 'en';
-    }
-
-    function applyTranslations(lang) {
-      const map = translations[lang] || translations.en;
-      document.documentElement.lang = lang;
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (map[key]) el.textContent = map[key];
-      });
-      document.querySelectorAll('[data-lang-btn]').forEach(btn => {
-        btn.classList.toggle('active', btn.getAttribute('data-lang-btn') === lang);
-      });
-      localStorage.setItem('mih_lang', lang);
-    }
-
-    function initLanguage() {
-      const current = detectLanguage();
-      applyTranslations(current);
-      document.querySelectorAll('[data-lang-btn]').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const lang = btn.getAttribute('data-lang-btn');
-          applyTranslations(lang);
+    const trackWhatsAppClick = (label) => {
+      if (typeof fbq === 'function') {
+        fbq('trackCustom', 'WhatsAppClick', {
+          destination: 'whatsapp_group',
+          content_name: label || 'whatsapp_cta',
+          page_variant: 'argentina_es'
         });
-      });
-    }
+      }
+    };
 
-    function trackCTA(label) {
-      if (typeof fbq === 'function') fbq('trackCustom', 'WhatsAppClick', {label});
-      if (typeof ttq === 'object' && typeof ttq.track === 'function') ttq.track('ClickButton', {button_name: label});
-    }
-
-    function initCTATracking() {
-      document.querySelectorAll('.wa-link').forEach((el, index) => {
-        el.addEventListener('click', () => {
-          trackCTA(`wa_cta_${index + 1}`);
-        });
-      });
-    }
-
-    function initFloatingButton() {
-      let glowTimer = null;
-      const threshold = 260;
-      const toggleButton = () => {
-        if (window.scrollY > threshold) {
-          document.body.classList.add('show-wa');
-          if (!document.body.classList.contains('wa-glow')) {
-            if (glowTimer) clearTimeout(glowTimer);
-            glowTimer = setTimeout(() => {
-              document.body.classList.add('wa-glow');
-            }, 3000);
-          }
-        } else {
-          document.body.classList.remove('show-wa');
-          document.body.classList.remove('wa-glow');
-          if (glowTimer) clearTimeout(glowTimer);
+    document.querySelectorAll('.js-whatsapp-cta').forEach((button, index) => {
+      button.addEventListener('click', () => {
+        const label = button.textContent.trim() || `cta_${index + 1}`;
+        trackWhatsAppClick(label);
+        if (typeof fbq === 'function') {
+          fbq('track', 'Lead', {
+            content_name: label,
+            content_category: 'whatsapp_join',
+            page_variant: 'argentina_es'
+          });
         }
-      };
-      toggleButton();
-      window.addEventListener('scroll', toggleButton, { passive: true });
+      });
+    });
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            if (entry.target.id === 'ejemplos' && typeof fbq === 'function') {
+              fbq('track', 'ViewContent', {
+                content_name: 'analysis_examples',
+                content_category: 'landing_section',
+                page_variant: 'argentina_es'
+              });
+            }
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.16 });
+
+      revealItems.forEach((item) => observer.observe(item));
+    } else {
+      revealItems.forEach((item) => item.classList.add('in-view'));
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      initLanguage();
-      initFloatingButton();
-      initCTATracking();
-    });
+    handleScrollReveal();
+    window.addEventListener('scroll', handleScrollReveal, { passive: true });
   </script>
 </body>
 </html>
