@@ -3,1572 +3,524 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="$1" />
-  <meta name="theme-color" content="#06101d" />
-  <meta property="og:title" content="Centro de Análisis de Mercado | Educación financiera y comunidad privada" />
-  <meta property="og:description" content="Accedé a una comunidad privada en WhatsApp con análisis diarios, guía de inicio y contenidos pensados para aprender a leer el mercado con más claridad." />
-  <meta property="og:type" content="website" />
-  <meta name="format-detection" content="telephone=no" />
-  <title>Centro de Análisis de Mercado | Educación financiera y comunidad privada</title>
-  <style>
-    :root {
-      --bg: #06101d;
-      --bg-soft: #0b1930;
-      --panel: rgba(10, 24, 45, 0.86);
-      --panel-strong: rgba(14, 30, 55, 0.96);
-      --line: rgba(255,255,255,0.08);
-      --line-soft: rgba(214, 176, 96, 0.22);
-      --text: #f4f7fb;
-      --muted: #a7b6cc;
-      --gold: #d8b46c;
-      --gold-2: #f2d497;
-      --green: #63d3a0;
-      --shadow: 0 22px 60px rgba(0,0,0,0.36);
-      --radius-xl: 24px;
-      --radius-lg: 20px;
-      --radius-md: 16px;
-      --container: 1180px;
-      --hero-glow-1: radial-gradient(circle at 20% 10%, rgba(30, 96, 205, 0.22), transparent 30%);
-      --hero-glow-2: radial-gradient(circle at 75% 12%, rgba(216, 180, 108, 0.22), transparent 28%);
-      --hero-glow-3: radial-gradient(circle at 55% 65%, rgba(32, 68, 120, 0.16), transparent 32%);
-    }
+  <title>Comunidad Privada de Educación Financiera | Argentina</title>
+  <meta name="description" content="Aprendé a leer el mercado con más claridad, menos ruido y una estructura simple. Sumate a nuestra comunidad privada de aprendizaje financiero." />
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body::selection { background: rgba(216, 180, 108, 0.24); color: #ffffff; }
-
-    body {
-      margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
-      background:
-        var(--hero-glow-1),
-        var(--hero-glow-2),
-        var(--hero-glow-3),
-        linear-gradient(180deg, #04101e 0%, #071729 45%, #06111f 100%);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
-    .container {
-      width: min(var(--container), calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 60;
-      backdrop-filter: blur(16px);
-      background: rgba(4, 11, 22, 0.74);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .topbar.scrolled {
-      background: rgba(4, 11, 22, 0.86);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
-    }
-
-    .topbar-inner {
-      min-height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      min-width: 0;
-    }
-
-    .brand-mark {
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
-      background:
-        linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02)),
-        radial-gradient(circle at 30% 25%, rgba(241, 210, 146, 0.7), transparent 38%),
-        linear-gradient(180deg, #1c335c, #0c1b33);
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: inset 0 1px 1px rgba(255,255,255,0.08), 0 14px 34px rgba(0,0,0,0.28);
-      flex: 0 0 auto;
-    }
-
-    .brand-text {
-      min-width: 0;
-    }
-
-    .brand-title {
-      font-size: 1.15rem;
-      font-weight: 800;
-      letter-spacing: 0.01em;
-      white-space: nowrap;
-    }
-
-    .brand-subtitle {
-      color: var(--muted);
-      font-size: 0.9rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .nav-side {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .market-badge,
-    .lang-pill,
-    .mini-pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.04);
-      color: #dce7f7;
-      font-size: 0.84rem;
-    }
-
-    .market-badge {
-      padding: 8px 12px;
-      gap: 8px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
-    }
-
-    .market-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 0 5px rgba(99, 211, 160, 0.12);
-    }
-
-    .lang-pill,
-    .mini-pill {
-      width: 42px;
-      height: 42px;
-      font-weight: 700;
-    }
-
-    .lang-pill.active {
-      background: linear-gradient(180deg, var(--gold-2), var(--gold));
-      color: #1d1608;
-      border-color: rgba(255,255,255,0.14);
-      box-shadow: 0 10px 24px rgba(216, 180, 108, 0.22);
-    }
-
-    .main-cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 999px;
-      border: none;
-      background: linear-gradient(180deg, var(--gold-2), var(--gold));
-      color: #1a1308;
-      font-weight: 800;
-      letter-spacing: 0.01em;
-      box-shadow: 0 14px 32px rgba(216, 180, 108, 0.26);
-      cursor: pointer;
-      transition: transform .2s ease, box-shadow .2s ease;
-    }
-
-    .main-cta:hover { transform: translateY(-1px); box-shadow: 0 18px 36px rgba(216, 180, 108, 0.32); }
-
-    .hero {
-      padding: 46px 0 28px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.18fr 0.82fr;
-      gap: 18px;
-      align-items: stretch;
-    }
-
-    .card {
-      background: linear-gradient(180deg, rgba(13, 28, 50, 0.9), rgba(9, 20, 37, 0.92));
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .hero-main {
-      min-height: 620px;
-      padding: 42px 42px 34px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      isolation: isolate;
-    }
-
-    .hero-main::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 24% 14%, rgba(40, 100, 219, 0.18), transparent 28%),
-        radial-gradient(circle at 76% 18%, rgba(216, 180, 108, 0.18), transparent 26%),
-        linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0));
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(216, 180, 108, 0.25);
-      color: var(--gold-2);
-      font-weight: 700;
-      font-size: 0.84rem;
-      letter-spacing: 0.02em;
-      background: rgba(216, 180, 108, 0.08);
-      width: fit-content;
-      margin-bottom: 18px;
-    }
-
-    .hero-main h1 {
-      font-size: clamp(2.2rem, 5vw, 4.4rem);
-      line-height: 1.05;
-      margin: 0 0 18px;
-      letter-spacing: -0.03em;
-      max-width: 10ch;
-    }
-
-    .hero-main p.lead {
-      margin: 0;
-      color: #d6e2f0;
-      font-size: 1.08rem;
-      max-width: 61ch;
-    }
-
-    .hero-note-row {
-      margin-top: 26px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .soft-pill {
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.07);
-      color: #d7e3f2;
-      font-size: 0.92rem;
-    }
-
-    .hero-bottom {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 18px;
-      align-items: end;
-      margin-top: 34px;
-    }
-
-    .chart-frame {
-      padding: 22px;
-      border-radius: 22px;
-      background: linear-gradient(180deg, rgba(4, 14, 28, 0.74), rgba(9, 20, 37, 0.88));
-      border: 1px solid rgba(255,255,255,0.06);
-      min-height: 270px;
-    }
-
-    .chart-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 16px;
-    }
-
-    .chart-title {
-      font-weight: 800;
-      font-size: 1rem;
-    }
-
-    .chart-sub {
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    .chart-grid {
-      position: relative;
-      height: 190px;
-      border-radius: 16px;
-      background:
-        linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(15, 31, 54, 0.92), rgba(8, 18, 34, 0.96));
-      background-size: 56px 56px, 56px 56px, auto;
-      overflow: hidden;
-    }
-
-    .line-path,
-    .line-path-alt {
-      position: absolute;
-      inset: auto 0 0 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0.95;
-    }
-
-    .tag-cluster {
-      display: grid;
-      gap: 12px;
-    }
-
-    .mini-metric {
-      padding: 18px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .mini-metric strong {
-      display: block;
-      font-size: 1.12rem;
-      margin-bottom: 6px;
-    }
-
-    .mini-metric span {
-      color: var(--muted);
-      font-size: 0.96rem;
-    }
-
-    .hero-side {
-      min-height: 620px;
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .side-panel {
-      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.02));
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 20px;
-      padding: 22px;
-    }
-
-    .side-panel h3 {
-      margin: 0 0 10px;
-      font-size: 1.26rem;
-      line-height: 1.2;
-    }
-
-    .side-panel p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.98rem;
-    }
-
-    .benefit-list,
-    .check-list {
-      display: grid;
-      gap: 14px;
-      margin-top: 16px;
-    }
-
-    .benefit-item,
-    .check-item {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: start;
-      gap: 12px;
-      padding: 14px 0;
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .benefit-item:first-child,
-    .check-item:first-child {
-      border-top: none;
-      padding-top: 0;
-    }
-
-    .num,
-    .check-dot {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.88rem;
-      font-weight: 800;
-      flex: 0 0 auto;
-    }
-
-    .num {
-      background: rgba(216, 180, 108, 0.16);
-      color: var(--gold-2);
-      border: 1px solid rgba(216, 180, 108, 0.22);
-    }
-
-    .check-dot {
-      background: rgba(99, 211, 160, 0.14);
-      color: #9bf1c9;
-      border: 1px solid rgba(99, 211, 160, 0.22);
-    }
-
-    .benefit-copy strong,
-    .check-copy strong {
-      display: block;
-      font-size: 1rem;
-      margin-bottom: 3px;
-    }
-
-    .benefit-copy span,
-    .check-copy span {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .benefit-tag {
-      color: var(--gold-2);
-      font-weight: 700;
-      font-size: 0.92rem;
-      white-space: nowrap;
-      margin-left: 6px;
-    }
-
-    .side-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .section {
-      padding: 28px 0;
-      position: relative;
-    }
-
-    .section::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 0;
-      transform: translateX(-50%);
-      width: min(1180px, calc(100% - 32px));
-      height: 1px;
-      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.08), rgba(255,255,255,0));
-      opacity: 0.6;
-    }
-
-    .section-head {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 24px;
-      align-items: end;
-      margin-bottom: 20px;
-    }
-
-    .section h2 {
-      margin: 0;
-      font-size: clamp(1.9rem, 4vw, 3.4rem);
-      line-height: 1.08;
-      letter-spacing: -0.03em;
-    }
-
-    .section-head p {
-      margin: 0;
-      color: #d5e1ef;
-      font-size: 1.03rem;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .info-card {
-      padding: 26px;
-    }
-
-    .info-card h3 {
-      margin: 0 0 18px;
-      font-size: 1.45rem;
-      line-height: 1.2;
-    }
-
-    .bullet-list {
-      display: grid;
-      gap: 14px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .bullet-list li {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 12px;
-      align-items: start;
-      color: #d7e3f2;
-    }
-
-    .bullet-list li span:first-child {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: rgba(99, 211, 160, 0.14);
-      border: 1px solid rgba(99, 211, 160, 0.22);
-      color: #9bf1c9;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.78rem;
-      font-weight: 800;
-      margin-top: 2px;
-    }
-
-    .bullet-note {
-      margin-top: 18px;
-      padding-top: 18px;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      color: var(--muted);
-      font-size: 0.96rem;
-    }
-
-    .analysis-samples {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .sample-card {
-      padding: 0;
-      overflow: hidden;
-    }
-
-    .sample-chart {
-      padding: 18px;
-      height: 220px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      background: linear-gradient(180deg, rgba(8, 19, 36, 0.96), rgba(11, 23, 43, 0.92));
-    }
-
-    .chart-canvas {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      border-radius: 16px;
-      overflow: hidden;
-      background:
-        linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(15, 31, 54, 0.92), rgba(7, 17, 30, 0.98));
-      background-size: 48px 48px, 48px 48px, auto;
-    }
-
-    .sample-body {
-      padding: 22px;
-    }
-
-    .sample-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .sample-top strong {
-      font-size: 1.08rem;
-    }
-
-    .sample-chip {
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--gold-2);
-      background: rgba(216, 180, 108, 0.1);
-      border: 1px solid rgba(216, 180, 108, 0.18);
-      white-space: nowrap;
-    }
-
-    .sample-body p {
-      margin: 0 0 14px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .sample-points {
-      display: grid;
-      gap: 10px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .sample-points li {
-      color: #d9e4f2;
-      font-size: 0.94rem;
-      padding-left: 16px;
-      position: relative;
-    }
-
-    .sample-points li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 9px;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--gold);
-    }
-
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .step-card {
-      padding: 28px;
-      min-height: 280px;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-
-    .step-number {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(180deg, var(--gold-2), var(--gold));
-      color: #1c1508;
-      font-weight: 900;
-      box-shadow: 0 12px 28px rgba(216, 180, 108, 0.24);
-    }
-
-    .step-card h3 {
-      margin: 0;
-      font-size: 1.42rem;
-    }
-
-    .step-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.98rem;
-    }
-
-    .step-foot {
-      margin-top: auto;
-      padding-top: 18px;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      color: #dbe6f4;
-      font-size: 0.95rem;
-    }
-
-    .community-grid {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 18px;
-    }
-
-    .community-card,
-    .faq-card,
-    .cta-panel,
-    .disclaimer-card,
-    .footer-card {
-      padding: 28px;
-    }
-
-    .community-card h3,
-    .faq-card h3,
-    .cta-panel h3,
-    .disclaimer-card h3 {
-      margin: 0 0 14px;
-      font-size: 1.5rem;
-      line-height: 1.16;
-    }
-
-    .community-card p,
-    .faq-card p,
-    .cta-panel p,
-    .disclaimer-card p,
-    .footer-copy {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.98rem;
-    }
-
-    .credibility-strip {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 18px;
-    }
-
-    .credibility-item {
-      padding: 22px;
-      border-radius: 20px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.02));
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .credibility-item strong {
-      display: block;
-      font-size: 1.06rem;
-      margin-bottom: 8px;
-      color: #eef4fb;
-    }
-
-    .credibility-item span {
-      display: block;
-      color: var(--muted);
-      font-size: 0.94rem;
-    }
-
-    .metric-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 20px;
-    }
-
-    .metric-box {
-      padding: 18px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .metric-box strong {
-      display: block;
-      font-size: 1.25rem;
-      margin-bottom: 4px;
-    }
-
-    .metric-box span {
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .faq-list {
-      display: grid;
-      gap: 14px;
-      margin-top: 18px;
-    }
-
-    details.faq-item {
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.06);
-      background: rgba(255,255,255,0.03);
-      padding: 16px 18px;
-    }
-
-    details.faq-item summary {
-      cursor: pointer;
-      list-style: none;
-      font-weight: 700;
-    }
-
-    details.faq-item summary::-webkit-details-marker { display: none; }
-
-    details.faq-item p {
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .cta-wrap {
-      padding: 8px 0 34px;
-    }
-
-    .cta-panel {
-      display: grid;
-      grid-template-columns: 1.1fr auto;
-      gap: 18px;
-      align-items: center;
-      background:
-        radial-gradient(circle at 18% 30%, rgba(35, 97, 205, 0.16), transparent 26%),
-        radial-gradient(circle at 82% 18%, rgba(216, 180, 108, 0.18), transparent 22%),
-        linear-gradient(180deg, rgba(12, 28, 49, 0.96), rgba(9, 19, 35, 0.98));
-    }
-
-    .cta-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: flex-end;
-    }
-
-    .ghost-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 18px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.08);
-      color: #e4edf9;
-      background: rgba(255,255,255,0.04);
-      font-weight: 700;
-    }
-
-    .disclaimer-card {
-      margin-top: 18px;
-    }
-
-    .disclaimer-card ul {
-      margin: 16px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-    }
-
-    .disclaimer-card li + li { margin-top: 10px; }
-
-    footer {
-      padding: 0 0 90px;
-    }
-
-    .footer-card {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity .6s ease, transform .6s ease;
-    }
-
-    .reveal.in-view {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .floating-cta {
-      position: fixed;
-      left: 50%;
-      bottom: 18px;
-      transform: translateX(-50%) translateY(110px);
-      width: min(780px, calc(100% - 24px));
-      z-index: 80;
-      background: rgba(8, 18, 34, 0.88);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 24px;
-      backdrop-filter: blur(18px);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.34);
-      transition: transform .45s ease, opacity .45s ease;
-      opacity: 0;
-      overflow: hidden;
-    }
-
-    .floating-cta.visible {
-      transform: translateX(-50%) translateY(0);
-      opacity: 1;
-      animation: breathe 3.2s ease-in-out infinite 3s;
-    }
-
-    .floating-inner {
-      padding: 14px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .floating-copy {
-      min-width: 0;
-    }
-
-    .floating-copy strong {
-      display: block;
-      font-size: 1rem;
-      margin-bottom: 2px;
-    }
-
-    .floating-copy span {
-      display: block;
-      color: var(--muted);
-      font-size: 0.9rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .floating-inner .main-cta {
-      min-width: 180px;
-      flex: 0 0 auto;
-    }
-
-    @keyframes breathe {
-      0%, 100% { box-shadow: 0 20px 50px rgba(0,0,0,0.34), 0 0 0 0 rgba(216, 180, 108, 0.12); }
-      50% { box-shadow: 0 20px 50px rgba(0,0,0,0.34), 0 0 0 10px rgba(216, 180, 108, 0.04); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation: none !important;
-        transition: none !important;
-        scroll-behavior: auto !important;
-      }
-    }
-
-    @media (max-width: 1080px) {
-      .hero-grid,
-      .section-head,
-      .community-grid,
-      .cta-panel {
-        grid-template-columns: 1fr;
-      }
-
-      .analysis-samples,
-      .process-grid,
-      .grid-2,
-      .credibility-strip {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-bottom {
-        grid-template-columns: 1fr;
-      }
-
-      .metric-grid {
-        grid-template-columns: 1fr 1fr 1fr;
-      }
-
-      .cta-actions {
-        justify-content: flex-start;
-      }
-    }
-
-    @media (max-width: 760px) {
-      .topbar-inner {
-        min-height: auto;
-        padding: 14px 0;
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .brand-subtitle,
-      .market-badge,
-      .mini-pill { display: none; }
-
-      .nav-side { width: 100%; justify-content: space-between; }
-
-      .hero { padding-top: 24px; }
-
-      .hero-main,
-      .hero-side,
-      .info-card,
-      .step-card,
-      .community-card,
-      .faq-card,
-      .cta-panel,
-      .disclaimer-card,
-      .footer-card {
-        padding: 22px;
-      }
-
-      .hero-main { min-height: auto; }
-      .hero-side { min-height: auto; }
-
-      .hero-main h1 {
-        max-width: 100%;
-        font-size: clamp(2rem, 10vw, 3.1rem);
-      }
-
-      .hero-main p.lead,
-      .section-head p,
-      .community-card p,
-      .faq-card p,
-      .cta-panel p { font-size: 0.98rem; }
-
-      .metric-grid,
-      .process-grid,
-      .analysis-samples {
-        grid-template-columns: 1fr;
-      }
-
-      .floating-inner {
-        align-items: stretch;
-        flex-direction: column;
-      }
-
-      .floating-inner .main-cta {
-        width: 100%;
-        min-width: 0;
-      }
-
-      .footer-card {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-  </style>
+  <!-- Meta Pixel Code -->
   <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
+    if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];
+    t=b.createElement(e);t.async=!0;
+    t.src=v;
+    s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}
+    (window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
     fbq('init', '769607062918048');
     fbq('track', 'PageView');
+
+    function trackLead(source) {
+      fbq('track', 'Lead', { content_name: source || 'cta_click' });
+    }
   </script>
   <noscript>
     <img height="1" width="1" style="display:none"
-         src="https://www.facebook.com/tr?id=769607062918048&ev=PageView&noscript=1"/>
+      src="https://www.facebook.com/tr?id=769607062918048&ev=PageView&noscript=1"/>
   </noscript>
+  <!-- End Meta Pixel Code -->
+
+  <style>
+    :root{
+      --bg:#07101d;
+      --bg-soft:#0b162b;
+      --surface:#0d1b33;
+      --surface-2:#102240;
+      --text:#f6f8fc;
+      --muted:#b4c0d7;
+      --line:rgba(255,255,255,.08);
+      --gold:#ffb84d;
+      --gold-2:#ffd68c;
+      --blue:#67b0ff;
+      --green:#6ad7a9;
+      --danger:#ff8f8f;
+      --shadow:0 24px 70px rgba(0,0,0,.35);
+      --radius:26px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(103,176,255,.15), transparent 28%),
+        radial-gradient(circle at 0% 0%, rgba(255,184,77,.10), transparent 24%),
+        linear-gradient(180deg, #07101d 0%, #091223 100%);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{text-decoration:none;color:inherit}
+    img{display:block;max-width:100%}
+    .container{width:min(var(--max), calc(100% - 32px));margin:0 auto}
+
+    .topbar{
+      background:rgba(255,255,255,.04);
+      border-bottom:1px solid var(--line);
+      color:#dce5f7;
+      font-size:13px;
+    }
+    .topbar .inner{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      padding:10px 16px;
+      text-align:center;
+      flex-wrap:wrap;
+    }
+
+    .nav{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(14px);
+      background:rgba(7,16,29,.74);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav-inner{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      padding:16px 0;
+    }
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.2px}
+    .brand-mark{
+      width:42px;height:42px;border-radius:14px;display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--gold),#ff9d00);color:#111;font-weight:900;
+      box-shadow:0 10px 24px rgba(255,184,77,.22);
+    }
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      min-height:54px;padding:0 22px;border-radius:999px;font-weight:800;
+      transition:.24s ease;border:1px solid transparent;cursor:pointer;
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{
+      background:linear-gradient(135deg,var(--gold),var(--gold-2));
+      color:#111;box-shadow:0 16px 36px rgba(255,184,77,.18);
+    }
+    .btn-secondary{
+      background:rgba(255,255,255,.04);color:#fff;border-color:rgba(255,255,255,.1);
+    }
+    .btn-ghost{
+      background:transparent;color:#dbe6fa;border-color:rgba(255,255,255,.14);
+    }
+
+    .hero{padding:64px 0 28px}
+    .hero-grid{
+      display:grid;grid-template-columns:1.08fr .92fr;gap:28px;align-items:center;
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;
+      background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09);
+      color:#dde7f8;font-size:13px;margin-bottom:18px;
+    }
+    .eyebrow .dot{
+      width:8px;height:8px;border-radius:50%;background:var(--green);
+      box-shadow:0 0 0 6px rgba(106,215,169,.12);
+    }
+    h1{
+      margin:0 0 16px;font-size:clamp(36px,5vw,62px);line-height:1.04;letter-spacing:-1.7px;
+    }
+    .hero .lead{
+      margin:0 0 20px;color:var(--muted);font-size:clamp(16px,2vw,20px);max-width:720px;
+    }
+    .hero-proof{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0 28px;
+    }
+    .proof-item{
+      background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:18px;padding:14px 16px;
+    }
+    .proof-item strong{display:block;font-size:15px;margin-bottom:4px}
+    .proof-item span{color:var(--muted);font-size:14px}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+    .microcopy{margin-top:12px;color:#bac4d8;font-size:13px}
+
+    .hero-card{
+      position:relative;overflow:hidden;
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08);border-radius:30px;padding:22px;box-shadow:var(--shadow);
+    }
+    .hero-card::after{
+      content:"";position:absolute;right:-40px;bottom:-60px;width:220px;height:220px;border-radius:50%;
+      background:radial-gradient(circle, rgba(103,176,255,.22), transparent 68%);
+      pointer-events:none;
+    }
+    .panel{
+      background:rgba(6,14,27,.56);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:18px;margin-bottom:14px;
+    }
+    .panel:last-child{margin-bottom:0}
+    .panel h3{margin:0 0 8px;font-size:17px}
+    .panel p{margin:0;color:var(--muted);font-size:14px}
+    .signal-list{display:grid;gap:12px;margin-top:14px}
+    .signal{
+      display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:flex-start;
+      background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:14px;
+    }
+    .signal-icon{
+      width:34px;height:34px;border-radius:12px;display:grid;place-items:center;font-weight:900;
+      background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#111;
+    }
+    .signal strong{display:block;font-size:15px;margin-bottom:2px}
+    .signal span{font-size:13px;color:var(--muted)}
+
+    .section{padding:28px 0}
+    .section-title{margin:0 0 10px;font-size:clamp(28px,3vw,40px);line-height:1.12;letter-spacing:-1px}
+    .section-sub{margin:0 0 24px;color:var(--muted);max-width:760px}
+
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.048), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:22px;box-shadow:var(--shadow);
+    }
+    .card h3{margin:0 0 8px;font-size:20px}
+    .card p{margin:0;color:var(--muted);font-size:15px}
+    .card ul{margin:10px 0 0;padding-left:18px;color:var(--muted)}
+    .card li{margin:6px 0}
+
+    .split{
+      display:grid;grid-template-columns:1fr 1fr;gap:18px;
+    }
+
+    .checklist{display:grid;gap:10px}
+    .check{
+      display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:flex-start;
+      background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:14px;
+    }
+    .check b{color:#fff}
+    .check span{color:var(--muted);font-size:14px}
+
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .step-num{
+      width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:900;
+      background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#111;margin-bottom:14px;
+    }
+
+    .story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .story{
+      min-height:250px;
+      background:linear-gradient(180deg, rgba(16,34,64,.92), rgba(11,24,47,.92));
+      border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:20px;position:relative;overflow:hidden;
+    }
+    .story-label{
+      display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.08);
+      color:#dfe8fa;font-size:12px;margin-bottom:14px;
+    }
+    .story h4{margin:0 0 10px;font-size:20px}
+    .story p{margin:0;color:var(--muted)}
+
+    .compare{
+      display:grid;grid-template-columns:1fr 1fr;gap:18px;
+    }
+    .compare .card h3{margin-bottom:12px}
+    .bad{border-color:rgba(255,143,143,.18)}
+    .good{border-color:rgba(106,215,169,.2)}
+
+    .faq{display:grid;gap:12px}
+    details{
+      background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:16px 18px;
+    }
+    summary{cursor:pointer;font-weight:800;list-style:none}
+    summary::-webkit-details-marker{display:none}
+    details p{margin:12px 0 0;color:var(--muted)}
+
+    .cta-panel{
+      background:
+        radial-gradient(circle at top right, rgba(103,176,255,.18), transparent 34%),
+        linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08);border-radius:30px;padding:30px;box-shadow:var(--shadow);text-align:center;
+    }
+    .cta-panel h3{margin:0 0 10px;font-size:clamp(30px,3vw,40px);letter-spacing:-1px}
+    .cta-panel p{margin:0 auto 20px;max-width:760px;color:var(--muted)}
+
+    .footer{padding:18px 0 36px;color:#afbad1;font-size:13px}
+    .legal{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:18px}
+    .legal strong{display:block;color:#fff;margin-bottom:8px;font-size:14px}
+
+    @media (max-width: 980px){
+      .hero-grid,.grid-3,.split,.steps,.story-grid,.compare{grid-template-columns:1fr}
+      .hero-proof{grid-template-columns:1fr}
+    }
+    @media (max-width: 640px){
+      .container{width:min(var(--max), calc(100% - 20px))}
+      .nav-inner{padding:12px 0}
+      .hero{padding-top:42px}
+      .card,.story,.hero-card,.cta-panel{padding:18px}
+      .cta-row{flex-direction:column;align-items:stretch}
+      .btn{width:100%}
+    }
+  </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="container topbar-inner">
+  <div class="topbar">
+    <div class="inner">
+      <span>Educación financiera para Argentina</span>
+      <span>•</span>
+      <span>Comunidad privada de aprendizaje</span>
+      <span>•</span>
+      <span>Acceso directo por WhatsApp</span>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <div class="container nav-inner">
       <div class="brand">
-        <div class="brand-mark"></div>
-        <div class="brand-text">
-          <div class="brand-title">Centro de Análisis de Mercado</div>
-          <div class="brand-subtitle">Educación financiera · Lectura de mercado · Comunidad privada</div>
+        <div class="brand-mark">AR</div>
+        <span>Comunidad privada</span>
+      </div>
+      <a class="btn btn-primary" href="https://t.ly/ubiYs" onclick="trackLead('nav_cta')">Sumarme ahora</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">
+          <span class="dot"></span>
+          <span>Menos ruido · Más claridad · Mejor criterio</span>
+        </div>
+
+        <h1>Dejá de mirar el mercado con dudas y empezá a entender qué mirar primero</h1>
+
+        <p class="lead">
+          Sumate a una comunidad privada donde vas a encontrar una forma más ordenada de seguir escenarios,
+          leer movimientos y desarrollar criterio con un enfoque simple, educativo y pensado para Argentina.
+        </p>
+
+        <div class="hero-proof">
+          <div class="proof-item">
+            <strong>Entrás rápido</strong>
+            <span>Acceso directo por WhatsApp desde el celular.</span>
+          </div>
+          <div class="proof-item">
+            <strong>Entendés mejor</strong>
+            <span>Lecturas más claras, sin depender del caos del día.</span>
+          </div>
+          <div class="proof-item">
+            <strong>Seguís con estructura</strong>
+            <span>Una forma más ordenada de mirar y aprender.</span>
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://t.ly/ubiYs" onclick="trackLead('hero_primary_cta')">Entrar a la comunidad</a>
+          <a class="btn btn-secondary" href="#incluye">Ver qué incluye</a>
+        </div>
+
+        <div class="microcopy">
+          Enfoque educativo e informativo. Sin promesas irreales. Sin presión para actuar.
         </div>
       </div>
-      <div class="nav-side">
-        <div class="market-badge"><span class="market-dot"></span> Enfoque para Argentina</div>
-        <div class="lang-pill active">ES</div>
-        <a class="main-cta js-whatsapp-cta" href="https://t.ly/ubiYs" target="_blank" rel="noopener noreferrer">Sumate a WhatsApp</a>
+
+      <div class="hero-card">
+        <div class="panel">
+          <h3>Qué vas a encontrar apenas entrás</h3>
+          <p>
+            Un entorno más ordenado para entender contexto, niveles, escenarios y lógica de mercado sin perderte entre señales sueltas.
+          </p>
+        </div>
+        <div class="panel">
+          <h3>Por qué esto importa</h3>
+          <p>
+            Cuando hay demasiada información, la diferencia no está en ver más. Está en saber qué mirar primero y cómo interpretarlo.
+          </p>
+        </div>
+        <div class="signal-list">
+          <div class="signal">
+            <div class="signal-icon">1</div>
+            <div><strong>Lectura más clara</strong><span>Escenarios y estructura antes que ruido.</span></div>
+          </div>
+          <div class="signal">
+            <div class="signal-icon">2</div>
+            <div><strong>Acceso simple</strong><span>Comunidad privada y experiencia directa desde WhatsApp.</span></div>
+          </div>
+          <div class="signal">
+            <div class="signal-icon">3</div>
+            <div><strong>Mejor criterio</strong><span>Un marco más ordenado para acompañar movimientos y contexto.</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <article class="card hero-main">
-          <div>
-            <div class="eyebrow">Análisis diario · Educación financiera</div>
-            <h1>Entendé el mercado con más claridad y menos ruido</h1>
-            <p class="lead">
-              Un espacio pensado para personas que quieren aprender a leer tendencias, ordenar ideas y recibir análisis de mercado en un formato claro. En vez de depender de rumores o decisiones impulsivas, accedés a una comunidad educativa con enfoque práctico.
-            </p>
-            <div class="hero-note-row">
-              <div class="soft-pill">Lectura de contexto</div>
-              <div class="soft-pill">Niveles clave</div>
-              <div class="soft-pill">Gestión de riesgo</div>
-              <div class="soft-pill">Guía para empezar</div>
-            </div>
-          </div>
-
-          <div class="hero-bottom">
-            <div class="chart-frame">
-              <div class="chart-head">
-                <div>
-                  <div class="chart-title">Ejemplo de lectura de mercado</div>
-                  <div class="chart-sub">Estructura, zonas clave y validación del escenario</div>
-                </div>
-                <div class="sample-chip">Vista educativa</div>
-              </div>
-              <div class="chart-grid">
-                <svg class="line-path" viewBox="0 0 600 260" preserveAspectRatio="none" aria-hidden="true">
-                  <defs>
-                    <linearGradient id="goldStroke" x1="0" y1="0" x2="1" y2="0">
-                      <stop offset="0%" stop-color="#8f7640" />
-                      <stop offset="55%" stop-color="#d8b46c" />
-                      <stop offset="100%" stop-color="#f2d497" />
-                    </linearGradient>
-                  </defs>
-                  <path d="M0,188 C52,176 82,156 118,148 C161,138 182,160 220,142 C254,125 278,98 320,106 C362,114 386,162 422,154 C465,145 495,95 532,70 C552,57 573,52 600,48" fill="none" stroke="url(#goldStroke)" stroke-width="5" stroke-linecap="round"/>
-                  <path d="M370,40 L370,220" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-dasharray="8 8" />
-                  <path d="M120,130 L500,130" stroke="rgba(99,211,160,0.18)" stroke-width="2" stroke-dasharray="8 8" />
-                  <circle cx="220" cy="142" r="6" fill="#63d3a0" />
-                  <circle cx="532" cy="70" r="6" fill="#f2d497" />
-                </svg>
-              </div>
-            </div>
-            <div class="tag-cluster">
-              <div class="mini-metric">
-                <strong>Contexto primero</strong>
-                <span>Antes de mirar un movimiento puntual, se analiza el panorama general y la lógica del escenario.</span>
-              </div>
-              <div class="mini-metric">
-                <strong>Menos improvisación</strong>
-                <span>El objetivo es desarrollar criterio, no reaccionar emocionalmente a cada cambio del mercado.</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <aside class="card hero-side">
-          <section class="side-panel">
-            <h3>¿Qué recibís al entrar?</h3>
-            <p>Acceso rápido a una comunidad educativa privada en WhatsApp, contenidos organizados y una ruta clara para empezar.</p>
-            <div class="benefit-list">
-              <div class="benefit-item">
-                <div class="num">1</div>
-                <div class="benefit-copy">
-                  <strong>Análisis diarios</strong>
-                  <span>Lectura de escenarios, zonas relevantes y explicación de contexto.</span>
-                </div>
-                <div class="benefit-tag">Diario</div>
-              </div>
-              <div class="benefit-item">
-                <div class="num">2</div>
-                <div class="benefit-copy">
-                  <strong>Guía de inicio</strong>
-                  <span>Un punto de partida simple para entender cómo aprovechar el contenido desde el primer día.</span>
-                </div>
-                <div class="benefit-tag">Claro</div>
-              </div>
-              <div class="benefit-item">
-                <div class="num">3</div>
-                <div class="benefit-copy">
-                  <strong>Formato pensado para aprender</strong>
-                  <span>Menos ruido, más estructura y explicaciones útiles para el seguimiento diario.</span>
-                </div>
-                <div class="benefit-tag">Práctico</div>
-              </div>
-              <div class="benefit-item">
-                <div class="num">4</div>
-                <div class="benefit-copy">
-                  <strong>Acceso desde el celular</strong>
-                  <span>Todo el flujo está diseñado para entrar, entender y seguir desde móvil sin vueltas.</span>
-                </div>
-                <div class="benefit-tag">Móvil</div>
-              </div>
-            </div>
-            <div class="side-tags">
-              <div class="soft-pill">Ingreso directo</div>
-              <div class="soft-pill">Sin pasos innecesarios</div>
-              <div class="soft-pill">Contenido guiado</div>
-            </div>
-          </section>
-
-          <section class="side-panel">
-            <h3>Orientado a una necesidad real</h3>
-            <div class="check-list">
-              <div class="check-item">
-                <div class="check-dot">✓</div>
-                <div class="check-copy">
-                  <strong>Entender la volatilidad</strong>
-                  <span>Aprender a leer movimientos del mercado con más contexto.</span>
-                </div>
-              </div>
-              <div class="check-item">
-                <div class="check-dot">✓</div>
-                <div class="check-copy">
-                  <strong>Ordenar decisiones</strong>
-                  <span>Evitar actuar por impulso y construir un marco más claro.</span>
-                </div>
-              </div>
-              <div class="check-item">
-                <div class="check-dot">✓</div>
-                <div class="check-copy">
-                  <strong>Seguir una rutina</strong>
-                  <span>Recibir actualización frecuente en un entorno continuo de aprendizaje.</span>
-                </div>
-              </div>
-            </div>
-          </section>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section reveal">
-      <div class="container">
-        <div class="research-header">
-          <div>
-            <strong>Research Desk · Argentina Edition</strong>
-            <span>Lectura estructurada del mercado con enfoque educativo y continuidad diaria.</span>
-          </div>
-          <div class="research-badges">
-            <div class="research-badge">Daily Brief</div>
-            <div class="research-badge">Market Structure</div>
-            <div class="research-badge">Risk Framework</div>
-          </div>
-        </div>
-
-        <div class="credibility-strip">
-          <div class="credibility-item">
-            <strong>Marco de análisis</strong>
-            <span>Contexto, estructura y niveles clave en cada lectura.</span>
-          </div>
-          <div class="credibility-item">
-            <strong>Enfoque educativo</strong>
-            <span>Contenido para desarrollar criterio, no para reaccionar.</span>
-          </div>
-          <div class="credibility-item">
-            <strong>Experiencia móvil</strong>
-            <span>Optimizado para consumo desde WhatsApp.</span>
-          </div>
-          <div class="credibility-item">
-            <strong>Comunicación sobria</strong>
-            <span>Menos promesas, más claridad y consistencia.</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section reveal">
-      <div class="container">
-        <div class="section-head">
-          <h2>Marco metodológico de análisis</h2>
-          <p>
-            Un enfoque claro permite interpretar mejor el mercado. Este modelo ordena cómo se observa, valida y gestiona cada escenario.
-          </p>
-        </div>
-
-        <div class="process-grid">
-          <article class="card step-card">
-            <div class="step-number">1</div>
-            <h3>Contexto macro</h3>
-            <p>Se analiza el entorno general antes de cualquier decisión puntual.</p>
-          </article>
-          <article class="card step-card">
-            <div class="step-number">2</div>
-            <h3>Estructura técnica</h3>
-            <p>Identificación de tendencia, zonas clave y comportamiento del precio.</p>
-          </article>
-          <article class="card step-card">
-            <div class="step-number">3</div>
-            <h3>Validación</h3>
-            <p>Definición de qué confirma o invalida cada escenario.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section reveal">
-      <div class="container">
-        <div class="section-head">
-          <h2>Ejemplo de brief diario</h2>
-          <p>
-            Simulación de cómo se presenta una lectura diaria dentro del entorno educativo.
-          </p>
-        </div>
-
-        <div class="grid-2">
-          <article class="card info-card">
-            <h3>Market Brief · Apertura</h3>
-            <ul class="bullet-list">
-              <li><span>•</span><span><strong>Sesgo base:</strong> continuidad con vigilancia en zonas clave.</span></li>
-              <li><span>•</span><span><strong>Nivel clave:</strong> área que define la validez del escenario.</span></li>
-              <li><span>•</span><span><strong>Escenario alternativo:</strong> qué cambia si falla la hipótesis.</span></li>
-              <li><span>•</span><span><strong>Lectura operativa:</strong> prioridad en confirmación y control de riesgo.</span></li>
-            </ul>
-          </article>
-
-          <article class="card info-card">
-            <h3>Notas del research desk</h3>
-            <p>
-              Este tipo de estructura ayuda a entender que hay un proceso detrás del contenido. No es solo información suelta, sino una forma consistente de interpretar el mercado.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section reveal" id="ejemplos">
-      <div class="container">
-        <div class="section-head">
-          <h2>Ejemplos del tipo de contenido que vas a encontrar</h2>
-          <p>
-            Esta sección está diseñada para que el visitante vea “análisis” y no solo “promoción”. Podés reemplazar estos bloques por capturas reales, gráficos comentados o imágenes de informes cuando quieras llevarlo a una versión aún más fuerte.
-          </p>
-        </div>
-
-        <div class="analysis-samples">
-
-          <article class="card sample-card">
-            <div class="sample-chart">
-              <img src="https://images.unsplash.com/photo-1642790551116-18e2d3f2a444?q=80&w=1200&auto=format&fit=crop" alt="Grafico de mercado" />
-            </div>
-            <div class="sample-body">
-              <div class="sample-top">
-                <strong>BTC · Estructura alcista</strong>
-                <span class="sample-chip">Soporte clave</span>
-              </div>
-              <p>Zona marcada donde el precio reacciona. Mientras se mantenga, el escenario principal sigue vigente.</p>
-              <ul class="sample-points">
-                <li>Soporte validado en múltiples tests.</li>
-                <li>Reacción con volumen creciente.</li>
-                <li>Escenario válido mientras no se pierda el nivel.</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="card sample-card">
-            <div class="sample-chart">
-              <img src="https://images.unsplash.com/photo-1640161704729-cbe966a08476?q=80&w=1200&auto=format&fit=crop" alt="Grafico tecnico" />
-            </div>
-            <div class="sample-body">
-              <div class="sample-top">
-                <strong>ETH · Zona de decisión</strong>
-                <span class="sample-chip">Breakout</span>
-              </div>
-              <p>El precio entra en una zona donde necesita confirmar dirección. Se espera validación antes de actuar.</p>
-              <ul class="sample-points">
-                <li>Compresión previa al movimiento.</li>
-                <li>Zona de alta liquidez.</li>
-                <li>Confirmación necesaria para continuidad.</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="card sample-card">
-            <div class="sample-chart">
-              <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=1200&auto=format&fit=crop" alt="Analisis de riesgo" />
-            </div>
-            <div class="sample-body">
-              <div class="sample-top">
-                <strong>Gestión de riesgo</strong>
-                <span class="sample-chip">Plan</span>
-              </div>
-              <p>No todo movimiento es operable. La clave es definir invalidación antes de entrar.</p>
-              <ul class="sample-points">
-                <li>Entrada basada en confirmación.</li>
-                <li>Invalidación clara.</li>
-                <li>Control del riesgo como prioridad.</li>
-              </ul>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Cómo funciona el acceso en 3 pasos</h2>
-          <p>
-            El recorrido está pensado para que una persona entienda rápido el valor, ingrese sin fricción y reciba una guía clara para arrancar.
-          </p>
-        </div>
-
-        <div class="process-grid">
-          <article class="card step-card">
-            <div class="step-number">1</div>
-            <h3>Revisá la propuesta</h3>
-            <p>Ves una presentación clara del enfoque, el tipo de contenido y la lógica detrás del espacio educativo.</p>
-            <div class="step-foot">Objetivo: generar confianza antes del clic.</div>
-          </article>
-
-          <article class="card step-card">
-            <div class="step-number">2</div>
-            <h3>Entrá al grupo de WhatsApp</h3>
-            <p>Accedés directamente sin rodeos a un entorno privado donde el contenido está organizado para seguimiento diario.</p>
-            <div class="step-foot">Objetivo: reducir fricción y acelerar la conversión.</div>
-          </article>
-
-          <article class="card step-card">
-            <div class="step-number">3</div>
-            <h3>Recibí guía y actualizaciones</h3>
-            <p>Una vez adentro, encontrás orientación inicial, explicación del formato y un flujo continuo de aprendizaje.</p>
-            <div class="step-foot">Objetivo: sostener interés y continuidad dentro de la comunidad.</div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section reveal">
-      <div class="container community-grid">
-        <article class="card community-card">
-          <h3>Un entorno más ordenado para aprender</h3>
-          <p>
-            Esta propuesta no busca abrumarte con información suelta. La idea es ofrecer una rutina clara: contexto, lectura visual, explicación breve y seguimiento. Eso ayuda a entender mejor qué estás viendo y por qué importa.
-          </p>
-          <div class="metric-grid">
-            <div class="metric-box">
-              <strong>Diario</strong>
-              <span>Actualización frecuente del escenario.</span>
-            </div>
-            <div class="metric-box">
-              <strong>Claro</strong>
-              <span>Lenguaje directo y visual.</span>
-            </div>
-            <div class="metric-box">
-              <strong>Móvil</strong>
-              <span>Acceso simple desde WhatsApp.</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="card faq-card">
-          <h3>Preguntas frecuentes</h3>
-          <p>Una pequeña capa de claridad extra para reforzar confianza antes del ingreso.</p>
-          <div class="faq-list">
-            <details class="faq-item" open>
-              <summary>¿Esto es para expertos o también para personas que recién empiezan?</summary>
-              <p>Está pensado para que una persona pueda empezar desde una base simple y, al mismo tiempo, seguir contenido útil de forma diaria.</p>
-            </details>
-            <details class="faq-item">
-              <summary>¿Qué tipo de contenido se comparte?</summary>
-              <p>Análisis de mercado, lecturas visuales, explicaciones de contexto y material orientado a desarrollar criterio.</p>
-            </details>
-            <details class="faq-item">
-              <summary>¿El acceso es desde el celular?</summary>
-              <p>Sí. Toda la experiencia está diseñada para funcionar bien desde móvil, especialmente para usuarios que llegan desde tráfico de anuncios.</p>
-            </details>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="cta-wrap reveal">
-      <div class="container">
-        <div class="card cta-panel">
-          <div>
-            <h3>Si querés recibir análisis en un formato claro, este es el mejor punto de entrada</h3>
-            <p>
-              Entrá a la comunidad privada en WhatsApp y accedé a una experiencia pensada para aprender a observar el mercado con más orden, más criterio y menos ruido.
-            </p>
-          </div>
-          <div class="cta-actions">
-            <a class="ghost-btn" href="#ejemplos">Ver ejemplos</a>
-            <a class="main-cta js-whatsapp-cta" href="https://t.ly/ubiYs" target="_blank" rel="noopener noreferrer">Accedé ahora</a>
-          </div>
-        </div>
-
-        <div class="card disclaimer-card">
-          <h3>Información importante</h3>
-          <p>
-            Este espacio tiene un enfoque educativo e informativo. El contenido busca ayudar a entender mejor el mercado y desarrollar criterio propio a través de análisis, contexto y seguimiento.
-          </p>
-          <ul>
-            <li>No se presentan resultados garantizados ni promesas de ganancias.</li>
-            <li>La participación y cualquier decisión vinculada al mercado requieren evaluación personal y gestión responsable del riesgo.</li>
-            <li>El objetivo principal es aprendizaje, comprensión y acompañamiento informativo.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
+  <section class="section" id="incluye">
     <div class="container">
-      <div class="card footer-card">
-        <div class="footer-brand">
-          <div class="brand-mark"></div>
-          <div>
-            <div class="brand-title">Centro de Análisis de Mercado</div>
-            <div class="footer-copy">Diseño orientado a una audiencia de Argentina · Acceso directo a comunidad educativa en WhatsApp</div>
-          </div>
+      <h2 class="section-title">Qué incluye la comunidad</h2>
+      <p class="section-sub">
+        La idea no es llenarte de información. La idea es ayudarte a entender más rápido qué mirar, cómo leerlo y cómo seguir un enfoque más ordenado.
+      </p>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Lectura de mercado</h3>
+          <p>Contexto, zonas relevantes y explicación simple de los movimientos para que entiendas qué importa y qué no.</p>
         </div>
-        <a class="main-cta js-whatsapp-cta" href="https://t.ly/ubiYs" target="_blank" rel="noopener noreferrer">Sumate a la comunidad</a>
+        <div class="card">
+          <h3>Marco de aprendizaje</h3>
+          <p>Una estructura clara para no depender de impulsos, mensajes sueltos o ruido constante.</p>
+        </div>
+        <div class="card">
+          <h3>Comunidad privada</h3>
+          <p>Acceso a un espacio más ordenado para seguir el contenido con una experiencia cómoda desde el celular.</p>
+        </div>
       </div>
-      <p style="text-align:center; color:#93a6c0; font-size:13px; margin:22px 0 0;">Disclaimer: This content is for educational and informational purposes only and does not constitute financial advice or a promise of results.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div class="card">
+        <h3>Qué obtenés apenas entrás</h3>
+        <div class="checklist">
+          <div class="check"><div>✓</div><div><b>Ingreso rápido al grupo</b><br><span>Entrás directo y empezás a ver el contenido sin pasos complejos.</span></div></div>
+          <div class="check"><div>✓</div><div><b>Una forma más simple de seguir el mercado</b><br><span>Menos confusión, más foco en estructura y contexto.</span></div></div>
+          <div class="check"><div>✓</div><div><b>Un punto de partida más ordenado</b><br><span>Ideal para quienes quieren empezar con criterio y no con ansiedad.</span></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Por qué conecta con Argentina</h3>
+        <p>
+          En Argentina mucha gente busca entender mejor el mercado para tomar decisiones con más calma frente a la volatilidad, la incertidumbre y el exceso de opiniones cruzadas.
+          Por eso el foco está puesto en claridad, lectura y estructura: menos ruido, más criterio.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Cómo es la experiencia</h2>
+      <p class="section-sub">Un recorrido simple para entrar, entender y seguir el contenido con más claridad.</p>
+      <div class="steps">
+        <div class="card">
+          <div class="step-num">1</div>
+          <h3>Entrás por WhatsApp</h3>
+          <p>El acceso está pensado para ser rápido y cómodo desde el celular.</p>
+        </div>
+        <div class="card">
+          <div class="step-num">2</div>
+          <h3>Empezás a ordenar la lectura</h3>
+          <p>Ves escenarios, lógica y estructura para dejar de reaccionar a cada movimiento.</p>
+        </div>
+        <div class="card">
+          <div class="step-num">3</div>
+          <h3>Seguís con mejor criterio</h3>
+          <p>Tenés una base más sólida para acompañar lo que pasa en el mercado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Ejemplos del tipo de contenido que podés ver</h2>
+      <p class="section-sub">La comunidad trabaja con una lógica educativa: contexto, estructura y lectura antes que impulso.</p>
+      <div class="story-grid">
+        <div class="story">
+          <div class="story-label">Escenario</div>
+          <h4>BTC: zonas clave y reacción del precio</h4>
+          <p>Lectura ordenada de niveles importantes, comportamiento del precio y posibles escenarios para entender qué mirar primero.</p>
+        </div>
+        <div class="story">
+          <div class="story-label">Contexto</div>
+          <h4>ETH: impulso, pausa y validación</h4>
+          <p>Cómo interpretar continuidad, presión y cambios de ritmo sin seguir movimientos a ciegas.</p>
+        </div>
+        <div class="story">
+          <div class="story-label">Criterio</div>
+          <h4>Riesgo y lectura antes de actuar</h4>
+          <p>Un enfoque más sereno para reducir decisiones impulsivas y construir una base mental más sólida.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container compare">
+      <div class="card bad">
+        <h3>Lo que mucha gente hace hoy</h3>
+        <ul>
+          <li>Consume demasiadas opiniones al mismo tiempo</li>
+          <li>Reacciona a cada movimiento sin contexto</li>
+          <li>Se siente saturada y no sabe qué priorizar</li>
+        </ul>
+      </div>
+      <div class="card good">
+        <h3>Lo que buscás construir acá</h3>
+        <ul>
+          <li>Una lectura más limpia del mercado</li>
+          <li>Más criterio antes de sacar conclusiones</li>
+          <li>Un proceso más simple para aprender y seguir escenarios</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Preguntas frecuentes</h2>
+      <p class="section-sub">Lo más importante antes de entrar, explicado de forma simple.</p>
+      <div class="faq">
+        <details>
+          <summary>¿Esto es para principiantes?</summary>
+          <p>Sí. Está pensado para personas que quieren empezar a entender mejor el mercado con una estructura más clara, incluso si hoy sienten que hay demasiada información.</p>
+        </details>
+        <details>
+          <summary>¿Voy a recibir acceso por WhatsApp?</summary>
+          <p>Sí. El ingreso está pensado para ser simple y directo, priorizando una experiencia cómoda desde el celular.</p>
+        </details>
+        <details>
+          <summary>¿Prometen resultados?</summary>
+          <p>No. El enfoque es educativo e informativo. El valor está en la claridad, el criterio y la estructura, no en promesas irreales.</p>
+        </details>
+        <details>
+          <summary>¿Hace falta experiencia previa?</summary>
+          <p>No es obligatorio. La propuesta está diseñada para que una persona pueda empezar con más orden, incluso si antes se sintió perdida o saturada.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-panel">
+        <h3>Si querés dejar de mirar todo mezclado, empezá por entrar al lugar correcto</h3>
+        <p>
+          Sumate a la comunidad privada y empezá a ver un enfoque más ordenado, simple y pensado para aprender mejor desde Argentina.
+        </p>
+        <div class="cta-row" style="justify-content:center;">
+          <a class="btn btn-primary" href="https://t.ly/ubiYs" onclick="trackLead('bottom_primary_cta')">Acceder ahora</a>
+          <a class="btn btn-ghost" href="#incluye">Revisar contenido</a>
+        </div>
+        <div class="microcopy">Acceso directo por WhatsApp · Comunidad privada · Enfoque educativo</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="legal">
+        <strong>Información importante</strong>
+        <div>
+          Este contenido es únicamente educativo e informativo. No constituye asesoramiento financiero,
+          promesa de resultados ni recomendación personalizada. Toda decisión que tome el usuario es
+          bajo su propia responsabilidad.
+        </div>
+        <div style="margin-top:10px;">
+          Disclaimer: This content is for educational and informational purposes only and does not constitute financial advice, investment advice, or a promise of results.
+        </div>
+      </div>
     </div>
   </footer>
-
-  <div class="floating-cta" id="floatingCta">
-    <div class="floating-inner">
-      <div class="floating-copy">
-        <strong>Accedé a la comunidad privada</strong>
-        <span>Recibí análisis, guía de inicio y contenido pensado para aprender desde WhatsApp.</span>
-      </div>
-      <a class="main-cta js-whatsapp-cta" href="https://t.ly/ubiYs" target="_blank" rel="noopener noreferrer">Entrar ahora</a>
-    </div>
-  </div>
-
-  <script>
-    const floatingCta = document.getElementById('floatingCta');
-    const topbar = document.querySelector('.topbar');
-    const revealItems = document.querySelectorAll('.reveal');
-    let revealTimerStarted = false;
-
-    const showFloatingCta = () => {
-      if (!floatingCta.classList.contains('visible')) {
-        floatingCta.classList.add('visible');
-      }
-    };
-
-    const handleScrollReveal = () => {
-      const triggerPoint = window.innerHeight * 0.35;
-      if (window.scrollY > 8) {
-        topbar.classList.add('scrolled');
-      } else {
-        topbar.classList.remove('scrolled');
-      }
-      if (window.scrollY > triggerPoint && !revealTimerStarted) {
-        revealTimerStarted = true;
-        setTimeout(showFloatingCta, 3000);
-      }
-    };
-
-    const trackWhatsAppClick = (label) => {
-      if (typeof fbq === 'function') {
-        fbq('trackCustom', 'WhatsAppClick', {
-          destination: 'whatsapp_group',
-          content_name: label || 'whatsapp_cta',
-          page_variant: 'argentina_es'
-        });
-      }
-    };
-
-    document.querySelectorAll('.js-whatsapp-cta').forEach((button, index) => {
-      button.addEventListener('click', () => {
-        const label = button.textContent.trim() || `cta_${index + 1}`;
-        trackWhatsAppClick(label);
-        if (typeof fbq === 'function') {
-          fbq('track', 'Lead', {
-            content_name: label,
-            content_category: 'whatsapp_join',
-            page_variant: 'argentina_es'
-          });
-        }
-      });
-    });
-
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in-view');
-            if (entry.target.id === 'ejemplos' && typeof fbq === 'function') {
-              fbq('track', 'ViewContent', {
-                content_name: 'analysis_examples',
-                content_category: 'landing_section',
-                page_variant: 'argentina_es'
-              });
-            }
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.16 });
-
-      revealItems.forEach((item) => observer.observe(item));
-    } else {
-      revealItems.forEach((item) => item.classList.add('in-view'));
-    }
-
-    handleScrollReveal();
-    window.addEventListener('scroll', handleScrollReveal, { passive: true });
-  </script>
 </body>
 </html>
