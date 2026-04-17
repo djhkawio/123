@@ -3,522 +3,950 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Comunidad Privada de Educación Financiera | Argentina</title>
-  <meta name="description" content="Aprendé a leer el mercado con más claridad, menos ruido y una estructura simple. Sumate a nuestra comunidad privada de aprendizaje financiero." />
-
-  <!-- Meta Pixel Code -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];
-    t=b.createElement(e);t.async=!0;
-    t.src=v;
-    s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}
-    (window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-
-    fbq('init', '769607062918048');
-    fbq('track', 'PageView');
-
-    function trackLead(source) {
-      fbq('track', 'Lead', { content_name: source || 'cta_click' });
-    }
-  </script>
-  <noscript>
-    <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=769607062918048&ev=PageView&noscript=1"/>
-  </noscript>
-  <!-- End Meta Pixel Code -->
-
+  <title>Centro de Investigación y Educación Financiera | Acceso de Orientación</title>
+  <meta name="description" content="Centro de orientación educativa sobre mercados globales, acciones estadounidenses, fondos y metodología de aprendizaje guiado para usuarios de Argentina." />
   <style>
-    :root{
-      --bg:#07101d;
-      --bg-soft:#0b162b;
-      --surface:#0d1b33;
-      --surface-2:#102240;
-      --text:#f6f8fc;
-      --muted:#b4c0d7;
-      --line:rgba(255,255,255,.08);
-      --gold:#ffb84d;
-      --gold-2:#ffd68c;
-      --blue:#67b0ff;
-      --green:#6ad7a9;
-      --danger:#ff8f8f;
-      --shadow:0 24px 70px rgba(0,0,0,.35);
-      --radius:26px;
-      --max:1180px;
+    :root {
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --surface-2: #f0f4fa;
+      --text: #132033;
+      --muted: #5d6b82;
+      --line: #d9e2ef;
+      --primary: #123b76;
+      --primary-2: #0f2f5c;
+      --accent: #c89b3c;
+      --success: #17795f;
+      --shadow: 0 18px 50px rgba(12, 32, 66, 0.08);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --max: 1180px;
     }
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--text);
       background:
-        radial-gradient(circle at 100% 0%, rgba(103,176,255,.15), transparent 28%),
-        radial-gradient(circle at 0% 0%, rgba(255,184,77,.10), transparent 24%),
-        linear-gradient(180deg, #07101d 0%, #091223 100%);
-      color:var(--text);
-      line-height:1.6;
+        radial-gradient(circle at top left, rgba(18, 59, 118, 0.06), transparent 28%),
+        radial-gradient(circle at top right, rgba(200, 155, 60, 0.08), transparent 24%),
+        var(--bg);
+      line-height: 1.6;
     }
 
-    a{text-decoration:none;color:inherit}
-    img{display:block;max-width:100%}
-    .container{width:min(var(--max), calc(100% - 32px));margin:0 auto}
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
 
-    .topbar{
-      background:rgba(255,255,255,.04);
-      border-bottom:1px solid var(--line);
-      color:#dce5f7;
-      font-size:13px;
-    }
-    .topbar .inner{
-      display:flex;
-      justify-content:center;
-      gap:10px;
-      padding:10px 16px;
-      text-align:center;
-      flex-wrap:wrap;
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
     }
 
-    .nav{
-      position:sticky;top:0;z-index:50;
-      backdrop-filter:blur(14px);
-      background:rgba(7,16,29,.74);
-      border-bottom:1px solid rgba(255,255,255,.06);
-    }
-    .nav-inner{
-      display:flex;align-items:center;justify-content:space-between;gap:16px;
-      padding:16px 0;
-    }
-    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.2px}
-    .brand-mark{
-      width:42px;height:42px;border-radius:14px;display:grid;place-items:center;
-      background:linear-gradient(135deg,var(--gold),#ff9d00);color:#111;font-weight:900;
-      box-shadow:0 10px 24px rgba(255,184,77,.22);
-    }
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:10px;
-      min-height:54px;padding:0 22px;border-radius:999px;font-weight:800;
-      transition:.24s ease;border:1px solid transparent;cursor:pointer;
-    }
-    .btn:hover{transform:translateY(-2px)}
-    .btn-primary{
-      background:linear-gradient(135deg,var(--gold),var(--gold-2));
-      color:#111;box-shadow:0 16px 36px rgba(255,184,77,.18);
-    }
-    .btn-secondary{
-      background:rgba(255,255,255,.04);color:#fff;border-color:rgba(255,255,255,.1);
-    }
-    .btn-ghost{
-      background:transparent;color:#dbe6fa;border-color:rgba(255,255,255,.14);
+    .topbar {
+      background: #0f2039;
+      color: rgba(255,255,255,0.9);
+      font-size: 13px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
-    .hero{padding:64px 0 28px}
-    .hero-grid{
-      display:grid;grid-template-columns:1.08fr .92fr;gap:28px;align-items:center;
-    }
-    .eyebrow{
-      display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;
-      background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09);
-      color:#dde7f8;font-size:13px;margin-bottom:18px;
-    }
-    .eyebrow .dot{
-      width:8px;height:8px;border-radius:50%;background:var(--green);
-      box-shadow:0 0 0 6px rgba(106,215,169,.12);
-    }
-    h1{
-      margin:0 0 16px;font-size:clamp(36px,5vw,62px);line-height:1.04;letter-spacing:-1.7px;
-    }
-    .hero .lead{
-      margin:0 0 20px;color:var(--muted);font-size:clamp(16px,2vw,20px);max-width:720px;
-    }
-    .hero-proof{
-      display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0 28px;
-    }
-    .proof-item{
-      background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:18px;padding:14px 16px;
-    }
-    .proof-item strong{display:block;font-size:15px;margin-bottom:4px}
-    .proof-item span{color:var(--muted);font-size:14px}
-    .cta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-    .microcopy{margin-top:12px;color:#bac4d8;font-size:13px}
-
-    .hero-card{
-      position:relative;overflow:hidden;
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid rgba(255,255,255,.08);border-radius:30px;padding:22px;box-shadow:var(--shadow);
-    }
-    .hero-card::after{
-      content:"";position:absolute;right:-40px;bottom:-60px;width:220px;height:220px;border-radius:50%;
-      background:radial-gradient(circle, rgba(103,176,255,.22), transparent 68%);
-      pointer-events:none;
-    }
-    .panel{
-      background:rgba(6,14,27,.56);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:18px;margin-bottom:14px;
-    }
-    .panel:last-child{margin-bottom:0}
-    .panel h3{margin:0 0 8px;font-size:17px}
-    .panel p{margin:0;color:var(--muted);font-size:14px}
-    .signal-list{display:grid;gap:12px;margin-top:14px}
-    .signal{
-      display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:flex-start;
-      background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:14px;
-    }
-    .signal-icon{
-      width:34px;height:34px;border-radius:12px;display:grid;place-items:center;font-weight:900;
-      background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#111;
-    }
-    .signal strong{display:block;font-size:15px;margin-bottom:2px}
-    .signal span{font-size:13px;color:var(--muted)}
-
-    .section{padding:28px 0}
-    .section-title{margin:0 0 10px;font-size:clamp(28px,3vw,40px);line-height:1.12;letter-spacing:-1px}
-    .section-sub{margin:0 0 24px;color:var(--muted);max-width:760px}
-
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,.048), rgba(255,255,255,.03));
-      border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:22px;box-shadow:var(--shadow);
-    }
-    .card h3{margin:0 0 8px;font-size:20px}
-    .card p{margin:0;color:var(--muted);font-size:15px}
-    .card ul{margin:10px 0 0;padding-left:18px;color:var(--muted)}
-    .card li{margin:6px 0}
-
-    .split{
-      display:grid;grid-template-columns:1fr 1fr;gap:18px;
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 10px 0;
+      flex-wrap: wrap;
     }
 
-    .checklist{display:grid;gap:10px}
-    .check{
-      display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:flex-start;
-      background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:14px;
-    }
-    .check b{color:#fff}
-    .check span{color:var(--muted);font-size:14px}
-
-    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .step-num{
-      width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:900;
-      background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#111;margin-bottom:14px;
+    .topbar .left,
+    .topbar .right {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: center;
     }
 
-    .story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .story{
-      min-height:250px;
-      background:linear-gradient(180deg, rgba(16,34,64,.92), rgba(11,24,47,.92));
-      border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:20px;position:relative;overflow:hidden;
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      background: rgba(245, 247, 251, 0.84);
+      border-bottom: 1px solid rgba(19,32,51,0.08);
     }
-    .story-label{
-      display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.08);
-      color:#dfe8fa;font-size:12px;margin-bottom:14px;
-    }
-    .story h4{margin:0 0 10px;font-size:20px}
-    .story p{margin:0;color:var(--muted)}
 
-    .compare{
-      display:grid;grid-template-columns:1fr 1fr;gap:18px;
+    .nav-inner {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
     }
-    .compare .card h3{margin-bottom:12px}
-    .bad{border-color:rgba(255,143,143,.18)}
-    .good{border-color:rgba(106,215,169,.2)}
 
-    .faq{display:grid;gap:12px}
-    details{
-      background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:16px 18px;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
     }
-    summary{cursor:pointer;font-weight:800;list-style:none}
-    summary::-webkit-details-marker{display:none}
-    details p{margin:12px 0 0;color:var(--muted)}
 
-    .cta-panel{
-      background:
-        radial-gradient(circle at top right, rgba(103,176,255,.18), transparent 34%),
-        linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.03));
-      border:1px solid rgba(255,255,255,.08);border-radius:30px;padding:30px;box-shadow:var(--shadow);text-align:center;
+    .brand-mark {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary), #1d5ab1);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      box-shadow: var(--shadow);
     }
-    .cta-panel h3{margin:0 0 10px;font-size:clamp(30px,3vw,40px);letter-spacing:-1px}
-    .cta-panel p{margin:0 auto 20px;max-width:760px;color:var(--muted)}
 
-    .footer{padding:18px 0 36px;color:#afbad1;font-size:13px}
-    .legal{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:18px}
-    .legal strong{display:block;color:#fff;margin-bottom:8px;font-size:14px}
-
-    @media (max-width: 980px){
-      .hero-grid,.grid-3,.split,.steps,.story-grid,.compare{grid-template-columns:1fr}
-      .hero-proof{grid-template-columns:1fr}
+    .brand-text strong {
+      display: block;
+      font-size: 16px;
+      line-height: 1.2;
     }
-    @media (max-width: 640px){
-      .container{width:min(var(--max), calc(100% - 20px))}
-      .nav-inner{padding:12px 0}
-      .hero{padding-top:42px}
-      .card,.story,.hero-card,.cta-panel{padding:18px}
-      .cta-row{flex-direction:column;align-items:stretch}
-      .btn{width:100%}
+
+    .brand-text span {
+      font-size: 12px;
+      color: var(--muted);
+      display: block;
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      color: #314156;
+      font-size: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.25s ease;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #1b59b2);
+      color: #fff;
+      box-shadow: 0 14px 34px rgba(18, 59, 118, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.02);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.84);
+      border-color: var(--line);
+      color: var(--primary);
+    }
+
+    .hero {
+      padding: 58px 0 38px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: stretch;
+    }
+
+    .hero-copy {
+      padding: 18px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(18, 59, 118, 0.08);
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.08;
+      margin: 0 0 18px;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-copy p {
+      font-size: 18px;
+      color: var(--muted);
+      margin: 0 0 22px;
+      max-width: 720px;
+    }
+
+    .hero-points {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 24px 0 30px;
+    }
+
+    .point {
+      background: rgba(255,255,255,0.75);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      font-size: 14px;
+      color: #334256;
+    }
+
+    .point strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .hero-note {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .hero-panel {
+      background: linear-gradient(180deg, #0f223d, #122c52);
+      border-radius: 28px;
+      padding: 26px;
+      color: #fff;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      min-height: 100%;
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      right: -40px;
+      top: -30px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: rgba(200,155,60,0.16);
+    }
+
+    .panel-title {
+      font-size: 15px;
+      font-weight: 700;
+      opacity: 0.92;
+      margin-bottom: 18px;
+    }
+
+    .metric-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+
+    .metric-card small {
+      display: block;
+      opacity: 0.78;
+      margin-bottom: 8px;
+      font-size: 12px;
+      letter-spacing: 0.02em;
+    }
+
+    .metric-card strong {
+      font-size: 28px;
+      line-height: 1;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .metric-card span {
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    .market-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .market-box {
+      border-radius: 16px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 14px;
+    }
+
+    .market-box b {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .market-box span {
+      font-size: 12px;
+      opacity: 0.84;
+    }
+
+    section {
+      padding: 34px 0;
+    }
+
+    .section-head {
+      margin-bottom: 22px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: end;
+      flex-wrap: wrap;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(26px, 3.4vw, 38px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .section-head p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .icon-dot {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: rgba(18,59,118,0.09);
+      color: var(--primary);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .framework {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 22px;
+    }
+
+    .framework-box {
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .steps {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 16px;
+      border-radius: 18px;
+      background: var(--surface-2);
+      border: 1px solid #dde7f4;
+    }
+
+    .step-num {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: var(--primary);
+      color: white;
+      font-weight: 800;
+      font-size: 18px;
+    }
+
+    .step h4 {
+      margin: 0 0 5px;
+      font-size: 17px;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .audit-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .audit-item {
+      background: #0f223d;
+      color: rgba(255,255,255,0.92);
+      border-radius: 18px;
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .audit-item strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .program-card ul {
+      padding-left: 18px;
+      color: var(--muted);
+      margin: 14px 0 0;
+    }
+
+    .program-card li + li { margin-top: 8px; }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .stat-box {
+      background: var(--surface);
+      border-radius: 22px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-box strong {
+      display: block;
+      font-size: 34px;
+      color: var(--primary);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-box span {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .cta {
+      padding: 16px 0 50px;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, #0f223d, #163866);
+      color: #fff;
+      border-radius: 30px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .cta-box h2 {
+      margin: 0 0 12px;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.12;
+    }
+
+    .cta-box p {
+      margin: 0;
+      color: rgba(255,255,255,0.82);
+      font-size: 16px;
+      max-width: 760px;
+    }
+
+    .cta-panel {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px;
+      padding: 22px;
+    }
+
+    .cta-panel ul {
+      margin: 0 0 20px;
+      padding-left: 18px;
+      color: rgba(255,255,255,0.86);
+    }
+
+    .cta-panel li + li { margin-top: 8px; }
+
+    .footer {
+      padding: 30px 0 34px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-wrap {
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .badge-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .badge {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(18,59,118,0.08);
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 700;
+      border: 1px solid rgba(18,59,118,0.1);
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .framework,
+      .cta-box,
+      .grid-3,
+      .program-grid,
+      .stats-row {
+        grid-template-columns: 1fr;
+      }
+
+      .market-strip,
+      .hero-points {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .topbar-inner,
+      .nav-inner,
+      .hero-actions,
+      .section-head {
+        align-items: flex-start;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+
+      .hero-copy p {
+        font-size: 16px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .cta-box,
+      .card,
+      .framework-box,
+      .hero-panel {
+        padding: 22px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="topbar">
-    <div class="inner">
-      <span>Educación financiera para Argentina</span>
-      <span>•</span>
-      <span>Comunidad privada de aprendizaje</span>
-      <span>•</span>
-      <span>Acceso directo por WhatsApp</span>
+    <div class="container topbar-inner">
+      <div class="left">
+        <span>Orientación educativa para usuarios de Argentina</span>
+        <span>Enfoque: acciones, fondos y lectura de mercado</span>
+      </div>
+      <div class="right">
+        <span>Acceso informativo</span>
+        <span>Ingreso sujeto a revisión</span>
+      </div>
     </div>
   </div>
 
-  <nav class="nav">
+  <header class="navbar">
     <div class="container nav-inner">
       <div class="brand">
-        <div class="brand-mark">AR</div>
-        <span>Comunidad privada</span>
-      </div>
-      <a class="btn btn-primary" href="https://t.ly/ubiYs" onclick="trackLead('nav_cta')">Sumarme ahora</a>
-    </div>
-  </nav>
-
-  <header class="hero">
-    <div class="container hero-grid">
-      <div>
-        <div class="eyebrow">
-          <span class="dot"></span>
-          <span>Menos ruido · Más claridad · Mejor criterio</span>
-        </div>
-
-        <h1>Dejá de mirar el mercado con dudas y empezá a entender qué mirar primero</h1>
-
-        <p class="lead">
-          Sumate a una comunidad privada donde vas a encontrar una forma más ordenada de seguir escenarios,
-          leer movimientos y desarrollar criterio con un enfoque simple, educativo y pensado para Argentina.
-        </p>
-
-        <div class="hero-proof">
-          <div class="proof-item">
-            <strong>Entrás rápido</strong>
-            <span>Acceso directo por WhatsApp desde el celular.</span>
-          </div>
-          <div class="proof-item">
-            <strong>Entendés mejor</strong>
-            <span>Lecturas más claras, sin depender del caos del día.</span>
-          </div>
-          <div class="proof-item">
-            <strong>Seguís con estructura</strong>
-            <span>Una forma más ordenada de mirar y aprender.</span>
-          </div>
-        </div>
-
-        <div class="cta-row">
-          <a class="btn btn-primary" href="https://t.ly/ubiYs" onclick="trackLead('hero_primary_cta')">Entrar a la comunidad</a>
-          <a class="btn btn-secondary" href="#incluye">Ver qué incluye</a>
-        </div>
-
-        <div class="microcopy">
-          Enfoque educativo e informativo. Sin promesas irreales. Sin presión para actuar.
+        <div class="brand-mark">CI</div>
+        <div class="brand-text">
+          <strong>Centro de Investigación Financiera Aplicada</strong>
+          <span>Unidad de orientación, análisis y educación de mercados</span>
         </div>
       </div>
 
-      <div class="hero-card">
-        <div class="panel">
-          <h3>Qué vas a encontrar apenas entrás</h3>
-          <p>
-            Un entorno más ordenado para entender contexto, niveles, escenarios y lógica de mercado sin perderte entre señales sueltas.
-          </p>
-        </div>
-        <div class="panel">
-          <h3>Por qué esto importa</h3>
-          <p>
-            Cuando hay demasiada información, la diferencia no está en ver más. Está en saber qué mirar primero y cómo interpretarlo.
-          </p>
-        </div>
-        <div class="signal-list">
-          <div class="signal">
-            <div class="signal-icon">1</div>
-            <div><strong>Lectura más clara</strong><span>Escenarios y estructura antes que ruido.</span></div>
-          </div>
-          <div class="signal">
-            <div class="signal-icon">2</div>
-            <div><strong>Acceso simple</strong><span>Comunidad privada y experiencia directa desde WhatsApp.</span></div>
-          </div>
-          <div class="signal">
-            <div class="signal-icon">3</div>
-            <div><strong>Mejor criterio</strong><span>Un marco más ordenado para acompañar movimientos y contexto.</span></div>
-          </div>
-        </div>
-      </div>
+      <nav class="nav-links">
+        <a href="#enfoque">Enfoque</a>
+        <a href="#metodo">Metodología</a>
+        <a href="#programas">Programas</a>
+        <a href="#acceso">Solicitud de acceso</a>
+      </nav>
+
+      <a class="btn btn-primary" href="https://t.ly/ubiYs">Solicitar orientación</a>
     </div>
   </header>
 
-  <section class="section" id="incluye">
-    <div class="container">
-      <h2 class="section-title">Qué incluye la comunidad</h2>
-      <p class="section-sub">
-        La idea no es llenarte de información. La idea es ayudarte a entender más rápido qué mirar, cómo leerlo y cómo seguir un enfoque más ordenado.
-      </p>
-      <div class="grid-3">
-        <div class="card">
-          <h3>Lectura de mercado</h3>
-          <p>Contexto, zonas relevantes y explicación simple de los movimientos para que entiendas qué importa y qué no.</p>
-        </div>
-        <div class="card">
-          <h3>Marco de aprendizaje</h3>
-          <p>Una estructura clara para no depender de impulsos, mensajes sueltos o ruido constante.</p>
-        </div>
-        <div class="card">
-          <h3>Comunidad privada</h3>
-          <p>Acceso a un espacio más ordenado para seguir el contenido con una experiencia cómoda desde el celular.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Acceso institucional de orientación educativa</div>
+          <h1>Un entorno más serio para aprender a leer los mercados con método, estructura y criterio.</h1>
+          <p>
+            Esta página funciona como un acceso intermedio para usuarios que buscan una experiencia de aprendizaje más formal.
+            En lugar de promesas rápidas, presentamos un marco guiado de observación, análisis y educación práctica sobre acciones de EE. UU., fondos y hábitos de lectura de mercado.
+          </p>
 
-  <section class="section">
-    <div class="container split">
-      <div class="card">
-        <h3>Qué obtenés apenas entrás</h3>
-        <div class="checklist">
-          <div class="check"><div>✓</div><div><b>Ingreso rápido al grupo</b><br><span>Entrás directo y empezás a ver el contenido sin pasos complejos.</span></div></div>
-          <div class="check"><div>✓</div><div><b>Una forma más simple de seguir el mercado</b><br><span>Menos confusión, más foco en estructura y contexto.</span></div></div>
-          <div class="check"><div>✓</div><div><b>Un punto de partida más ordenado</b><br><span>Ideal para quienes quieren empezar con criterio y no con ansiedad.</span></div></div>
-        </div>
-      </div>
-      <div class="card">
-        <h3>Por qué conecta con Argentina</h3>
-        <p>
-          En Argentina mucha gente busca entender mejor el mercado para tomar decisiones con más calma frente a la volatilidad, la incertidumbre y el exceso de opiniones cruzadas.
-          Por eso el foco está puesto en claridad, lectura y estructura: menos ruido, más criterio.
-        </p>
-      </div>
-    </div>
-  </section>
+          <div class="hero-points">
+            <div class="point">
+              <strong>Marco educativo</strong>
+              Metodología enfocada en comprensión, disciplina y lectura gradual del mercado.
+            </div>
+            <div class="point">
+              <strong>Contexto global</strong>
+              Seguimiento de sectores, índices, flujos institucionales y narrativa macro.
+            </div>
+            <div class="point">
+              <strong>Proceso guiado</strong>
+              Ingreso a una comunidad de estudio con acompañamiento y materiales estructurados.
+            </div>
+            <div class="point">
+              <strong>Perfil Argentina</strong>
+              Contenido explicado para usuarios hispanohablantes con foco local de comprensión.
+            </div>
+          </div>
 
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title">Cómo es la experiencia</h2>
-      <p class="section-sub">Un recorrido simple para entrar, entender y seguir el contenido con más claridad.</p>
-      <div class="steps">
-        <div class="card">
-          <div class="step-num">1</div>
-          <h3>Entrás por WhatsApp</h3>
-          <p>El acceso está pensado para ser rápido y cómodo desde el celular.</p>
-        </div>
-        <div class="card">
-          <div class="step-num">2</div>
-          <h3>Empezás a ordenar la lectura</h3>
-          <p>Ves escenarios, lógica y estructura para dejar de reaccionar a cada movimiento.</p>
-        </div>
-        <div class="card">
-          <div class="step-num">3</div>
-          <h3>Seguís con mejor criterio</h3>
-          <p>Tenés una base más sólida para acompañar lo que pasa en el mercado.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://t.ly/ubiYs">Entrar al canal de orientación</a>
+            <a class="btn btn-secondary" href="#metodo">Ver metodología</a>
+          </div>
 
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title">Ejemplos del tipo de contenido que podés ver</h2>
-      <p class="section-sub">La comunidad trabaja con una lógica educativa: contexto, estructura y lectura antes que impulso.</p>
-      <div class="story-grid">
-        <div class="story">
-          <div class="story-label">Escenario</div>
-          <h4>BTC: zonas clave y reacción del precio</h4>
-          <p>Lectura ordenada de niveles importantes, comportamiento del precio y posibles escenarios para entender qué mirar primero.</p>
+          <div class="hero-note">
+            El acceso está pensado para personas que valoran estructura, contexto y aprendizaje continuo antes de participar en conversaciones de mercado.
+          </div>
         </div>
-        <div class="story">
-          <div class="story-label">Contexto</div>
-          <h4>ETH: impulso, pausa y validación</h4>
-          <p>Cómo interpretar continuidad, presión y cambios de ritmo sin seguir movimientos a ciegas.</p>
-        </div>
-        <div class="story">
-          <div class="story-label">Criterio</div>
-          <h4>Riesgo y lectura antes de actuar</h4>
-          <p>Un enfoque más sereno para reducir decisiones impulsivas y construir una base mental más sólida.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="section">
-    <div class="container compare">
-      <div class="card bad">
-        <h3>Lo que mucha gente hace hoy</h3>
-        <ul>
-          <li>Consume demasiadas opiniones al mismo tiempo</li>
-          <li>Reacciona a cada movimiento sin contexto</li>
-          <li>Se siente saturada y no sabe qué priorizar</li>
-        </ul>
-      </div>
-      <div class="card good">
-        <h3>Lo que buscás construir acá</h3>
-        <ul>
-          <li>Una lectura más limpia del mercado</li>
-          <li>Más criterio antes de sacar conclusiones</li>
-          <li>Un proceso más simple para aprender y seguir escenarios</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+        <aside class="hero-panel">
+          <div class="panel-title">Panel de enfoque del centro</div>
 
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title">Preguntas frecuentes</h2>
-      <p class="section-sub">Lo más importante antes de entrar, explicado de forma simple.</p>
-      <div class="faq">
-        <details>
-          <summary>¿Esto es para principiantes?</summary>
-          <p>Sí. Está pensado para personas que quieren empezar a entender mejor el mercado con una estructura más clara, incluso si hoy sienten que hay demasiada información.</p>
-        </details>
-        <details>
-          <summary>¿Voy a recibir acceso por WhatsApp?</summary>
-          <p>Sí. El ingreso está pensado para ser simple y directo, priorizando una experiencia cómoda desde el celular.</p>
-        </details>
-        <details>
-          <summary>¿Prometen resultados?</summary>
-          <p>No. El enfoque es educativo e informativo. El valor está en la claridad, el criterio y la estructura, no en promesas irreales.</p>
-        </details>
-        <details>
-          <summary>¿Hace falta experiencia previa?</summary>
-          <p>No es obligatorio. La propuesta está diseñada para que una persona pueda empezar con más orden, incluso si antes se sintió perdida o saturada.</p>
-        </details>
-      </div>
-    </div>
-  </section>
+          <div class="metric-card">
+            <small>ÁREA DE OBSERVACIÓN</small>
+            <strong>Mercados globales</strong>
+            <span>Acciones estadounidenses, fondos diversificados, sectores y tendencias de rotación.</span>
+          </div>
 
-  <section class="section">
-    <div class="container">
-      <div class="cta-panel">
-        <h3>Si querés dejar de mirar todo mezclado, empezá por entrar al lugar correcto</h3>
-        <p>
-          Sumate a la comunidad privada y empezá a ver un enfoque más ordenado, simple y pensado para aprender mejor desde Argentina.
-        </p>
-        <div class="cta-row" style="justify-content:center;">
-          <a class="btn btn-primary" href="https://t.ly/ubiYs" onclick="trackLead('bottom_primary_cta')">Acceder ahora</a>
-          <a class="btn btn-ghost" href="#incluye">Revisar contenido</a>
+          <div class="metric-card">
+            <small>OBJETIVO FORMATIVO</small>
+            <strong>Aprender a interpretar</strong>
+            <span>No solo ver movimientos; entender contexto, narrativa, riesgo y estructura.</span>
+          </div>
+
+          <div class="market-strip">
+            <div class="market-box">
+              <b>Acciones de EE. UU.</b>
+              <span>Lectura sectorial y seguimiento temático.</span>
+            </div>
+            <div class="market-box">
+              <b>Fondos</b>
+              <span>Comprensión de diversificación y exposición.</span>
+            </div>
+            <div class="market-box">
+              <b>Contexto macro</b>
+              <span>Eventos, narrativa y cambios de sentimiento.</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="enfoque">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Qué hace diferente a este acceso intermedio</h2>
+            <p>
+              La intención de esta versión no es parecer una página promocional corta. Está diseñada para transmitir una sensación de institución, filtrado y proceso.
+            </p>
+          </div>
         </div>
-        <div class="microcopy">Acceso directo por WhatsApp · Comunidad privada · Enfoque educativo</div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="icon-dot">01</div>
+            <h3>Más legitimidad visual</h3>
+            <p>Se reemplaza el tono agresivo de captación por una estructura editorial: cabecera formal, bloques de investigación, metodología y criterios de acceso.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon-dot">02</div>
+            <h3>Más motivación real</h3>
+            <p>La propuesta se apoya en una necesidad concreta: muchas personas ven el mercado todos los días, pero no tienen un proceso para entenderlo con claridad.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon-dot">03</div>
+            <h3>Más sensación de filtro</h3>
+            <p>En vez de "entra ya", el mensaje es "solicita acceso a un espacio guiado", lo que mejora la percepción de valor y seriedad.</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <section id="metodo">
+      <div class="container framework">
+        <div class="framework-box">
+          <div class="section-head" style="margin-bottom:0;">
+            <div>
+              <h2>Metodología de orientación</h2>
+              <p>La experiencia de ingreso está organizada para reducir ruido, evitar impulsividad y ayudar al usuario a formar criterio.</p>
+            </div>
+          </div>
+
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <div>
+                <h4>Observación del contexto</h4>
+                <p>Se parte de eventos, narrativa macro, sectores relevantes y comportamiento general del mercado antes de analizar instrumentos concretos.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num">2</div>
+              <div>
+                <h4>Lectura estructurada</h4>
+                <p>El usuario aprende a mirar tendencias, flujos, comportamiento relativo y lógica de exposición, no solo variaciones aisladas.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num">3</div>
+              <div>
+                <h4>Discusión guiada</h4>
+                <p>El canal de orientación funciona como punto de acompañamiento para ordenar ideas, revisar marcos de estudio y profundizar seguimiento.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num">4</div>
+              <div>
+                <h4>Construcción de criterio</h4>
+                <p>La meta final no es reaccionar más rápido, sino entender mejor qué mirar, por qué importa y cómo evaluar escenarios.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="framework-box" style="background:linear-gradient(180deg, #102540, #17355d); color:#fff;">
+          <div class="section-head" style="margin-bottom:0;">
+            <div>
+              <h2 style="color:#fff;">Criterios del entorno</h2>
+              <p style="color:rgba(255,255,255,0.78);">Este espacio está pensado para personas que priorizan aprendizaje guiado y conversación seria sobre mercado.</p>
+            </div>
+          </div>
+
+          <div class="audit-list">
+            <div class="audit-item">
+              <strong>Enfoque de estudio</strong>
+              Se valora la disposición a seguir una metodología antes que la búsqueda de resultados instantáneos.
+            </div>
+            <div class="audit-item">
+              <strong>Participación con contexto</strong>
+              El contenido está orientado a personas que desean interpretar acciones, fondos y dinámicas de mercado con mayor claridad.
+            </div>
+            <div class="audit-item">
+              <strong>Acceso por canal guiado</strong>
+              El primer paso es ingresar al canal de orientación para recibir contexto inicial y conocer la estructura de trabajo.
+            </div>
+          </div>
+
+          <div class="badge-row">
+            <div class="badge" style="background:rgba(255,255,255,0.12); color:#fff; border-color:rgba(255,255,255,0.12);">Acceso informativo</div>
+            <div class="badge" style="background:rgba(255,255,255,0.12); color:#fff; border-color:rgba(255,255,255,0.12);">Comunidad guiada</div>
+            <div class="badge" style="background:rgba(255,255,255,0.12); color:#fff; border-color:rgba(255,255,255,0.12);">Enfoque estructurado</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="programas">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Líneas de aprendizaje dentro del entorno</h2>
+            <p>La landing ya no gira en torno a dos activos concretos. En esta versión, el mensaje se amplía para parecer más institucional y más estable.</p>
+          </div>
+        </div>
+
+        <div class="program-grid">
+          <div class="card program-card">
+            <h3>Acciones y sectores</h3>
+            <p>Seguimiento de compañías, sectores líderes, rotaciones temáticas y lectura del contexto que influye en cada grupo.</p>
+            <ul>
+              <li>Comparación entre sectores defensivos y de crecimiento</li>
+              <li>Lectura de narrativa y sentimiento</li>
+              <li>Relación entre noticias y comportamiento del mercado</li>
+            </ul>
+          </div>
+
+          <div class="card program-card">
+            <h3>Fondos y diversificación</h3>
+            <p>Espacio de comprensión para quienes desean mirar exposición más amplia y aprender a interpretar estructuras diversificadas.</p>
+            <ul>
+              <li>Diferencias entre fondos amplios y enfoques temáticos</li>
+              <li>Comprensión de exposición por regiones y sectores</li>
+              <li>Lectura gradual de composición y propósito</li>
+            </ul>
+          </div>
+
+          <div class="card program-card">
+            <h3>Lectura macro y proceso</h3>
+            <p>Marco para entender por qué el mercado cambia de tono, qué señales se observan y cómo ordenarlas sin caer en exceso de ruido.</p>
+            <ul>
+              <li>Contexto de tasas, liquidez y expectativas</li>
+              <li>Eventos que alteran la percepción del riesgo</li>
+              <li>Construcción de una rutina de observación útil</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Por qué esta estructura convierte mejor que una página demasiado corta</h2>
+            <p>Porque un usuario serio necesita sentir que está entrando a un entorno con criterio, no a una promesa improvisada.</p>
+          </div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-box">
+            <strong>Más</strong>
+            <span>autoridad visual y sensación institucional</span>
+          </div>
+          <div class="stat-box">
+            <strong>Menos</strong>
+            <span>fricción por parecer una oferta demasiado agresiva</span>
+          </div>
+          <div class="stat-box">
+            <strong>Mejor</strong>
+            <span>alineación con usuarios que buscan aprender con guía</span>
+          </div>
+          <div class="stat-box">
+            <strong>Mayor</strong>
+            <span>motivación para entrar al grupo por valor percibido</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="acceso" class="cta">
+      <div class="container">
+        <div class="cta-box">
+          <div>
+            <h2>Solicita acceso al canal de orientación y conoce el entorno de estudio.</h2>
+            <p>
+              Si buscas una experiencia más formal, con estructura, lenguaje claro y acompañamiento inicial,
+              este acceso intermedio fue diseñado para ese perfil. El siguiente paso es entrar al canal y revisar la orientación de inicio.
+            </p>
+          </div>
+
+          <div class="cta-panel">
+            <ul>
+              <li>Ingreso al canal de orientación inicial</li>
+              <li>Explicación del enfoque y la dinámica del entorno</li>
+              <li>Acceso para usuarios interesados en aprendizaje estructurado</li>
+            </ul>
+            <a class="btn btn-primary" style="width:100%;" href="https://t.ly/ubiYs">Solicitar acceso ahora</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer class="footer">
-    <div class="container">
-      <div class="legal">
-        <strong>Información importante</strong>
-        <div>
-          Este contenido es únicamente educativo e informativo. No constituye asesoramiento financiero,
-          promesa de resultados ni recomendación personalizada. Toda decisión que tome el usuario es
-          bajo su propia responsabilidad.
-        </div>
-        <div style="margin-top:10px;">
-          Disclaimer: This content is for educational and informational purposes only and does not constitute financial advice, investment advice, or a promise of results.
-        </div>
+    <div class="container footer-wrap">
+      <div>
+        Centro de Investigación Financiera Aplicada — Página de acceso intermedio con fines informativos y educativos.
+      </div>
+      <div>
+        El contenido presentado en esta página está orientado a educación general y acompañamiento de aprendizaje. La disponibilidad de acceso puede variar según revisión interna del canal.
+      </div>
+      <div>
+        Disclaimer: This page is for educational and informational purposes only and does not constitute financial advice, investment solicitation, or guaranteed results.
       </div>
     </div>
   </footer>
